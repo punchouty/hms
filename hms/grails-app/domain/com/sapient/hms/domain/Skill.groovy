@@ -10,6 +10,7 @@ class Skill {
 	
 	static hasMany=[skillResult:SkillEvaluationresult]
 	static belongsTo=[skillBucket:SkillBucket]
+	
     static constraints = {
     }
 }

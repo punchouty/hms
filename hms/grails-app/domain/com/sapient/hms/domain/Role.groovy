@@ -6,6 +6,7 @@ class Role {
 	String name
 	
 	static  belongsTo = [user :User]
+	
     static constraints = {
     }
 }

@@ -7,6 +7,8 @@ class CandidateDetails {
 	String location
 	
 	static hasMany = [interviewDetails : InterviewDetails]
+	
+	
     static constraints = {
     }
 }

@@ -15,6 +15,7 @@ class InterviewDetails {
 	
 	static hasMany=[results: RoundEvaluationResult]
 	static belongsTo = [hiringProcess: HiringProcess,candidate: CandidateDetails,position:Position]
+	
     static constraints = {
     }
 }
