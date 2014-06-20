@@ -9,6 +9,9 @@ class AssessmentRound {
 	def skillBuckets =[]
 	int overAllCutOffScore
 	
+	static hasMany=[roundresult:RoundEvaluationResult,skillbuckets:SkillBucket]
+	static belongsTo=[hiringprocess:HiringProcess]
+	
     static constraints = {
     }
 }
