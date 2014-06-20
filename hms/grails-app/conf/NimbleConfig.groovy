@@ -17,10 +17,10 @@
 
 nimble {
 	organization {
-		name = ""
-		displayname = ""
-		description = ""
-		logo = ""
+		name = "Sapient Consulting Limited"
+		displayname = "Sapient"
+		description = "Sapient"
+		logo = "http://peopleportal2/_layouts/images/People-images/spacer.gif"
 		logosmall = ""
 		url = ""
 	}
@@ -32,7 +32,7 @@ nimble {
 
 	localusers {
 		authentication { enabled = true } 
-		registration { enabled = true }
+		registration { enabled = false }
 		provision { active = false }
 	}
 
