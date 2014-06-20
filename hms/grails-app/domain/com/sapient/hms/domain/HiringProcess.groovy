@@ -10,7 +10,9 @@ class HiringProcess {
 	Date lastUpdatedDate
 	boolean defaultProcess
 	char status
-
+	
+	static belongsTo=[position: Position]
+	static hasmany=[interviewDetails: InterviewDetails,rounds : AssessmentRound]
     static constraints = {
     }
 }
