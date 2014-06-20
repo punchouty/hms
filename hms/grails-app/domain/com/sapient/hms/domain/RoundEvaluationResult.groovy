@@ -14,7 +14,11 @@ class RoundEvaluationResult {
 	String guideline
 	String instructions
 	AssessmentRound round
+	
+	static hasMany=[bucketResult:BucketEvaluationResult]
+	
+	static belongsTo = [interviewDetails:InterviewDetails,round:AssessmentRound]
 
-    static constraints = {
+	    static constraints = {
     }
 }

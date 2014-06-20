@@ -10,6 +10,8 @@ class User {
 	String accountName
 	String employeeId
 	
+	static hasMany=[roles:Role]
+	
     static constraints = {
     }
 }

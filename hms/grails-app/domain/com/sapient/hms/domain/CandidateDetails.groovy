@@ -6,6 +6,7 @@ class CandidateDetails {
 	String name
 	String location
 	
+	static hasMany = [interviewDetails : InterviewDetails]
     static constraints = {
     }
 }

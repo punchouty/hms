@@ -8,6 +8,8 @@ class SkillEvaluationresult {
 	int score
 	String feedback
 	Skill skill
+	
+	static belongsTo=[bucketresult:BucketEvaluationResult,skill:Skill]
 
     static constraints = {
     }
