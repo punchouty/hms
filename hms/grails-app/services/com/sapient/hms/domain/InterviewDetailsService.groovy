@@ -6,7 +6,7 @@ class InterviewDetailsService {
 
     }
 	
-	def getAllpositions(){
+	def getAllPositions(){
 		
 		Position.list()
 	}
