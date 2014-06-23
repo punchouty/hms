@@ -29,7 +29,9 @@ environments {
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+            url = "jdbc:mysql://localhost/hms"
+			username = "root"
+			password = "root"
         }
     }
     production {
