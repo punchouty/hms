@@ -58,6 +58,6 @@ grails.project.dependency.resolution = {
 
         build ":tomcat:$grailsVersion"
 		compile ':nimble:0.7'
-		
+		compile ":angularjs-resources:1.2.15"
     }
 }
