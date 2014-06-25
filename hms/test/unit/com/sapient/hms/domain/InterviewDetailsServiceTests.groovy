@@ -5,7 +5,7 @@ import grails.test.mixin.*
 
 import org.junit.*
 
-import com.sapient.hms.domain.InterviewDetailsService;
+import com.sapient.hms.service.InterviewDetailsService;
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions

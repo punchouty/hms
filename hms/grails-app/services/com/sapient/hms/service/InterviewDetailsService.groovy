@@ -1,4 +1,9 @@
-package com.sapient.hms.domain
+package com.sapient.hms.service
+
+import com.sapient.hms.domain.AssessmentRound;
+import com.sapient.hms.domain.HiringProcess;
+import com.sapient.hms.domain.Position;
+import com.sapient.hms.domain.User;
 
 class InterviewDetailsService {
 
