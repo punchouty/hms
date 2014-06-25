@@ -3,7 +3,7 @@ package com.sapient.hms.service
 import com.sapient.hms.domain.AssessmentRound;
 import com.sapient.hms.domain.HiringProcess;
 import com.sapient.hms.domain.Position;
-import com.sapient.hms.domain.User;
+import com.sapient.hms.security.User;
 
 class InterviewDetailsService {
 
@@ -23,7 +23,7 @@ class InterviewDetailsService {
 	
 	def getAllInterviewers(){
 		
-		def query=User.where{role==0}	
+		def query=User	
 		List<User> interviewer = query.findAll()
 		return interviewer
 	}

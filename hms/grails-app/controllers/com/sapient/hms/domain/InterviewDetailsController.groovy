@@ -1,6 +1,7 @@
 package com.sapient.hms.domain
 
 import grails.converters.JSON
+import com.sapient.hms.security.User
 
 class InterviewDetailsController {
 	
