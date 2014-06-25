@@ -1,5 +1,7 @@
 package com.sapient.hms.domain
 
+import com.sapient.hms.security.User
+
 class InterviewDetails {
 
 	int id
