@@ -2,11 +2,11 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
-  .controller('MyCtrl1', ['$scope', function($scope) {
+angular.module('hmsApp.controllers', [])
+  .controller('hiringController', ['$scope', function($scope) {
 
   }])
-  .controller('MyCtrl2', ['$scope', function($scope) {
+  .controller('assessmentController', ['$scope', function($scope) {
 
   }])
   ;
