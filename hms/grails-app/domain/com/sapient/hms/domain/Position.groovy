@@ -7,7 +7,7 @@ class Position {
 	Date createdDate
 	Date lastUpdatedDate
 	
-	//static hasMany = [interviewDetails : InterviewDetails, hiringProcesses : HiringProcess,skillBuckets: SkillBucket]
+	static hasMany = [interviewDetails : InterviewDetails, hiringProcesses : HiringProcess,skillBuckets: SkillBucket]
 	
 	
     static constraints = {
