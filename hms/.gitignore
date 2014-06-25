@@ -1,0 +1,8 @@
+/.settings/
+/.classpath
+/target/
+/lib/
+/src/
+/test/
+/grails-app/migrations
+/grails-app/realms
