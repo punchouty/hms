@@ -1,0 +1,37 @@
+.btn-group{
+  margin: 20px 0 10px 20px;
+}
+li{
+  cursor: pointer;
+}
+ body
+  {
+  text-align:centre;
+  }
+  #content {
+    max-width: 800px;
+    margin: auto;
+    left: 1%;
+    right: 1%;
+    position: absolute;
+}
+#navstyle {
+    max-width: 940px;
+    margin: auto;
+	left:5px;
+	right:5px;
+}
+   table tr td:last-child
+	{
+    text-align: right;
+    }
+	table tr th:last-child
+	{
+	  text-align: right;
+	}
+	.sidebar
+	{
+	left:250px;
+	right:20px;
+	width:210px;
+	}
