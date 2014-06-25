@@ -6,10 +6,11 @@ class AssessmentRound {
 	String name
 	Position position
 	int sequence
-	def skillBuckets =[]
 	int overAllCutOffScore
+	def skillBuckets =[]
 	
 	static hasMany=[roundresult:RoundEvaluationResult,skillbuckets:SkillBucket]
+	
 	static belongsTo=[hiringprocess:HiringProcess]
 	
     static constraints = {
