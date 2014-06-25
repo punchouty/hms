@@ -11,4 +11,21 @@ class InterviewDetailsService {
 		Position.list()
 	}
 	
+	def getAllRounds(){
+		
+		AssessmentRound.list()
+	}
+	
+	def getAllInterviewers(){
+		
+		def query=User.where{role==0}	
+		List<User> interviewer = query.findAll()
+		return interviewer
+	}
+	
+	def getAllHiringProcesses(){
+		
+		HiringProcess.list()
+	}
+	
 }
