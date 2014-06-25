@@ -1,4 +1,4 @@
-<div ng-app="myApp" ng-cloak>
+<div ng-app="myApp" >
   
   <div id="content">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navstyle" >

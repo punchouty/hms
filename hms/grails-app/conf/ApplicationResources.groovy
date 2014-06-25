@@ -1,6 +1,6 @@
 modules = {
     application {
-		dependsOn "angular, bootstrap"
+		dependsOn "bootstrap, angular"
 		
         resource url:'js/application.js'
 		resource url: 'js/angular/angular-route.min.js'
