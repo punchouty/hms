@@ -7,22 +7,29 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><g:layoutTitle default="Grails"/></title>
+		<title><g:layoutTitle default="Hiring Management System"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
+		<link rel="shortcut icon" href="http://getbootstrap.com/assets/ico/favicon.ico">
+		 <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+		 <link rel="stylesheet" href="${resource(dir: 'css', file: 'hms/app.css')}" type="text/css">
+		 <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+		
 		<g:layoutHead/>
-		<r:layoutResources />
+		
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-		<g:javascript library="application"/>
+		<r:require modules="bootstrap"/>
+		<r:require module="application" />
 		<r:layoutResources />
 	</body>
+	<r:layoutResources />
 </html>
