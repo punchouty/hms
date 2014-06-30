@@ -1,28 +1,24 @@
-'use strict';
-
-/* Services */
-
 hms.factory('hiringService', function($resource, $log){
 	 
 	var factory = {};
 	 
-	factory.getPositions(){
+	factory.getPositions = function (){
 		return $resource('position').query();
 		}
 	
-	factory.getHiringProcessesForPosition(positionId){
+	factory.getHiringProcessesForPosition  = function(positionId){
 		return $resource('hiringProcess/:positionId', {positionId:'@positionId'}).query({positionId:positionId});
 		}
 	
-	factory.getAssessmentRoundsForProcess(processId){
+	factory.getAssessmentRoundsForProcess = function(processId){
 		return $resource('assessmentRound/:processId', {processId:'@processId'}).query({processId:processId});
 		}
 	
-	factory.getCandidateDetails(subStr){
+	factory.getCandidateDetails = function (subStr){
 		return $resource('candidateDetails/:subStr', {subStr:'@subStr'}).query({subStr:subStr});
 		}
 	
-	factory.getRoundSchedulesForInterview(interviewId){
+	factory.getRoundSchedulesForInterview = function (interviewId){
 		return $resource('roundSchedule/:interviewId', {interviewId:'@interviewId'}).query({interviewId:interviewId});
 		}
 	
