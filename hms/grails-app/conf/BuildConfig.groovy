@@ -48,8 +48,9 @@ grails.project.dependency.resolution = {
 
     plugins {
         runtime ":hibernate:$grailsVersion"
-       // runtime ":jquery:1.8.3"
-        runtime ":resources:1.1.6"
+
+              runtime ":resources:1.2.7"
+
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
@@ -58,6 +59,7 @@ grails.project.dependency.resolution = {
 
         build ":tomcat:$grailsVersion"
 		compile ':nimble:0.7'
-		compile ":angularjs-resources:1.2.15"
+		
+		//compile ":angularjs-resources:1.2.15"
     }
 }

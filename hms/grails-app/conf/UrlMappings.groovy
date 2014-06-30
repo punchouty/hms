@@ -1,3 +1,4 @@
+
 class UrlMappings {
 
 	static mappings = {
@@ -14,3 +15,4 @@ class UrlMappings {
 		"500"(view:'/error')
 	}
 }
+
