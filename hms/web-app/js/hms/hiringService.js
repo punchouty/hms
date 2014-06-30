@@ -6,11 +6,6 @@ hms.factory('hiringService', function($resource, $log){
 	 
 	var factory = {};
 	 
-	factory.getInterviews = function(){
-		return $resource('assessmentRound').query();
-		
-	}
-	
 	factory.getPositions(){
 		return $resource('position').query();
 		}
