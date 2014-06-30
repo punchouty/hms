@@ -9,9 +9,9 @@ class UrlMappings {
 		}
 
 		"/"(view:"/index")
-		"/view1"(view:"/partials/partial1")
-		"/view2"(view:"/partials/partial2")
-		"/view3"(view:"/partials/partial3")
+		"/schedule"(view:"/partials/schedule")
+		"/assessment"(view:"/partials/assessment")
+		"/createwf"(view:"/partials/createwf")
 		"500"(view:'/error')
 	}
 }

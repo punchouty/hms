@@ -29,8 +29,8 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" id="sidebar1">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#/view1">Schedule</a></li>
-            <li><a href="#/view2">Assessment</a></li>
+            <li class="active"><a href="#/schedule">Schedule</a></li>
+            <li><a href="#/assessment">Assessment</a></li>
            <!--  <li><a href="#">Assessment</a></li>
             <li><a href="#">Candidate View</a></li> -->
           </ul>
