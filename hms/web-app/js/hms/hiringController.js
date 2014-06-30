@@ -5,39 +5,37 @@
 hms.controller('hiringController', function($scope,$routeParams, hiringService) {
 
 	  $scope.name = 'hiringController';
-	//  hiringService.getInterviews();
-//	  .$promise.then(function(data)
-//				{
-//			$scope.interviews = data;
-//		});
-//	 
-	 
-//	  $scope.$on('handleScheduledInterviews', function(events, interviews) {
-//	    $scope.interviews = interviews;
-//	  });
-//	  $scope.addCandidate = function() {
-//	 };
-//	  /* var interview= {
-//	     position: $scope.position,
-//		 workflow: $scope.workflow,
-//		 round: $scope.round,
-//		 candidate: $scope.candidate,
-//		 interviewer: $scope.interviewer
-//		 };
-//	    $scope.interviews.push(interview); */
-//	  
-//	  //  handling the submit button for the form
-//	  $scope.schedule = function(interview) {
-//	    $params = $.param({
-//	     "position": interview.position,
-//		 "workflow": interview.workflow,
-//		 "round": interview.round,
-//		 "candidate": interview.candidate,
-//		 "interviewer": interview.interviewer,
-//		 "time":interview.time
-//	    });
-//		scheduledInterviews.saveInterviews($params);
-//	  }
+	  
+	  $scope.getPositions = function(){
+	  hiringService.getPositions().$promise.then(function(positions){
+			//$scope.interviews = data;
+		});
+	  }
+	  
+	  $scope.getHiringProcessesForPosition = function(positionId){
+	  hiringService.getHiringProcessesForPosition(positionId).$promise.then(function(hiringProcesses){
+			//$scope.interviews = data;
+		});
+	  }
+	  
+	  $scope.getAssessmentRoundsForProcess = function(processId){
+	  hiringService.getAssessmentRoundsForProcess(processId).$promise.then(function(assessmentRounds){
+			//$scope.interviews = data;
+		});
+	  }
+	  
+	  $scope.getCandidateDetails = function(nameSubStr){
+	  hiringService.getCandidateDetails(nameSubStr).$promise.then(function(candidateDetails){
+			//$scope.interviews = data;
+		});
+	  }
+	  
+	  $scope.getRoundSchedulesForInterview = function(interviewId){
+	  hiringService.getRoundSchedulesForInterview(interviewId).$promise.then(function(roundSchedules){
+			//$scope.interviews = data;
+		});
+	  }
+	  
 });
 
   

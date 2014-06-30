@@ -22,7 +22,7 @@ class InterviewDetailsController {
 	
 	def getRounds(){
 		
-		def rounds=interviewDetailsService.allRounds()
+		def rounds=interviewDetailsService.getAllRounds()
 		render rounds as JSON
 	}
 	

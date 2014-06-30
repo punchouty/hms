@@ -8,6 +8,7 @@ class UrlMappings {
 			}
 		}
 
+		
 		"/"(view:"/index")
 		"/schedule"(view:"/partials/schedule")
 		"/assessment"(view:"/partials/assessment")

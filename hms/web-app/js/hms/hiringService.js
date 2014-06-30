@@ -7,24 +7,38 @@ hms.factory('hiringService', function($resource, $log){
 	var factory = {};
 	 
 	factory.getInterviews = function(){
-		return $resource('interviewDetails/list').query();
+		return $resource('assessmentRound').query();
 		
 	}
-		
-	factory.saveData = function(data){
-		return $resource('schedule/save', {}, {'save': {method:'POST'}}).save(data);
-	}
 	
-	factory.editData = function(data){
-		return $resource('schedule/update', {}, {'update': {method:'PUT'}}).update(data);
-	}
-	
-	factory.deleteData= function(id){
-		return $resource('schedule/delete', {}, {'delete': {method:'DELETE'}}).delete({'id':id});
+	factory.getPositions(){
+		return $resource('position').query();
 		}
 	
-	factory.showData= function(id){
-			return $resource('schedule/show/:id', {id:'@id'}).get({id:id});
+	factory.getHiringProcessesForPosition(positionId){
+		return $resource('hiringProcess/:positionId', {positionId:'@positionId'}).query({positionId:positionId});
 		}
+	
+	factory.getAssessmentRoundsForProcess(processId){
+		return $resource('assessmentRound/:processId', {processId:'@processId'}).query({processId:processId});
+		}
+	
+	factory.getCandidateDetails(subStr){
+		return $resource('candidateDetails/:subStr', {subStr:'@subStr'}).query({subStr:subStr});
+		}
+	
+	factory.getRoundSchedulesForInterview(interviewId){
+		return $resource('roundSchedule/:interviewId', {interviewId:'@interviewId'}).query({interviewId:interviewId});
+		}
+	
+			
+	factory.createCandidate = function(candidate){
+		return $resource('candidateDetails/save', {}, {'save': {method:'POST'}}).save(candidate);
+	}
+	
+	factory.scheduleRound = function(scheduleRound){
+		return $resource('roundSchedule/save', {}, {'save': {method:'POST'}}).save(scheduleRound);
+	}
+
 	return factory;
 });
