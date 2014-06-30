@@ -1,4 +1,4 @@
-package com.sapient.hms.domain
+package com.sapient.hms.controllers
 
 import grails.converters.JSON
 import com.sapient.hms.security.User
