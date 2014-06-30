@@ -36,7 +36,18 @@
 
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+	    <r:require module="jqr" /> 
+	    <r:require module="core" />
+	     <r:require module="btr" />
+	 
+	  
 	   <r:require module="application" />
+	     
+	      
+	  
+	     <r:require module="ang" />
+	
+	    
 		<r:layoutResources />
 	</body>
 </html>

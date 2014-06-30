@@ -5,5 +5,5 @@
 angular.module('hmsApp',  ['ngRoute', 'ngResource']).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view1', {templateUrl: '/schedule', controller: 'hiringController'});
-   $routeProvider.otherwise({redirectTo: '/schedule'});
+   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
