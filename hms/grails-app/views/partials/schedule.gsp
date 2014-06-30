@@ -6,7 +6,7 @@
              <div class="row">
               <div class="col-md-5">
                 <label>Job Title</label>
-                <select class="form-control" ng-model="interview.position" name=>
+                <select class="form-control" ng-model="positions" name=>
                 <option>Junior Assosiate</option>
                 <option>Associate Level 1</option>
                 <option>Associate Level 2</option>

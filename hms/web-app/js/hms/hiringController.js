@@ -6,9 +6,13 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 
 	  $scope.name = 'hiringController';
 	  
+	  hiringService.getPositions().$promise.then(function(positions){
+			$scope.positions = positions;
+		});
+	  
 	  $scope.getPositions = function(){
 	  hiringService.getPositions().$promise.then(function(positions){
-			//$scope.interviews = data;
+			$scope.positions = positions;
 		});
 	  }
 	  
