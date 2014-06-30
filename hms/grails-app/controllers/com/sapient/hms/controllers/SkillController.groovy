@@ -1,6 +1,8 @@
-package com.sapient.hms.domain
+package com.sapient.hms.controllers
 
 import org.springframework.dao.DataIntegrityViolationException
+
+import com.sapient.hms.domain.Skill;
 
 class SkillController {
 

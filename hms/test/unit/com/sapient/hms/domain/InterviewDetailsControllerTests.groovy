@@ -3,6 +3,9 @@ package com.sapient.hms.domain
 
 
 import org.junit.*
+
+import com.sapient.hms.controllers.InterviewDetailsController;
+
 import grails.test.mixin.*
 
 @TestFor(InterviewDetailsController)
