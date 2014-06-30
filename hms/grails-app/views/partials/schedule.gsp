@@ -1,3 +1,4 @@
+<div ng-controller="hiringController">
  <h1>Interview Schedule</h1>
             <!-- <h1></h1> -->
             <form role="form">
@@ -99,3 +100,4 @@
             <button type="submit" class="btn btn-warning">Cancle</button>
             <button type="submit" class="btn btn-danger">Delete</button></center> -->
 			<button type="submit" class="btn btn-info" ng-click="schedule(interview)">Schedule</button>
+			</div>

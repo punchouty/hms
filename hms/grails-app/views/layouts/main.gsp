@@ -16,7 +16,7 @@
 		
 		<!-- Bootstrap core CSS -->
         <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-	    <link href="/css/hms/app.css" rel="stylesheet">
+	    <link href="css/hms/app.css" rel="stylesheet">
 
         <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
   
@@ -32,11 +32,11 @@
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 
-		<g:javascript library="application"/>
+		
 
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-		<g:javascript library="application"/>
+	   <r:require module="application" />
 		<r:layoutResources />
 	</body>
 </html>

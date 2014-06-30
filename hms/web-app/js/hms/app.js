@@ -2,9 +2,8 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('hmsApp',  ['ngRoute', 'ngResource', 'ngSanitize', 'ngCookies']).
+angular.module('hmsApp',  ['ngRoute', 'ngResource']).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {templateUrl: '/view1', controller: 'hiringController'});
-  $routeProvider.when('/view2', {templateUrl: '/view2', controller: 'hiringController'});
-  $routeProvider.otherwise({redirectTo: '/view3'});
+  $routeProvider.when('/view1', {templateUrl: '/schedule', controller: 'hiringController'});
+   $routeProvider.otherwise({redirectTo: '/schedule'});
 }]);

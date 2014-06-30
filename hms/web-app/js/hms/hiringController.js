@@ -6,9 +6,9 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
-  .controller('scheduleViewCtrl', ['$scope', function($scope,$routeParams,scheduledInterviews) {
-  $scope.name = 'scheduleViewCtrl';
+angular.module('hmsApp.controllers', [])
+  .controller('hiringController', ['$scope', function($scope,$routeParams,scheduledInterviews) {
+  $scope.name = 'hiringController';
   scheduledInterviews.getInterviews().then(function(interviews) {
     $scope.interviews = interviews;
   });
@@ -39,9 +39,6 @@ angular.module('myApp.controllers', [])
     })
 	scheduledInterviews.saveInterviews($params);
 	}
-  }])
-  .controller('MyCtrl2', ['$scope', function($scope) {
-
   }])
   ;
 
