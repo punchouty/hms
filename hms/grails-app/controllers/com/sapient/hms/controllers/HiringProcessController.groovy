@@ -1,5 +1,7 @@
 package com.sapient.hms.controllers
 
+import grails.converters.JSON;
+
 import org.springframework.dao.DataIntegrityViolationException
 
 import com.sapient.hms.domain.HiringProcess;
@@ -17,6 +19,11 @@ class HiringProcessController {
         [hiringProcessInstanceList: HiringProcess.list(params), hiringProcessInstanceTotal: HiringProcess.count()]
     }
 
+	def listByPosition(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		render HiringProcess.list(params) as JSON
+	}
+	
     def create() {
         [hiringProcessInstance: new HiringProcess(params)]
     }

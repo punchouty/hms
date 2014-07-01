@@ -1,5 +1,7 @@
 package com.sapient.hms.controllers
 
+import grails.converters.JSON;
+
 import org.springframework.dao.DataIntegrityViolationException
 
 import com.sapient.hms.domain.CandidateDetails;
@@ -14,7 +16,7 @@ class CandidateDetailsController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [candidateDetailsInstanceList: CandidateDetails.list(params), candidateDetailsInstanceTotal: CandidateDetails.count()]
+       render CandidateDetails.list(params) as JSON
     }
 
     def create() {

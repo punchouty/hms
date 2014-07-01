@@ -7,15 +7,15 @@ hms.factory('hiringService', function($resource, $log){
 		}
 	
 	factory.getHiringProcessesForPosition  = function(positionId){
-		return $resource('hiringProcess/:positionId', {positionId:'@positionId'}).query({positionId:positionId});
+		return $resource('hiringProcess/listByPosition/:positionId', {positionId:'@positionId'}).query({positionId:positionId});
 		}
 	
 	factory.getAssessmentRoundsForProcess = function(processId){
 		return $resource('assessmentRound/:processId', {processId:'@processId'}).query({processId:processId});
 		}
 	
-	factory.getCandidateDetails = function (subStr){
-		return $resource('candidateDetails/:subStr', {subStr:'@subStr'}).query({subStr:subStr});
+	factory.getCandidateDetails = function (){
+		return $resource('candidateDetails').query();
 		}
 	
 	factory.getRoundSchedulesForInterview = function (interviewId){

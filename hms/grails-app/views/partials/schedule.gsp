@@ -6,65 +6,35 @@
              <div class="row">
               <div class="col-md-5">
                 <label>Job Title</label>
-                <select class="form-control" ng-model="positions" name=>
-                <option>Junior Assosiate</option>
-                <option>Associate Level 1</option>
-                <option>Associate Level 2</option>
-                <option>Senior Associate Level 1</option>
-                <option>Senior Associate Level 2</option>
-                <option>Manager</option>
-                <option>Senior Manager</option>
-                <option>Director</option>
-              </select>
+               <select class="form-control" ng-model="selectedPosition" ng-options="position.name for position in positions"></select>
               </div>
               <div class="col-md-5 col-md-offset-2">
-                <label>WorkFlow</label>
-                <select class="form-control" ng-model="interview.workflow">
-                <option>Jr. Associate Hiring</option>
-                <option>Sr. Associate Hiring</option>
-                <option>Manager Hiring</option>
-                <option>Director Technology Hiring</option>
-              </select>
+                <label>Hiring Process</label>
+                <select class="form-control" ng-model="selectedProcess" ng-options="process.name for process in hiringProcesses"></select>
               </div>
 			 </div>
 			 <br>
 			 <div class="row">
               <div class="col-md-5">
-               <label>Round</label>
-                <select class="form-control" ng-model="interview.round">
-                <option>Aptitude</option>
-                <option>Screening</option>
-                <option>Written</option>
-                <option>HR</option>
-              </select>
-              </div>
-              <div class="col-md-4 col-md-offset-2">
                   <label>Candidate : </label>
-                 <input type="text" ng-model="interview.candidate" class="form-control">
+                 <input type="hidden" ng-model="selectedCandidateId" class="form-control">
+                <input class="form-control" type="text"  typeahead-on-select="setCandidate($item)" ng-model="selectedCandidate" typeahead="candidate.name for candidate in candidates | filter:$viewValue" />
 			  </div>
               <div class="col-md-1" style="padding-top:23px;">
                  <button type="button" ng-click="addNewCandidate(interview.candidate)" class="btn btn-default">+</button>
               </div>
-			 </div>
-			 <br>
-			 <div class="row">
-              <div class="col-md-5">
+                <div class="col-md-5 col-md-offset-2">
                  <label>Resume : </label>
                  <input type="file" class="form-control">
               </div>
+			 </div>
               
-               <div class="col-md-5 col-md-offset-2">
-                  <label>Interviewer : </label>
-                 <input type="text" ng-model="interview.interviewer" class="form-control">
-              </div>
-			 </div>
 			 <br>
-			 <div class="row">
-				<div class="col-md-5">
-				<label>Interview Time<label/>
-				 <input type="datetime-local" class="form-control" ng-model="interview.time">
-				</div>
-			 </div>
+			
+            
+              
+
+			
 			 <br>
               <button type="submit" class="btn btn-success" ng-click="schedule(interview)"  style="margin-top:23px;">Schedule Now</button>
 			 </fieldset>

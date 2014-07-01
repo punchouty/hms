@@ -1,12 +1,14 @@
 package com.sapient.hms.controllers
 
+import grails.converters.JSON;
+
 import org.springframework.dao.DataIntegrityViolationException
 
 import com.sapient.hms.domain.Position;
 
 class PositionController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [index: "GET", save: "POST", update: "POST", delete: "POST"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -14,7 +16,7 @@ class PositionController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [positionInstanceList: Position.list(params), positionInstanceTotal: Position.count()]
+		render Position.list(params) as JSON
     }
 
     def create() {

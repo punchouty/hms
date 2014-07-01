@@ -13,11 +13,13 @@ modules = {
 		//resource url:'lib/bower_components/angular/angular.min.js.map'
 		resource url: 'lib/bower_components/angular-route/angular-route.min.js'
 		resource url: 'lib/bower_components/angular-resource/angular-resource.min.js'
+		resource url: 'lib/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'
 	}
 	
 	btr {
 		dependsOn 'jqr'
 		resource url: 'lib/bower_components/bootstrap/dist/js/bootstrap.min.js'
+		
 	}
 	
 			

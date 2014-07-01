@@ -1,10 +1,14 @@
 package com.sapient.hms.domain
 
+import com.sapient.hms.security.User
+
 class RoundEvaluationResult {
 	
 	int id
-	Date startTime
-	Date endTime
+	CandidateDetails candidate
+	Date scheduledTime
+	Date actualStartTime
+	Date actualEndTime
 	String assessmentStatus
 	int candidateFinalScore
 	boolean willingToHire
@@ -12,10 +16,12 @@ class RoundEvaluationResult {
 	String recommendation
 	String guideline
 	String instructions
+	User interviewer
+	AssessmentRound round
 	
 	static hasMany=[bucketResult:BucketEvaluationResult]
 	
-	static belongsTo = [interviewDetails:InterviewDetails]
+	static belongsTo = [interviewDetails:InterviewDetails,round:AssessmentRound]
 
 	    static constraints = {
     }

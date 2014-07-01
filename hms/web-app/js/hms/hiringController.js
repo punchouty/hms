@@ -7,32 +7,26 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	  $scope.name = 'hiringController';
 	  
 	  hiringService.getPositions().$promise.then(function(positions){
-			$scope.positions = positions;
+		     $scope.positions = positions;
+			 $scope.selectedPosition = $scope.positions[0]; 
+			
+			 hiringService.getHiringProcessesForPosition($scope.selectedPosition.id).$promise.then(function(hiringProcesses){
+				  $scope.hiringProcesses = hiringProcesses;
+				  $scope.selectedProcess = $scope.hiringProcesses[0]; 
+				});
 		});
 	  
-	  $scope.getPositions = function(){
-	  hiringService.getPositions().$promise.then(function(positions){
-			$scope.positions = positions;
+
+	 
+	  $scope.selectedCandidate = '';
+	  $scope.setCandidate = function(site) {
+	  		$scope.selectedCandidateId = site.id;
+	  	};
+		
+	  hiringService.getCandidateDetails().$promise.then(function(candidateDetails){
+		  $scope.candidates = candidateDetails;
 		});
-	  }
 	  
-	  $scope.getHiringProcessesForPosition = function(positionId){
-	  hiringService.getHiringProcessesForPosition(positionId).$promise.then(function(hiringProcesses){
-			//$scope.interviews = data;
-		});
-	  }
-	  
-	  $scope.getAssessmentRoundsForProcess = function(processId){
-	  hiringService.getAssessmentRoundsForProcess(processId).$promise.then(function(assessmentRounds){
-			//$scope.interviews = data;
-		});
-	  }
-	  
-	  $scope.getCandidateDetails = function(nameSubStr){
-	  hiringService.getCandidateDetails(nameSubStr).$promise.then(function(candidateDetails){
-			//$scope.interviews = data;
-		});
-	  }
 	  
 	  $scope.getRoundSchedulesForInterview = function(interviewId){
 	  hiringService.getRoundSchedulesForInterview(interviewId).$promise.then(function(roundSchedules){
