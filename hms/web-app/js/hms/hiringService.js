@@ -27,9 +27,19 @@ hms.factory('hiringService', function($resource, $log){
 		return $resource('candidateDetails/save', {}, {'save': {method:'POST'}}).save(candidate);
 	}
 	
-	factory.scheduleRound = function(scheduleRound){
-		return $resource('roundSchedule/save', {}, {'save': {method:'POST'}}).save(scheduleRound);
+	
+
+	factory.createInterview = function(interviewDetail){
+		return $resource('interviewDetails/save', {}, {'save': {method:'POST'}}).save(interviewDetail);
 	}
 
+	factory.getInterviews = function(userId){
+		return $resource('interviewDetails').query();
+	}
+
+	factory.deleteInterview = function(id){
+		return $resource('interviewDetails/delete', {}, {'delete': {method:'DELETE'}}).delete({'id':id});
+	}
+	
 	return factory;
 });

@@ -5,7 +5,6 @@ import com.sapient.hms.security.User
 class RoundEvaluationResult {
 	
 	int id
-	CandidateDetails candidate
 	Date scheduledTime
 	Date actualStartTime
 	Date actualEndTime
@@ -17,7 +16,7 @@ class RoundEvaluationResult {
 	String guideline
 	String instructions
 	User interviewer
-	AssessmentRound round
+	
 	
 	static hasMany=[bucketResult:BucketEvaluationResult]
 	

@@ -1,12 +1,21 @@
 package com.sapient.hms.controllers
 
+import grails.converters.JSON;
+import groovy.json.JsonBuilder;
+import groovy.json.JsonSlurper
+
+import org.codehaus.groovy.grails.web.json.JSONObject
 import org.springframework.dao.DataIntegrityViolationException
 
+import com.sapient.hms.domain.CandidateDetails;
+import com.sapient.hms.domain.HiringProcess;
 import com.sapient.hms.domain.InterviewDetails;
+import com.sapient.hms.domain.Position;
+import com.sapient.hms.security.User;
 
 class InterviewDetailsController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -14,7 +23,8 @@ class InterviewDetailsController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [interviewDetailsInstanceList: InterviewDetails.list(params), interviewDetailsInstanceTotal: InterviewDetails.count()]
+		JSON.use("deep")
+       render InterviewDetails.list(params) as JSON
     }
 
     def create() {
@@ -22,14 +32,20 @@ class InterviewDetailsController {
     }
 
     def save() {
-        def interviewDetailsInstance = new InterviewDetails(params)
+		def result = JSON.parse(request.JSON.toString());
+        def interviewDetailsInstance = new InterviewDetails(result)
+		interviewDetailsInstance.candidate = CandidateDetails.get(result.candidate.id)
+		interviewDetailsInstance.position = Position.get(result.position.id)
+		interviewDetailsInstance.hiringperson = User.get(result.hiringperson.id)
+		interviewDetailsInstance.hiringProcess = HiringProcess.get(result.hiringProcess.id)
         if (!interviewDetailsInstance.save(flush: true)) {
-            render(view: "create", model: [interviewDetailsInstance: interviewDetailsInstance])
-            return
+			
+            render interviewDetailsInstance as JSON
+			return
         }
-
+		
         flash.message = message(code: 'default.created.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), interviewDetailsInstance.id])
-        redirect(action: "show", id: interviewDetailsInstance.id)
+		
     }
 
     def show(Long id) {
@@ -94,7 +110,7 @@ class InterviewDetailsController {
         try {
             interviewDetailsInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), id])
-            redirect(action: "list")
+            render interviewDetailsInstance as JSON
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), id])

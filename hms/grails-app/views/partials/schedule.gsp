@@ -1,6 +1,7 @@
 <div ng-controller="hiringController">
+<h5 style="color:green">{{msg}}</h5>
+<h5 style="color:red">{{errorMsg}}</h5>
  <h1>Interview Schedule</h1>
-            <!-- <h1></h1> -->
             <form role="form">
 			<fieldset>
              <div class="row">
@@ -21,53 +22,43 @@
                 <input class="form-control" type="text"  typeahead-on-select="setCandidate($item)" ng-model="selectedCandidate" typeahead="candidate.name for candidate in candidates | filter:$viewValue" />
 			  </div>
               <div class="col-md-1" style="padding-top:23px;">
-                 <button type="button" ng-click="addNewCandidate(interview.candidate)" class="btn btn-default">+</button>
+                 <button type="button" ng-click="addNewCandidate()" class="btn btn-default">+</button>
               </div>
                 <div class="col-md-5 col-md-offset-2">
                  <label>Resume : </label>
                  <input type="file" class="form-control">
               </div>
 			 </div>
-              
-			 <br>
-			
-            
-              
-
-			
-			 <br>
-              <button type="submit" class="btn btn-success" ng-click="schedule(interview)"  style="margin-top:23px;">Schedule Now</button>
+  
+              <button type="submit" class="btn btn-success" ng-click="setInterview()">Set Interview</button>
+              <button type="reset" ng-click="clearForm()" class="btn btn-danger">Clear</button>
 			 </fieldset>
             </form>
 
             <hr>
-            <center><button type="submit" class="btn btn-primary">Reschedule</button>
-            <button type="submit" class="btn btn-primary">Cancel</button>
-            <button type="submit" class="btn btn-danger">Delete</button></center>
+            
               <table class="table table-striped table-condensed table-hover">
                 <thead>
                   <tr>
+                  	<th>Interview Id<span class="caret"></span></th>	
                     <th>Job Title<span class="caret"></span></th>
                     <th>Candidate<span class="caret"></span></th>
                     <th>WorkFlow<span class="caret"></span></th>
-                    <th>Round<span class="caret"></span></th>
                     <th>Status<span class="caret"></span></th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr ng-repeat="interview in interviews">
-                    <td>{{interview.position}}</td>
-                    <td>{{interview.candidate}}</td>
-                    <td><a href="#" title="Wf1">{{interview.workflow}}</a></td>
-                    <td>{{interview.round}}</td>
-                    <td>{{interview.status}}</td>
-                    <td> <button type="button" class="close" style="color: red" aria-hidden="true">&times;</button> </td>
+                    <td>{{interview.id}}</td>
+                    <td>{{interview.position.name}}</td>
+                    <td>{{interview.candidate.name}}</td>
+                    <td><a href="#" title="Wf1">{{interview.hiringProcess.name}}</a></td>
+                    <td>{{interview.completionStatus | renderStatus}}</td>
+                    
+                    <td> <button ng-hide={{interview.completionStatus}} type="button" ng-click="deleteInterview(interview.id)" class="close" style="color: red" aria-hidden="true">&times;</button> </td>
                   </tr>
                   <tr>
               </table>
-           <!--  <center><button type="submit" class="btn btn-info">Reschedule</button>
-            <button type="submit" class="btn btn-warning">Cancle</button>
-            <button type="submit" class="btn btn-danger">Delete</button></center> -->
-			<button type="submit" class="btn btn-info" ng-click="schedule(interview)">Schedule</button>
+          
 			</div>

@@ -6,17 +6,12 @@ class InterviewDetails {
 
 	int id
 	String name
-	String completionStatus
-	Date startTime
-	Date endTime
-	Position title
 	User hiringperson
-	User interviewer
+	String completionStatus
 	String interviewMode
-	RoundEvaluationResult evaluationDetails;
-	
+		
 	static hasMany=[results: RoundEvaluationResult]
-	static belongsTo = [hiringProcess: HiringProcess,candidate: CandidateDetails,position:Position]
+	static belongsTo = [position:Position, hiringProcess: HiringProcess,candidate: CandidateDetails]
 	
     static constraints = {
     }

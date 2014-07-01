@@ -1,10 +1,7 @@
-'use strict';
-
-/* Filters */
-
-angular.module('hmsApp.filters', []).
-  filter('interpolate', ['version', function(version) {
-    return function(text) {
-      return String(text).replace(/\%VERSION\%/mg, version);
-    };
-  }]);
+hms.filter('renderStatus', function(){
+	return function(completionStatus){
+		if(completionStatus=='0') return "Not Scheduled";
+		else
+			return "Scheduled";;
+	}
+});
