@@ -117,4 +117,6 @@ class InterviewDetailsController {
             redirect(action: "show", id: id)
         }
     }
+	
+	
 }

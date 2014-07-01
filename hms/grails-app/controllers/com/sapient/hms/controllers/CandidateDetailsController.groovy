@@ -24,14 +24,15 @@ class CandidateDetailsController {
     }
 
     def save() {
-        def candidateDetailsInstance = new CandidateDetails(params)
+		def result = JSON.parse(request.JSON.toString());
+        def candidateDetailsInstance = new CandidateDetails(result)
         if (!candidateDetailsInstance.save(flush: true)) {
-            render(view: "create", model: [candidateDetailsInstance: candidateDetailsInstance])
+            render candidateDetailsInstance as JSON
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'candidateDetails.label', default: 'CandidateDetails'), candidateDetailsInstance.id])
-        redirect(action: "show", id: candidateDetailsInstance.id)
+      
     }
 
     def show(Long id) {

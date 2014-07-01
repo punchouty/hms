@@ -26,6 +26,15 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 		  	};
 		});
 	  
+	   $scope.addCandidate = function(){
+		   $scope.candidateDetail = angular.fromJson({"location":'GGN',"name":$scope.selectedCandidate.name});
+		   hiringService.addCandidate( $scope.selectedCandidate).$promise.then(function(candidateDetails){
+			   $scope.selectedCandidate = candidateDetails;
+			   $scope.selectedCandidateId = candidateDetails.id;
+			   
+			});
+	   }
+	   
 	  
 	  
 	  $scope.setInterview = function(){
@@ -58,6 +67,8 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 		   $scope.msg = "";
 	   }
 	   
+	
+	 
 	  
 });
 

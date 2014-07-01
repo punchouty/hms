@@ -41,5 +41,10 @@ hms.factory('hiringService', function($resource, $log){
 		return $resource('interviewDetails/delete', {}, {'delete': {method:'DELETE'}}).delete({'id':id});
 	}
 	
+	factory.addCandidate = function(candidate){
+		return $resource('candidateDetails/save', {}, {'save': {method:'POST'}}).save(candidate);
+	}
+	
+	
 	return factory;
 });
