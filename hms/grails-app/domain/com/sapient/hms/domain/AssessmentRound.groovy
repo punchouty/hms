@@ -1,13 +1,20 @@
 package com.sapient.hms.domain
 
-class AssessmentRound {
+import hms.HMSCommon
+import java.util.Date;
 
-	int id
+class AssessmentRound{
+
 	String name
 	Position position
-	int sequence
-	int overAllCutOffScore
+	Integer sequence
+	Integer overAllCutOffScore
+	HMSCommon common
+	static embedded = ['common']
+	
 	def skillBuckets =[]
+	
+	
 	
 	static hasMany=[roundresult:RoundEvaluationResult,skillbuckets:SkillBucket]
 	
@@ -16,3 +23,4 @@ class AssessmentRound {
     static constraints = {
     }
 }
+

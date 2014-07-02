@@ -1,10 +1,12 @@
 package com.sapient.hms.domain
 
+import hms.HMSCommon
+import java.util.Date;
+
 import com.sapient.hms.security.User
 
-class RoundEvaluationResult {
+class RoundEvaluationResult{
 	
-	int id
 	Date scheduledTime
 	Date actualStartTime
 	Date actualEndTime
@@ -16,7 +18,9 @@ class RoundEvaluationResult {
 	String guideline
 	String instructions
 	User interviewer
-	
+	HMSCommon common
+	static embedded = ['common']
+
 	
 	static hasMany=[bucketResult:BucketEvaluationResult]
 	
@@ -24,4 +28,5 @@ class RoundEvaluationResult {
 
 	    static constraints = {
     }
+
 }

@@ -1,19 +1,23 @@
 package com.sapient.hms.domain
 
+import hms.HMSCommon
+import java.util.Date;
 
 
-class HiringProcess {
+
+class HiringProcess{
 	
-	int id
 	String name
-	Date createdDate
-	Date lastUpdatedDate
 	boolean defaultProcess
-	char status
+	Character status
+	HMSCommon common
+	static embedded = ['common']
+
 	
 	static belongsTo=[position: Position]
 	static hasmany=[interviewDetails: InterviewDetails,rounds : AssessmentRound]
 	
     static constraints = {
     }
+
 }

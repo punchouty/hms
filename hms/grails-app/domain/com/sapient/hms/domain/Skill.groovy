@@ -1,16 +1,22 @@
 package com.sapient.hms.domain
 
-class Skill {
+import hms.HMSCommon
+import java.util.Date;
+
+class Skill{
 	
-	int id
 	String name
 	int expectedSkillrating
 	int cutOffScore
 	int weight
+	HMSCommon common
+	static embedded = ['common']
+
 	
 	static hasMany=[skillResult:SkillEvaluationresult]
 	static belongsTo=[skillBucket:SkillBucket]
 	
     static constraints = {
     }
+
 }
