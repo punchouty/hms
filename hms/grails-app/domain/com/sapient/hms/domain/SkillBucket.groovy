@@ -1,21 +1,20 @@
 package com.sapient.hms.domain
 
-import hms.HMSCommon
-import java.util.Date;
 
 class SkillBucket {
 
 	String name
-	def skills=[]
+	def skills=[]	
 	Integer cutOffScore
 	AssessmentRound assessmentRound
-	HMSCommon common
-	static embedded = ['common']
+	Date dateCreated
+	Date lastUpdated
 
 	
 	static hasMany=[skill:Skill,bucketresult:BucketEvaluation]
 	static belongsTo=[position:Position,assessmentRound:AssessmentRound]
 	
     static constraints = {
+		lastUpdated nullable: true
     }
 }

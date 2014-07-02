@@ -9,8 +9,7 @@ hms.filter('renderMode', function(){
 	return function(interviewMode){
 		if(interviewMode=='T') return "Telephonic";
 		else
-			if(interviewMode=='P') return "Face-To-Face";
-			else
-			return "Scheduled";;
+			return "Face-To-Face";
+			
 	}
 });

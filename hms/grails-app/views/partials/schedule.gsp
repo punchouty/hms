@@ -1,7 +1,8 @@
 <div ng-controller="hiringController">
 <h5 style="color:green">{{msg}}</h5>
 <h5 style="color:red">{{errorMsg}}</h5>
- <h1>Interview Schedule</h1>
+ <h1>Schedule Interview</h1>
+ <br>
             <form role="form">
 			<fieldset>
              <div class="row">
@@ -22,7 +23,10 @@
                 <input class="form-control" type="text"  typeahead-on-select="setCandidate($item)" ng-model="selectedCandidate" typeahead="candidate.name for candidate in candidates | filter:$viewValue" />
                 
 			  </div>
-			 
+			 <div class="col-md-5 col-md-offset-2">
+                <label>Interview Mode</label>
+                 <select class="form-control" ng-model="selectedMode" ng-options="mode.name for mode in modes"></select>
+              </div>
               
               
               
@@ -38,10 +42,10 @@
               <table class="table table-striped table-condensed table-hover">
                 <thead>
                   <tr>
-                  	<th>Interview Id<span class="caret"></span></th>	
+                  	<th>Interview<span class="caret"></span></th>	
                     <th>Job Title<span class="caret"></span></th>
                     <th>Candidate<span class="caret"></span></th>
-                    <th>WorkFlow<span class="caret"></span></th>
+                    <th>Hiring Process<span class="caret"></span></th>
                      <th>Interview Mode<span class="caret"></span></th>
                      <th>Created By<span class="caret"></span></th>
                     <th>Status<span class="caret"></span></th>

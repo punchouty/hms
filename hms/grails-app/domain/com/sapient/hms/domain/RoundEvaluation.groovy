@@ -1,8 +1,5 @@
 package com.sapient.hms.domain
 
-import hms.HMSCommon
-import java.util.Date;
-
 import com.sapient.hms.security.User
 
 class RoundEvaluation{
@@ -18,8 +15,8 @@ class RoundEvaluation{
 	String guideline
 	String instructions
 	User interviewer
-	HMSCommon common
-	static embedded = ['common']
+	Date dateCreated
+	Date lastUpdated
 
 	
 	static hasMany=[bucketResult:BucketEvaluation]
@@ -27,6 +24,8 @@ class RoundEvaluation{
 	static belongsTo = [interviewDetails:InterviewDetails,round:AssessmentRound]
 
 	    static constraints = {
+			lastUpdated nullable: true
+		}
     }
 
-}
+

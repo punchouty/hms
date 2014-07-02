@@ -1,14 +1,12 @@
 package com.sapient.hms.domain
 
-import hms.HMSCommon
-import java.util.Date;
 
 class BucketEvaluation {
 	
 	Integer candidateScore
 	SkillBucket skillBucket
-	HMSCommon common
-	static embedded = ['common']
+	Date dateCreated
+	Date lastUpdated
 
 	
 	
@@ -16,6 +14,7 @@ class BucketEvaluation {
 	static belongsTo=[roundResult:RoundEvaluation,skillBucket:SkillBucket]
 
     static constraints = {
+		lastUpdated nullable: true
     }
 
 }

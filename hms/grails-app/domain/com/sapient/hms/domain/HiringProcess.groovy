@@ -1,7 +1,5 @@
 package com.sapient.hms.domain
 
-import hms.HMSCommon
-import java.util.Date;
 
 
 
@@ -10,14 +8,15 @@ class HiringProcess{
 	String name
 	Boolean defaultProcess
 	Character status
-	HMSCommon common
-	static embedded = ['common']
+	Date dateCreated
+	Date lastUpdated
 
 	
 	static belongsTo=[position: Position]
 	static hasmany=[interviewDetails: InterviewDetails,rounds : AssessmentRound]
 	
     static constraints = {
+		lastUpdated nullable: true
     }
 
 }

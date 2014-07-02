@@ -1,7 +1,5 @@
 package com.sapient.hms.domain
 
-import hms.HMSCommon
-import java.util.Date;
 
 class AssessmentRound{
 
@@ -9,8 +7,8 @@ class AssessmentRound{
 	Position position
 	Integer sequence
 	Integer overAllCutOffScore
-	HMSCommon common
-	static embedded = ['common']
+	Date dateCreated
+	Date lastUpdated
 	
 	def skillBuckets =[]
 	
@@ -21,6 +19,7 @@ class AssessmentRound{
 	static belongsTo=[hiringprocess:HiringProcess]
 	
     static constraints = {
+		lastUpdated nullable: true
     }
 }
 

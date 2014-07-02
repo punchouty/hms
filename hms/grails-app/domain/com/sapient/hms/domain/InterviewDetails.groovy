@@ -1,8 +1,5 @@
 package com.sapient.hms.domain
 
-import hms.HMSCommon
-import java.util.Date;
-
 import com.sapient.hms.security.User
 
 class InterviewDetails{
@@ -11,14 +8,15 @@ class InterviewDetails{
 	User hiringperson
 	String completionStatus
 	String interviewMode
-	HMSCommon common
-	static embedded = ['common']
+	Date dateCreated
+	Date lastUpdated
 
 		
 	static hasMany=[results: RoundEvaluation]
 	static belongsTo = [position:Position, hiringProcess: HiringProcess,candidate: CandidateDetails]
 	
     static constraints = {
+		lastUpdated nullable: true
     }
 
 }

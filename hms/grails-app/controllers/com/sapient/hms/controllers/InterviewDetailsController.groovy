@@ -1,18 +1,14 @@
 package com.sapient.hms.controllers
 
-import grails.converters.JSON;
-import groovy.json.JsonBuilder;
-import groovy.json.JsonSlurper
-import hms.HMSCommon
+import grails.converters.JSON
 
-import org.codehaus.groovy.grails.web.json.JSONObject
 import org.springframework.dao.DataIntegrityViolationException
 
-import com.sapient.hms.domain.CandidateDetails;
-import com.sapient.hms.domain.HiringProcess;
-import com.sapient.hms.domain.InterviewDetails;
-import com.sapient.hms.domain.Position;
-import com.sapient.hms.security.User;
+import com.sapient.hms.domain.CandidateDetails
+import com.sapient.hms.domain.HiringProcess
+import com.sapient.hms.domain.InterviewDetails
+import com.sapient.hms.domain.Position
+import com.sapient.hms.security.User
 
 class InterviewDetailsController {
 
@@ -39,17 +35,12 @@ class InterviewDetailsController {
 		interviewDetailsInstance.position = Position.get(result.position.id)
 		interviewDetailsInstance.hiringperson = User.get(result.hiringperson.id)
 		interviewDetailsInstance.hiringProcess = HiringProcess.get(result.hiringProcess.id)
-		HMSCommon common = new HMSCommon()
-		common.dateCreated = new Date()
-		interviewDetailsInstance.common = common
-        if (!interviewDetailsInstance.save(flush: true)) {
-			
-            render interviewDetailsInstance as JSON
-			return
+		
+        if (interviewDetailsInstance.save(flush: true)) {
+			System.out.println "HIS"
+			//interviewDetailsInstance.common.errorMessage = message(code: 'default.created.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), interviewDetailsInstance.id])
         }
-		
-        flash.message = message(code: 'default.created.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), interviewDetailsInstance.id])
-		
+		render interviewDetailsInstance as JSON
     }
 
     def show(Long id) {

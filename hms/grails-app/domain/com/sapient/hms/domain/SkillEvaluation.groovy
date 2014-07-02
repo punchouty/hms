@@ -1,7 +1,5 @@
 package com.sapient.hms.domain
 
-import hms.HMSCommon
-import java.util.Date;
 
 class SkillEvaluation {
 	
@@ -10,13 +8,14 @@ class SkillEvaluation {
 	Integer score
 	String feedback
 	Skill skill
-	HMSCommon common
-	static embedded = ['common']
+	Date dateCreated
+	Date lastUpdated
 
 		
 	static belongsTo=[bucketresult:BucketEvaluation,skill:Skill]
 
     static constraints = {
+		lastUpdated nullable: true
     }
 
 }
