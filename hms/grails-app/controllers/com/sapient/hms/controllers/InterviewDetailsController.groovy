@@ -3,6 +3,7 @@ package com.sapient.hms.controllers
 import grails.converters.JSON;
 import groovy.json.JsonBuilder;
 import groovy.json.JsonSlurper
+import hms.HMSCommon
 
 import org.codehaus.groovy.grails.web.json.JSONObject
 import org.springframework.dao.DataIntegrityViolationException
@@ -38,6 +39,9 @@ class InterviewDetailsController {
 		interviewDetailsInstance.position = Position.get(result.position.id)
 		interviewDetailsInstance.hiringperson = User.get(result.hiringperson.id)
 		interviewDetailsInstance.hiringProcess = HiringProcess.get(result.hiringProcess.id)
+		HMSCommon common = new HMSCommon()
+		common.dateCreated = new Date()
+		interviewDetailsInstance.common = common
         if (!interviewDetailsInstance.save(flush: true)) {
 			
             render interviewDetailsInstance as JSON
