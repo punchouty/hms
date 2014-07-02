@@ -6,9 +6,9 @@ import java.util.Date;
 class Skill{
 	
 	String name
-	int expectedSkillrating
-	int cutOffScore
-	int weight
+	Integer expectedSkillrating
+	Integer cutOffScore
+	Integer weight
 	HMSCommon common
 	static embedded = ['common']
 

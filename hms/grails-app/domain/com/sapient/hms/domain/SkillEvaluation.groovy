@@ -5,9 +5,9 @@ import java.util.Date;
 
 class SkillEvaluation {
 	
-	int overAllScore
-	int candidaterating
-	int score
+	Integer overAllScore
+	Integer candidaterating
+	Integer score
 	String feedback
 	Skill skill
 	HMSCommon common

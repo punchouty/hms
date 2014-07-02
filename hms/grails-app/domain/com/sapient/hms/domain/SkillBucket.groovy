@@ -7,7 +7,7 @@ class SkillBucket {
 
 	String name
 	def skills=[]
-	int cutOffScore
+	Integer cutOffScore
 	AssessmentRound assessmentRound
 	HMSCommon common
 	static embedded = ['common']

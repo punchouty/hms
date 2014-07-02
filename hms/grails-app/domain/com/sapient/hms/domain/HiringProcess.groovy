@@ -8,7 +8,7 @@ import java.util.Date;
 class HiringProcess{
 	
 	String name
-	boolean defaultProcess
+	Boolean defaultProcess
 	Character status
 	HMSCommon common
 	static embedded = ['common']
