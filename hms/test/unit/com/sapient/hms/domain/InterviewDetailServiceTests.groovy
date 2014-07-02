@@ -11,7 +11,7 @@ import com.sapient.hms.service.InterviewDetailsService;
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(InterviewDetailsService)
-class InterviewDetailsServiceTests {
+class InterviewDetailServiceTests {
 	
 	//def interviewDetailsService
 	void testSample(){

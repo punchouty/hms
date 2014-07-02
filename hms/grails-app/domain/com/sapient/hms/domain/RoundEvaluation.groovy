@@ -19,12 +19,22 @@ class RoundEvaluation{
 	Date lastUpdated
 
 	
-	static hasMany=[bucketResult:BucketEvaluation]
+	static hasMany=[bucketEvaluations:BucketEvaluation]
 	
-	static belongsTo = [interviewDetails:InterviewDetails,round:AssessmentRound]
+	static belongsTo = [interviewDetail:InterviewDetail,assessmentRound:AssessmentRound]
 
 	    static constraints = {
-			lastUpdated nullable: true
+			scheduledTime nullable: true
+			actualStartTime nullable: true
+			actualEndTime nullable: true
+			assessmentStatus nullable: true
+			candidateFinalScore nullable: true
+			willingToHire nullable: true
+			hireRejectreason nullable: true
+			recommendation nullable: true
+			guideline nullable: true
+			instructions nullable: true
+			interviewer nullable: true
 		}
     }
 

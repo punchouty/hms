@@ -10,13 +10,12 @@ class HiringProcess{
 	Character status
 	Date dateCreated
 	Date lastUpdated
-
+	
 	
 	static belongsTo=[position: Position]
-	static hasmany=[interviewDetails: InterviewDetails,rounds : AssessmentRound]
+	static hasmany=[interviewDetails: InterviewDetail, assessmentRounds: AssessmentRound]
 	
     static constraints = {
-		lastUpdated nullable: true
     }
 
 }

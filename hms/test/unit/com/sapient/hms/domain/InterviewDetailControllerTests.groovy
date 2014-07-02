@@ -9,8 +9,8 @@ import com.sapient.hms.controllers.InterviewDetailsController;
 import grails.test.mixin.*
 
 @TestFor(InterviewDetailsController)
-@Mock(InterviewDetails)
-class InterviewDetailsControllerTests {
+@Mock(InterviewDetail)
+class InterviewDetailControllerTests {
 
     def populateValidParams(params) {
         assert params != null
@@ -50,7 +50,7 @@ class InterviewDetailsControllerTests {
 
         assert response.redirectedUrl == '/interviewDetails/show/1'
         assert controller.flash.message != null
-        assert InterviewDetails.count() == 1
+        assert InterviewDetail.count() == 1
     }
 
     void testShow() {
@@ -60,7 +60,7 @@ class InterviewDetailsControllerTests {
         assert response.redirectedUrl == '/interviewDetails/list'
 
         populateValidParams(params)
-        def interviewDetails = new InterviewDetails(params)
+        def interviewDetails = new InterviewDetail(params)
 
         assert interviewDetails.save() != null
 
@@ -78,7 +78,7 @@ class InterviewDetailsControllerTests {
         assert response.redirectedUrl == '/interviewDetails/list'
 
         populateValidParams(params)
-        def interviewDetails = new InterviewDetails(params)
+        def interviewDetails = new InterviewDetail(params)
 
         assert interviewDetails.save() != null
 
@@ -98,7 +98,7 @@ class InterviewDetailsControllerTests {
         response.reset()
 
         populateValidParams(params)
-        def interviewDetails = new InterviewDetails(params)
+        def interviewDetails = new InterviewDetail(params)
 
         assert interviewDetails.save() != null
 
@@ -142,17 +142,17 @@ class InterviewDetailsControllerTests {
         response.reset()
 
         populateValidParams(params)
-        def interviewDetails = new InterviewDetails(params)
+        def interviewDetails = new InterviewDetail(params)
 
         assert interviewDetails.save() != null
-        assert InterviewDetails.count() == 1
+        assert InterviewDetail.count() == 1
 
         params.id = interviewDetails.id
 
         controller.delete()
 
-        assert InterviewDetails.count() == 0
-        assert InterviewDetails.get(interviewDetails.id) == null
+        assert InterviewDetail.count() == 0
+        assert InterviewDetail.get(interviewDetails.id) == null
         assert response.redirectedUrl == '/interviewDetails/list'
     }
 }

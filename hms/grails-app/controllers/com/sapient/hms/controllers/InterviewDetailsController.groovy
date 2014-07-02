@@ -4,10 +4,14 @@ import grails.converters.JSON
 
 import org.springframework.dao.DataIntegrityViolationException
 
-import com.sapient.hms.domain.CandidateDetails
+import com.sapient.hms.domain.AssessmentRound;
+import com.sapient.hms.domain.BucketEvaluation;
+import com.sapient.hms.domain.CandidateDetail
 import com.sapient.hms.domain.HiringProcess
-import com.sapient.hms.domain.InterviewDetails
+import com.sapient.hms.domain.InterviewDetail
 import com.sapient.hms.domain.Position
+import com.sapient.hms.domain.RoundEvaluation;
+import com.sapient.hms.domain.SkillEvaluation;
 import com.sapient.hms.security.User
 
 class InterviewDetailsController {
@@ -21,28 +25,51 @@ class InterviewDetailsController {
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 		JSON.use("deep")
-       render InterviewDetails.list(params) as JSON
+       render InterviewDetail.list(params) as JSON
     }
 
     def create() {
-        [interviewDetailsInstance: new InterviewDetails(params)]
+        [interviewDetailsInstance: new InterviewDetail(params)]
     }
 
     def save() {
 		def result = JSON.parse(request.JSON.toString());
-        def interviewDetailsInstance = new InterviewDetails(result)
-		interviewDetailsInstance.candidate = CandidateDetails.get(result.candidate.id)
+        def interviewDetailsInstance = new InterviewDetail(result)
+		interviewDetailsInstance.candidate = CandidateDetail.get(result.candidate.id)
 		interviewDetailsInstance.position = Position.get(result.position.id)
 		interviewDetailsInstance.hiringperson = User.get(result.hiringperson.id)
 		interviewDetailsInstance.hiringProcess = HiringProcess.get(result.hiringProcess.id)
+		populateDetails(interviewDetailsInstance)
         if (!interviewDetailsInstance.save(flush: true)) {
 			interviewDetailsInstance.errors.rejectValue('interviewDetailsInstance','default.failure')
         }
 		render interviewDetailsInstance as JSON
     }
 
+	def populateDetails(InterviewDetail interviewDetailsInstance){
+		List<AssessmentRound> processRounds = interviewDetailsInstance.hiringProcess.rounds
+		processRounds.each() {
+			RoundEvaluation roundEval = new RoundEvaluation()
+			roundEval.round = it
+			it.skillbuckets.each(){
+				BucketEvaluation bucketEval = new BucketEvaluation()
+				bucketEval.skillBucket = it
+				it.skill.each(){
+					SkillEvaluation skillEval = new SkillEvaluation()
+					skillEval.skill = it
+					bucketEval.skillResult.add(skillEval)
+				}
+				roundEval.bucketResult.add(bucketEval)
+			}
+			interviewDetailsInstance.results.add(roundEval)
+		}
+				
+		
+		BucketEvaluation
+		SkillEvaluation
+	}
     def show(Long id) {
-        def interviewDetailsInstance = InterviewDetails.get(id)
+        def interviewDetailsInstance = InterviewDetail.get(id)
         if (!interviewDetailsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), id])
             redirect(action: "list")
@@ -53,7 +80,7 @@ class InterviewDetailsController {
     }
 
     def edit(Long id) {
-        def interviewDetailsInstance = InterviewDetails.get(id)
+        def interviewDetailsInstance = InterviewDetail.get(id)
         if (!interviewDetailsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), id])
             redirect(action: "list")
@@ -64,7 +91,7 @@ class InterviewDetailsController {
     }
 
     def update(Long id, Long version) {
-        def interviewDetailsInstance = InterviewDetails.get(id)
+        def interviewDetailsInstance = InterviewDetail.get(id)
         if (!interviewDetailsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), id])
             redirect(action: "list")
@@ -93,7 +120,7 @@ class InterviewDetailsController {
     }
 
     def delete(Long id) {
-        def interviewDetailsInstance = InterviewDetails.get(id)
+        def interviewDetailsInstance = InterviewDetail.get(id)
         if (!interviewDetailsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), id])
             redirect(action: "list")

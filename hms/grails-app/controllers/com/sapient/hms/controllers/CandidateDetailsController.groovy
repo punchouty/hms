@@ -4,7 +4,7 @@ import grails.converters.JSON;
 
 import org.springframework.dao.DataIntegrityViolationException
 
-import com.sapient.hms.domain.CandidateDetails;
+import com.sapient.hms.domain.CandidateDetail;
 
 class CandidateDetailsController {
 
@@ -16,16 +16,16 @@ class CandidateDetailsController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-       render CandidateDetails.list(params) as JSON
+       render CandidateDetail.list(params) as JSON
     }
 
     def create() {
-        [candidateDetailsInstance: new CandidateDetails(params)]
+        [candidateDetailsInstance: new CandidateDetail(params)]
     }
 
     def save() {
 		def result = JSON.parse(request.JSON.toString());
-        def candidateDetailsInstance = new CandidateDetails(result)
+        def candidateDetailsInstance = new CandidateDetail(result)
         if (!candidateDetailsInstance.save(flush: true)) {
             render candidateDetailsInstance as JSON
             return
@@ -36,7 +36,7 @@ class CandidateDetailsController {
     }
 
     def show(Long id) {
-        def candidateDetailsInstance = CandidateDetails.get(id)
+        def candidateDetailsInstance = CandidateDetail.get(id)
         if (!candidateDetailsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'candidateDetails.label', default: 'CandidateDetails'), id])
             redirect(action: "list")
@@ -47,7 +47,7 @@ class CandidateDetailsController {
     }
 
     def edit(Long id) {
-        def candidateDetailsInstance = CandidateDetails.get(id)
+        def candidateDetailsInstance = CandidateDetail.get(id)
         if (!candidateDetailsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'candidateDetails.label', default: 'CandidateDetails'), id])
             redirect(action: "list")
@@ -58,7 +58,7 @@ class CandidateDetailsController {
     }
 
     def update(Long id, Long version) {
-        def candidateDetailsInstance = CandidateDetails.get(id)
+        def candidateDetailsInstance = CandidateDetail.get(id)
         if (!candidateDetailsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'candidateDetails.label', default: 'CandidateDetails'), id])
             redirect(action: "list")
@@ -87,7 +87,7 @@ class CandidateDetailsController {
     }
 
     def delete(Long id) {
-        def candidateDetailsInstance = CandidateDetails.get(id)
+        def candidateDetailsInstance = CandidateDetail.get(id)
         if (!candidateDetailsInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'candidateDetails.label', default: 'CandidateDetails'), id])
             redirect(action: "list")

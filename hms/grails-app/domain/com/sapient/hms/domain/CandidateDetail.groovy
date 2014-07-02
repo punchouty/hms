@@ -1,17 +1,16 @@
 package com.sapient.hms.domain
 
 
-class CandidateDetails{
+class CandidateDetail{
 
 	String name
 	String location
 	Date dateCreated
 	Date lastUpdated
 
-	static hasMany = [interviewDetails : InterviewDetails]
+	static hasMany = [InterviewDetails : InterviewDetail]
 	
 	
     static constraints = {
-		lastUpdated nullable: true
 }
 }

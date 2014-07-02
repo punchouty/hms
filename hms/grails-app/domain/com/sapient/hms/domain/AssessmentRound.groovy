@@ -10,16 +10,11 @@ class AssessmentRound{
 	Date dateCreated
 	Date lastUpdated
 	
-	def skillBuckets =[]
+	static hasMany=[roundEvaluations:RoundEvaluation,skillBuckets:SkillBucket]
 	
-	
-	
-	static hasMany=[roundresult:RoundEvaluation,skillbuckets:SkillBucket]
-	
-	static belongsTo=[hiringprocess:HiringProcess]
+	static belongsTo=[hiringProcess:HiringProcess]
 	
     static constraints = {
-		lastUpdated nullable: true
     }
 }
 

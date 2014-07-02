@@ -11,11 +11,10 @@ class Skill{
 	Date lastUpdated
 
 	
-	static hasMany=[skillResult:SkillEvaluation]
+	static hasMany=[skillEvaluations:SkillEvaluation]
 	static belongsTo=[skillBucket:SkillBucket]
 	
     static constraints = {
-		lastUpdated nullable: true
     }
 
 }

@@ -7,15 +7,17 @@ class SkillEvaluation {
 	Integer candidaterating
 	Integer score
 	String feedback
-	Skill skill
 	Date dateCreated
 	Date lastUpdated
 
 		
-	static belongsTo=[bucketresult:BucketEvaluation,skill:Skill]
+	static belongsTo=[bucketEvaluation:BucketEvaluation,skill:Skill]
 
     static constraints = {
-		lastUpdated nullable: true
+		overAllScore nullable: true
+		candidaterating nullable: true
+		score nullable: true
+		feedback nullable: true
     }
 
 }

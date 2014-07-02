@@ -2,7 +2,7 @@ package com.sapient.hms.domain
 
 import com.sapient.hms.security.User
 
-class InterviewDetails{
+class InterviewDetail{
 
 	String name
 	User hiringperson
@@ -12,11 +12,10 @@ class InterviewDetails{
 	Date lastUpdated
 
 		
-	static hasMany=[results: RoundEvaluation]
-	static belongsTo = [position:Position, hiringProcess: HiringProcess,candidate: CandidateDetails]
+	static hasMany=[roundEvaluations: RoundEvaluation]
+	static belongsTo = [position:Position, hiringProcess: HiringProcess,candidateDetail: CandidateDetail]
 	
     static constraints = {
-		lastUpdated nullable: true
     }
 
 }
