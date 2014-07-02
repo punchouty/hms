@@ -16,7 +16,7 @@ class AssessmentRound{
 	
 	
 	
-	static hasMany=[roundresult:RoundEvaluationResult,skillbuckets:SkillBucket]
+	static hasMany=[roundresult:RoundEvaluation,skillbuckets:SkillBucket]
 	
 	static belongsTo=[hiringprocess:HiringProcess]
 	

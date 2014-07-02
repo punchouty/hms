@@ -2,7 +2,7 @@ package com.sapient.hms.controllers
 
 import org.springframework.dao.DataIntegrityViolationException
 
-import com.sapient.hms.domain.SkillEvaluationresult;
+import com.sapient.hms.domain.SkillEvaluation;
 
 class SkillEvaluationresultController {
 
@@ -14,15 +14,15 @@ class SkillEvaluationresultController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [skillEvaluationresultInstanceList: SkillEvaluationresult.list(params), skillEvaluationresultInstanceTotal: SkillEvaluationresult.count()]
+        [skillEvaluationresultInstanceList: SkillEvaluation.list(params), skillEvaluationresultInstanceTotal: SkillEvaluation.count()]
     }
 
     def create() {
-        [skillEvaluationresultInstance: new SkillEvaluationresult(params)]
+        [skillEvaluationresultInstance: new SkillEvaluation(params)]
     }
 
     def save() {
-        def skillEvaluationresultInstance = new SkillEvaluationresult(params)
+        def skillEvaluationresultInstance = new SkillEvaluation(params)
         if (!skillEvaluationresultInstance.save(flush: true)) {
             render(view: "create", model: [skillEvaluationresultInstance: skillEvaluationresultInstance])
             return
@@ -33,7 +33,7 @@ class SkillEvaluationresultController {
     }
 
     def show(Long id) {
-        def skillEvaluationresultInstance = SkillEvaluationresult.get(id)
+        def skillEvaluationresultInstance = SkillEvaluation.get(id)
         if (!skillEvaluationresultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'skillEvaluationresult.label', default: 'SkillEvaluationresult'), id])
             redirect(action: "list")
@@ -44,7 +44,7 @@ class SkillEvaluationresultController {
     }
 
     def edit(Long id) {
-        def skillEvaluationresultInstance = SkillEvaluationresult.get(id)
+        def skillEvaluationresultInstance = SkillEvaluation.get(id)
         if (!skillEvaluationresultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'skillEvaluationresult.label', default: 'SkillEvaluationresult'), id])
             redirect(action: "list")
@@ -55,7 +55,7 @@ class SkillEvaluationresultController {
     }
 
     def update(Long id, Long version) {
-        def skillEvaluationresultInstance = SkillEvaluationresult.get(id)
+        def skillEvaluationresultInstance = SkillEvaluation.get(id)
         if (!skillEvaluationresultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'skillEvaluationresult.label', default: 'SkillEvaluationresult'), id])
             redirect(action: "list")
@@ -84,7 +84,7 @@ class SkillEvaluationresultController {
     }
 
     def delete(Long id) {
-        def skillEvaluationresultInstance = SkillEvaluationresult.get(id)
+        def skillEvaluationresultInstance = SkillEvaluation.get(id)
         if (!skillEvaluationresultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'skillEvaluationresult.label', default: 'SkillEvaluationresult'), id])
             redirect(action: "list")

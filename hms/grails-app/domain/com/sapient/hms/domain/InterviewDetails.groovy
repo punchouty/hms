@@ -15,7 +15,7 @@ class InterviewDetails{
 	static embedded = ['common']
 
 		
-	static hasMany=[results: RoundEvaluationResult]
+	static hasMany=[results: RoundEvaluation]
 	static belongsTo = [position:Position, hiringProcess: HiringProcess,candidate: CandidateDetails]
 	
     static constraints = {

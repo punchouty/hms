@@ -3,7 +3,7 @@ package com.sapient.hms.domain
 import hms.HMSCommon
 import java.util.Date;
 
-class SkillEvaluationresult {
+class SkillEvaluation {
 	
 	int overAllScore
 	int candidaterating
@@ -14,7 +14,7 @@ class SkillEvaluationresult {
 	static embedded = ['common']
 
 		
-	static belongsTo=[bucketresult:BucketEvaluationResult,skill:Skill]
+	static belongsTo=[bucketresult:BucketEvaluation,skill:Skill]
 
     static constraints = {
     }

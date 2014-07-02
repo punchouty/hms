@@ -3,7 +3,7 @@ package com.sapient.hms.domain
 import hms.HMSCommon
 import java.util.Date;
 
-class BucketEvaluationResult {
+class BucketEvaluation {
 	
 	Integer candidateScore
 	SkillBucket skillBucket
@@ -12,8 +12,8 @@ class BucketEvaluationResult {
 
 	
 	
-	static hasMany=[skillResult:SkillEvaluationresult]
-	static belongsTo=[roundResult:RoundEvaluationResult,skillBucket:SkillBucket]
+	static hasMany=[skillResult:SkillEvaluation]
+	static belongsTo=[roundResult:RoundEvaluation,skillBucket:SkillBucket]
 
     static constraints = {
     }

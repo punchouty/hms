@@ -13,7 +13,7 @@ class SkillBucket {
 	static embedded = ['common']
 
 	
-	static hasMany=[skill:Skill,bucketresult:BucketEvaluationResult]
+	static hasMany=[skill:Skill,bucketresult:BucketEvaluation]
 	static belongsTo=[position:Position,assessmentRound:AssessmentRound]
 	
     static constraints = {

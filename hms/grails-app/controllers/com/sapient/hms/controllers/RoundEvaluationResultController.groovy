@@ -2,7 +2,7 @@ package com.sapient.hms.controllers
 
 import org.springframework.dao.DataIntegrityViolationException
 
-import com.sapient.hms.domain.RoundEvaluationResult;
+import com.sapient.hms.domain.RoundEvaluation;
 
 class RoundEvaluationResultController {
 
@@ -14,15 +14,15 @@ class RoundEvaluationResultController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [roundEvaluationResultInstanceList: RoundEvaluationResult.list(params), roundEvaluationResultInstanceTotal: RoundEvaluationResult.count()]
+        [roundEvaluationResultInstanceList: RoundEvaluation.list(params), roundEvaluationResultInstanceTotal: RoundEvaluation.count()]
     }
 
     def create() {
-        [roundEvaluationResultInstance: new RoundEvaluationResult(params)]
+        [roundEvaluationResultInstance: new RoundEvaluation(params)]
     }
 
     def save() {
-        def roundEvaluationResultInstance = new RoundEvaluationResult(params)
+        def roundEvaluationResultInstance = new RoundEvaluation(params)
         if (!roundEvaluationResultInstance.save(flush: true)) {
             render(view: "create", model: [roundEvaluationResultInstance: roundEvaluationResultInstance])
             return
@@ -33,7 +33,7 @@ class RoundEvaluationResultController {
     }
 
     def show(Long id) {
-        def roundEvaluationResultInstance = RoundEvaluationResult.get(id)
+        def roundEvaluationResultInstance = RoundEvaluation.get(id)
         if (!roundEvaluationResultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'roundEvaluationResult.label', default: 'RoundEvaluationResult'), id])
             redirect(action: "list")
@@ -44,7 +44,7 @@ class RoundEvaluationResultController {
     }
 
     def edit(Long id) {
-        def roundEvaluationResultInstance = RoundEvaluationResult.get(id)
+        def roundEvaluationResultInstance = RoundEvaluation.get(id)
         if (!roundEvaluationResultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'roundEvaluationResult.label', default: 'RoundEvaluationResult'), id])
             redirect(action: "list")
@@ -55,7 +55,7 @@ class RoundEvaluationResultController {
     }
 
     def update(Long id, Long version) {
-        def roundEvaluationResultInstance = RoundEvaluationResult.get(id)
+        def roundEvaluationResultInstance = RoundEvaluation.get(id)
         if (!roundEvaluationResultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'roundEvaluationResult.label', default: 'RoundEvaluationResult'), id])
             redirect(action: "list")
@@ -84,7 +84,7 @@ class RoundEvaluationResultController {
     }
 
     def delete(Long id) {
-        def roundEvaluationResultInstance = RoundEvaluationResult.get(id)
+        def roundEvaluationResultInstance = RoundEvaluation.get(id)
         if (!roundEvaluationResultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'roundEvaluationResult.label', default: 'RoundEvaluationResult'), id])
             redirect(action: "list")

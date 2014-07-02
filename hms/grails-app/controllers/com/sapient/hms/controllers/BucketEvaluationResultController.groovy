@@ -2,7 +2,7 @@ package com.sapient.hms.controllers
 
 import org.springframework.dao.DataIntegrityViolationException
 
-import com.sapient.hms.domain.BucketEvaluationResult;
+import com.sapient.hms.domain.BucketEvaluation;
 
 class BucketEvaluationResultController {
 
@@ -14,15 +14,15 @@ class BucketEvaluationResultController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [bucketEvaluationResultInstanceList: BucketEvaluationResult.list(params), bucketEvaluationResultInstanceTotal: BucketEvaluationResult.count()]
+        [bucketEvaluationResultInstanceList: BucketEvaluation.list(params), bucketEvaluationResultInstanceTotal: BucketEvaluation.count()]
     }
 
     def create() {
-        [bucketEvaluationResultInstance: new BucketEvaluationResult(params)]
+        [bucketEvaluationResultInstance: new BucketEvaluation(params)]
     }
 
     def save() {
-        def bucketEvaluationResultInstance = new BucketEvaluationResult(params)
+        def bucketEvaluationResultInstance = new BucketEvaluation(params)
         if (!bucketEvaluationResultInstance.save(flush: true)) {
             render(view: "create", model: [bucketEvaluationResultInstance: bucketEvaluationResultInstance])
             return
@@ -33,7 +33,7 @@ class BucketEvaluationResultController {
     }
 
     def show(Long id) {
-        def bucketEvaluationResultInstance = BucketEvaluationResult.get(id)
+        def bucketEvaluationResultInstance = BucketEvaluation.get(id)
         if (!bucketEvaluationResultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'bucketEvaluationResult.label', default: 'BucketEvaluationResult'), id])
             redirect(action: "list")
@@ -44,7 +44,7 @@ class BucketEvaluationResultController {
     }
 
     def edit(Long id) {
-        def bucketEvaluationResultInstance = BucketEvaluationResult.get(id)
+        def bucketEvaluationResultInstance = BucketEvaluation.get(id)
         if (!bucketEvaluationResultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'bucketEvaluationResult.label', default: 'BucketEvaluationResult'), id])
             redirect(action: "list")
@@ -55,7 +55,7 @@ class BucketEvaluationResultController {
     }
 
     def update(Long id, Long version) {
-        def bucketEvaluationResultInstance = BucketEvaluationResult.get(id)
+        def bucketEvaluationResultInstance = BucketEvaluation.get(id)
         if (!bucketEvaluationResultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'bucketEvaluationResult.label', default: 'BucketEvaluationResult'), id])
             redirect(action: "list")
@@ -84,7 +84,7 @@ class BucketEvaluationResultController {
     }
 
     def delete(Long id) {
-        def bucketEvaluationResultInstance = BucketEvaluationResult.get(id)
+        def bucketEvaluationResultInstance = BucketEvaluation.get(id)
         if (!bucketEvaluationResultInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'bucketEvaluationResult.label', default: 'BucketEvaluationResult'), id])
             redirect(action: "list")

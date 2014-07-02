@@ -5,7 +5,7 @@ import java.util.Date;
 
 import com.sapient.hms.security.User
 
-class RoundEvaluationResult{
+class RoundEvaluation{
 	
 	Date scheduledTime
 	Date actualStartTime
@@ -22,7 +22,7 @@ class RoundEvaluationResult{
 	static embedded = ['common']
 
 	
-	static hasMany=[bucketResult:BucketEvaluationResult]
+	static hasMany=[bucketResult:BucketEvaluation]
 	
 	static belongsTo = [interviewDetails:InterviewDetails,round:AssessmentRound]
 
