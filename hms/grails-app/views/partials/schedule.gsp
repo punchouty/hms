@@ -1,6 +1,4 @@
 <div ng-controller="hiringController">
-<h5 style="color:green">{{msg}}</h5>
-<h5 style="color:red">{{errorMsg}}</h5>
  <h1>Schedule Interview</h1>
  <br>
             <form role="form">
@@ -42,24 +40,25 @@
               <table class="table table-striped table-condensed table-hover">
                 <thead>
                   <tr>
-                  	<th>Interview<span class="caret"></span></th>	
+                  	<th>Hiring Process<span class="caret"></span></th>
                     <th>Job Title<span class="caret"></span></th>
                     <th>Candidate<span class="caret"></span></th>
-                    <th>Hiring Process<span class="caret"></span></th>
                      <th>Interview Mode<span class="caret"></span></th>
                      <th>Created By<span class="caret"></span></th>
+                     <th>Created On<span class="caret"></span></th>
                     <th>Status<span class="caret"></span></th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr ng-repeat="interview in interviews">
-                    <td>{{interview.id}}</td>
+                      <td><a href="#" title="View Rounds">{{interview.hiringProcess.name}}</a></td>
                     <td>{{interview.position.name}}</td>
                     <td>{{interview.candidate.name}}</td>
-                    <td><a href="#" title="Wf1">{{interview.hiringProcess.name}}</a></td>
+                   
                     <td>{{interview.interviewMode | renderMode}}</td>
                     <td>{{loggedInUser}}</td>
+                    <td>{{interview.dateCreated | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>{{interview.completionStatus | renderStatus}}</td>
                     
                     <td> <button ng-hide={{interview.completionStatus}} type="button" ng-click="deleteInterview(interview.id)" class="close" style="color: red" aria-hidden="true">&times;</button> </td>

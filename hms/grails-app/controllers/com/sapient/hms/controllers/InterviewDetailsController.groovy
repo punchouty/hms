@@ -35,10 +35,8 @@ class InterviewDetailsController {
 		interviewDetailsInstance.position = Position.get(result.position.id)
 		interviewDetailsInstance.hiringperson = User.get(result.hiringperson.id)
 		interviewDetailsInstance.hiringProcess = HiringProcess.get(result.hiringProcess.id)
-		
-        if (interviewDetailsInstance.save(flush: true)) {
-			System.out.println "HIS"
-			//interviewDetailsInstance.common.errorMessage = message(code: 'default.created.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), interviewDetailsInstance.id])
+        if (!interviewDetailsInstance.save(flush: true)) {
+			interviewDetailsInstance.errors.rejectValue('interviewDetailsInstance','default.failure')
         }
 		render interviewDetailsInstance as JSON
     }

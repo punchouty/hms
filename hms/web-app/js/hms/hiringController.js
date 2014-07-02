@@ -43,7 +43,6 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	  $scope.setInterview = function(){
 		  $scope.interviewDetail = angular.fromJson({"candidate":{"id":$scope.selectedCandidateId},"completionStatus":"0","hiringProcess":{"id":$scope.selectedProcess.id},"hiringperson":{"id":1},"interviewMode": $scope.selectedMode.code,"name":"Int1","position":{"id":$scope.selectedPosition.id},"results":[]});
 		  hiringService.createInterview($scope.interviewDetail).$promise.then(function(interviewDetails){
-				$scope.msg = "Success!";
 				 hiringService.getInterviews($scope.loggedInUser).$promise.then(function(interviews){
 					   $scope.interviews = interviews;
 					});
@@ -58,7 +57,6 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	  
 	   $scope.deleteInterview = function(id){
 		   hiringService.deleteInterview(id).$promise.then(function(status){
-			   $scope.msg = "Success!";
 				 hiringService.getInterviews($scope.loggedInUser).$promise.then(function(interviews){
 					   $scope.interviews = interviews;
 					});
