@@ -40,7 +40,7 @@ class InterviewDetailsController {
 		interviewDetailsInstance.position = Position.get(result.position.id)
 		interviewDetailsInstance.hiringperson = User.get(result.hiringperson.id)
 		interviewDetailsInstance.hiringProcess = HiringProcess.get(result.hiringProcess.id)
-		//populateDetails(interviewDetailsInstance)
+		populateDetails(interviewDetailsInstance)
         if (!interviewDetailsInstance.save(flush: true)) {
 			interviewDetailsInstance.errors.rejectValue('interviewDetailsInstance','default.failure')
         }
@@ -56,10 +56,10 @@ class InterviewDetailsController {
 			skillBucketsDef.each(){
 				BucketEvaluation bucketEval = new BucketEvaluation()
 				bucketEval.skillBucket = it
-				def skilDef = it.skills
+				def skilDef = it.skillItems
 				skilDef.each(){
 					SkillEvaluation skillEval = new SkillEvaluation()
-					skillEval.skill = it
+					skillEval.skillItem = it
 					bucketEval.addToSkillEvaluations(skillEval)
 				}
 				roundEval.addToBucketEvaluations(bucketEval)
