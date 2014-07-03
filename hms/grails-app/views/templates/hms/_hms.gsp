@@ -24,7 +24,7 @@
       
         </div>
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-4 col-sm-offset-0 col-md-12 col-md-offset-0 main">
         
 		   <div ng-view> </div>
         </div>

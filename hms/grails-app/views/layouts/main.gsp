@@ -16,7 +16,7 @@
 		
 		<!-- Bootstrap core CSS -->
         <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-	    <link href="/css/hms/app.css" rel="stylesheet">
+	    <link href="css/hms/app.css" rel="stylesheet">
 
         <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
   

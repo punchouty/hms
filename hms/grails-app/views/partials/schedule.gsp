@@ -36,8 +36,9 @@
             </form>
 
             <hr>
-            <div class="well">
-              <table class="table table-striped table-condensed table-hover">
+            
+     
+              <table class="table table-striped table-condensed table-hover table-responsive">
                 <thead>
                   <tr>
                   	<th>Hiring Process<span class="caret"></span></th>
@@ -51,6 +52,9 @@
                      <th></th>
                   </tr>
                 </thead>
+                </table>
+             <div class="bodycontainer scrollable">
+			    <table class="table table-hover table-striped table-condensed table-scrollable table-responsive">
                 <tbody>
                   <tr ng-repeat="interview in interviews">
                       <td>{{interview.hiringProcess.name}}</td>
@@ -64,7 +68,9 @@
                     <td> <button  ng-hide={{interview.completionStatus}} type="button" ng-click="scheduleInterview(interview.id)" class="glyphicon glyphicon-time"></button></td>
                     <td><button ng-hide={{interview.completionStatus}} type="button" ng-click="deleteInterview(interview.id)" class="close" style="color: red" aria-hidden="true">&times;</button> </td>
                   </tr>
-                  <tr>
+                  </tbody>
               </table>
+           
+              
           </div>
 			</div>

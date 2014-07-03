@@ -29,6 +29,7 @@ modules = {
 		resource url:'js/hms/hiringService.js'
 		resource url:'js/hms/hiringFilter.js'
 		resource url:'js/hms/hiringController.js'
+		
 
     }
 }
