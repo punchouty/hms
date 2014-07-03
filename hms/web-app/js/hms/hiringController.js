@@ -10,16 +10,36 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	  
 	  $scope.modes = [{"name": "Telephonic", "code": "T"}, {"name": "Face-To-Face", "code": "F"}];
 	  $scope.selectedMode = $scope.modes[0]; 
+	  $scope.positions ={};
+	  
 	  
 	  hiringService.getPositions().$promise.then(function(positions){
 		     $scope.positions = positions;
 			 $scope.selectedPosition = $scope.positions[0]; 
-			
-			 hiringService.getHiringProcessesForPosition($scope.selectedPosition.id).$promise.then(function(hiringProcesses){
-				  $scope.hiringProcesses = hiringProcesses;
-				  $scope.selectedProcess = $scope.hiringProcesses[0]; 
-				});
-		});
+			 $scope.selectedPositionId = $scope.positions[0].id; 
+			 
+			 
+			 
+			 $scope.loadHiringProcessesForPosition = function () {
+				
+				 $scope.selectedPositionId = $scope.selectedPosition.id 
+				 
+				  alert($scope.selectedPositionId);
+					  hiringService.getHiringProcessesForPosition($scope.selectedPositionId).$promise.then(function(hiringProcesses){
+						  $scope.hiringProcesses = hiringProcesses;
+						  $scope.selectedProcess = $scope.hiringProcesses[0]; 
+						});
+				
+			  }
+			 
+			 $scope.loadHiringProcessesForPosition();
+			 
+	  })
+	  
+	  
+	 
+	  
+	 
 	  
 	  hiringService.getCandidateDetails().$promise.then(function(candidateDetails){
 		  $scope.candidates = candidateDetails;
@@ -69,7 +89,7 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	   }
 	   
 	
-	 
+	   
 	  
 });
 

@@ -1,4 +1,4 @@
-<div ng-controller="hiringController">
+<div ng-controller="hiringController" ng-cloak>
  <h1>Create Interview</h1>
  <br>
             <form role="form">
@@ -6,7 +6,7 @@
              <div class="row">
               <div class="col-md-5">
                 <label>Job Title</label>
-               <select class="form-control" ng-model="selectedPosition" ng-options="position.name for position in positions"></select>
+               <select class="form-control" ng-model="selectedPosition" ng-options="position.name for position in positions" ng-change="loadHiringProcessesForPosition()"></select>
               </div>
               <div class="col-md-5 col-md-offset-2">
                 <label>Hiring Process</label>
