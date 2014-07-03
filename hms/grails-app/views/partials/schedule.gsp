@@ -1,5 +1,5 @@
 <div ng-controller="hiringController">
- <h1>Schedule Interview</h1>
+ <h1>Create Interview</h1>
  <br>
             <form role="form">
 			<fieldset>
@@ -48,11 +48,12 @@
                      <th>Created On<span class="caret"></span></th>
                     <th>Status<span class="caret"></span></th>
                     <th></th>
+                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr ng-repeat="interview in interviews">
-                      <td><a href="#" title="View Rounds">{{interview.hiringProcess.name}}</a></td>
+                      <td>{{interview.hiringProcess.name}}</td>
                     <td>{{interview.position.name}}</td>
                     <td>{{interview.candidateDetail.name}}</td>
                    
@@ -60,8 +61,8 @@
                     <td>{{loggedInUser}}</td>
                     <td>{{interview.dateCreated | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>{{interview.completionStatus | renderStatus}}</td>
-                    
-                    <td> <button ng-hide={{interview.completionStatus}} type="button" ng-click="deleteInterview(interview.id)" class="close" style="color: red" aria-hidden="true">&times;</button> </td>
+                    <td> <button  ng-hide={{interview.completionStatus}} type="button" ng-click="scheduleInterview(interview.id)" class="glyphicon glyphicon-time"></button></td>
+                    <td><button ng-hide={{interview.completionStatus}} type="button" ng-click="deleteInterview(interview.id)" class="close" style="color: red" aria-hidden="true">&times;</button> </td>
                   </tr>
                   <tr>
               </table>
