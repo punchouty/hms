@@ -41,7 +41,7 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	  
 	  
 	  $scope.setInterview = function(){
-		  $scope.interviewDetail = angular.fromJson({"candidate":{"id":$scope.selectedCandidateId},"completionStatus":"0","hiringProcess":{"id":$scope.selectedProcess.id},"hiringperson":{"id":1},"interviewMode": $scope.selectedMode.code,"name":"Int1","position":{"id":$scope.selectedPosition.id},"results":[]});
+		  $scope.interviewDetail = angular.fromJson({"candidateDetail":{"id":$scope.selectedCandidateId},"completionStatus":"0","hiringProcess":{"id":$scope.selectedProcess.id},"hiringperson":{"id":1},"interviewMode": $scope.selectedMode.code,"name":"Int1","position":{"id":$scope.selectedPosition.id}});
 		  hiringService.createInterview($scope.interviewDetail).$promise.then(function(interviewDetails){
 				 hiringService.getInterviews($scope.loggedInUser).$promise.then(function(interviews){
 					   $scope.interviews = interviews;

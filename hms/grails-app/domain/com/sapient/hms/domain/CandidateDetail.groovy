@@ -8,7 +8,7 @@ class CandidateDetail{
 	Date dateCreated
 	Date lastUpdated
 
-	static hasMany = [InterviewDetails : InterviewDetail]
+	static hasMany = [interviewDetails : InterviewDetail]
 	
 	
     static constraints = {

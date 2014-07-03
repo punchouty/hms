@@ -36,7 +36,7 @@
             </form>
 
             <hr>
-            
+            <div class="well">
               <table class="table table-striped table-condensed table-hover">
                 <thead>
                   <tr>
@@ -54,7 +54,7 @@
                   <tr ng-repeat="interview in interviews">
                       <td><a href="#" title="View Rounds">{{interview.hiringProcess.name}}</a></td>
                     <td>{{interview.position.name}}</td>
-                    <td>{{interview.candidate.name}}</td>
+                    <td>{{interview.candidateDetail.name}}</td>
                    
                     <td>{{interview.interviewMode | renderMode}}</td>
                     <td>{{loggedInUser}}</td>
@@ -65,5 +65,5 @@
                   </tr>
                   <tr>
               </table>
-          
+          </div>
 			</div>

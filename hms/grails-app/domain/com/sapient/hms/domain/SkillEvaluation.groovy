@@ -11,7 +11,7 @@ class SkillEvaluation {
 	Date lastUpdated
 
 		
-	static belongsTo=[bucketEvaluation:BucketEvaluation,skill:Skill]
+	static belongsTo=[bucketEvaluation:BucketEvaluation,skillItem:SkillItem]
 
     static constraints = {
 		overAllScore nullable: true

@@ -1,6 +1,7 @@
 package com.sapient.hms.controllers
 
 import grails.converters.JSON
+import groovy.json.JsonSlurper;
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -24,8 +25,8 @@ class InterviewDetailsController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-		JSON.use("deep")
-       render InterviewDetail.list(params) as JSON
+		//JSON.use("deep")
+        render InterviewDetail.list(params) as JSON
     }
 
     def create() {
@@ -35,11 +36,11 @@ class InterviewDetailsController {
     def save() {
 		def result = JSON.parse(request.JSON.toString());
         def interviewDetailsInstance = new InterviewDetail(result)
-		interviewDetailsInstance.candidate = CandidateDetail.get(result.candidate.id)
+		interviewDetailsInstance.candidateDetail = CandidateDetail.get(result.candidateDetail.id)
 		interviewDetailsInstance.position = Position.get(result.position.id)
 		interviewDetailsInstance.hiringperson = User.get(result.hiringperson.id)
 		interviewDetailsInstance.hiringProcess = HiringProcess.get(result.hiringProcess.id)
-		populateDetails(interviewDetailsInstance)
+		//populateDetails(interviewDetailsInstance)
         if (!interviewDetailsInstance.save(flush: true)) {
 			interviewDetailsInstance.errors.rejectValue('interviewDetailsInstance','default.failure')
         }
@@ -47,26 +48,27 @@ class InterviewDetailsController {
     }
 
 	def populateDetails(InterviewDetail interviewDetailsInstance){
-		List<AssessmentRound> processRounds = interviewDetailsInstance.hiringProcess.rounds
+		def processRounds = interviewDetailsInstance.hiringProcess.assessmentRounds
 		processRounds.each() {
-			RoundEvaluation roundEval = new RoundEvaluation()
-			roundEval.round = it
-			it.skillbuckets.each(){
+			def roundEval = new RoundEvaluation()
+			roundEval.assessmentRound = it
+			def skillBucketsDef = it.skillBuckets
+			skillBucketsDef.each(){
 				BucketEvaluation bucketEval = new BucketEvaluation()
 				bucketEval.skillBucket = it
-				it.skill.each(){
+				def skilDef = it.skills
+				skilDef.each(){
 					SkillEvaluation skillEval = new SkillEvaluation()
 					skillEval.skill = it
-					bucketEval.skillResult.add(skillEval)
+					bucketEval.addToSkillEvaluations(skillEval)
 				}
-				roundEval.bucketResult.add(bucketEval)
+				roundEval.addToBucketEvaluations(bucketEval)
 			}
-			interviewDetailsInstance.results.add(roundEval)
+			interviewDetailsInstance.addToRoundEvaluations(roundEval)
 		}
 				
 		
-		BucketEvaluation
-		SkillEvaluation
+		
 	}
     def show(Long id) {
         def interviewDetailsInstance = InterviewDetail.get(id)

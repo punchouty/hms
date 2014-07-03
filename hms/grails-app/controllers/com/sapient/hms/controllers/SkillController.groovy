@@ -2,7 +2,7 @@ package com.sapient.hms.controllers
 
 import org.springframework.dao.DataIntegrityViolationException
 
-import com.sapient.hms.domain.Skill;
+import com.sapient.hms.domain.SkillItem;
 
 class SkillController {
 
@@ -14,15 +14,15 @@ class SkillController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [skillInstanceList: Skill.list(params), skillInstanceTotal: Skill.count()]
+        [skillInstanceList: SkillItem.list(params), skillInstanceTotal: SkillItem.count()]
     }
 
     def create() {
-        [skillInstance: new Skill(params)]
+        [skillInstance: new SkillItem(params)]
     }
 
     def save() {
-        def skillInstance = new Skill(params)
+        def skillInstance = new SkillItem(params)
         if (!skillInstance.save(flush: true)) {
             render(view: "create", model: [skillInstance: skillInstance])
             return
@@ -33,7 +33,7 @@ class SkillController {
     }
 
     def show(Long id) {
-        def skillInstance = Skill.get(id)
+        def skillInstance = SkillItem.get(id)
         if (!skillInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'skill.label', default: 'Skill'), id])
             redirect(action: "list")
@@ -44,7 +44,7 @@ class SkillController {
     }
 
     def edit(Long id) {
-        def skillInstance = Skill.get(id)
+        def skillInstance = SkillItem.get(id)
         if (!skillInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'skill.label', default: 'Skill'), id])
             redirect(action: "list")
@@ -55,7 +55,7 @@ class SkillController {
     }
 
     def update(Long id, Long version) {
-        def skillInstance = Skill.get(id)
+        def skillInstance = SkillItem.get(id)
         if (!skillInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'skill.label', default: 'Skill'), id])
             redirect(action: "list")
@@ -84,7 +84,7 @@ class SkillController {
     }
 
     def delete(Long id) {
-        def skillInstance = Skill.get(id)
+        def skillInstance = SkillItem.get(id)
         if (!skillInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'skill.label', default: 'Skill'), id])
             redirect(action: "list")

@@ -58,6 +58,9 @@ grails.exceptionresolver.params.exclude = ['password']
 
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
+grails.converters.json.default.deep = true
+grails.converters.default.circular.reference.behaviour="INSERT_NULL"
+
 
 environments {
     development {

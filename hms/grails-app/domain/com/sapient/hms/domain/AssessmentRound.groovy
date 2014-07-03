@@ -10,7 +10,7 @@ class AssessmentRound{
 	Date dateCreated
 	Date lastUpdated
 	
-	static hasMany=[roundEvaluations:RoundEvaluation,skillBuckets:SkillBucket]
+	static hasMany=[skillBuckets:SkillBucket]
 	
 	static belongsTo=[hiringProcess:HiringProcess]
 	

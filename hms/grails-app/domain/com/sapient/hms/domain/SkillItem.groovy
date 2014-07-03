@@ -1,7 +1,7 @@
 package com.sapient.hms.domain
 
 
-class Skill{
+class SkillItem{
 	
 	String name
 	Integer expectedSkillrating
@@ -9,9 +9,7 @@ class Skill{
 	Integer weight
 	Date dateCreated
 	Date lastUpdated
-
 	
-	static hasMany=[skillEvaluations:SkillEvaluation]
 	static belongsTo=[skillBucket:SkillBucket]
 	
     static constraints = {
