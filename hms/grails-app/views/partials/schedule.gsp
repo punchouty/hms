@@ -38,7 +38,7 @@
             <hr>
             
      
-              <table class="table table-striped table-condensed table-hover table-responsive">
+              <table class="table table-striped table-condensed table-hover table-responsive bodycontainer">
                 <thead>
                   <tr>
                   	<th>Hiring Process<span class="caret"></span></th>
@@ -50,11 +50,11 @@
                     <th>Status<span class="caret"></span></th>
                     <th></th>
                      <th></th>
+                    
                   </tr>
                 </thead>
-                </table>
-             <div class="bodycontainer scrollable">
-			    <table class="table table-hover table-striped table-condensed table-scrollable table-responsive">
+              
+			    
                 <tbody>
                   <tr ng-repeat="interview in interviews">
                       <td>{{interview.hiringProcess.name}}</td>
@@ -73,4 +73,3 @@
            
               
           </div>
-			</div>

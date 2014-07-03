@@ -9,17 +9,16 @@ li{
   text-align:centre;
   }
   #content {
-    max-width: 800px;
+    max-width: 70%;
     margin: auto;
-    left: 1%;
+    left: 10%;
     right: 1%;
     position: absolute;
 }
 #navstyle {
-    max-width: 940px;
+    max-width: 100%;
     margin: auto;
-	left:5px;
-	right:5px;
+	
 }
    table tr td:last-child
 	{
@@ -29,11 +28,6 @@ li{
 	{
 	  text-align: right;
 	}
-	.sidebar
-	{
-	left:250px;
-	right:20px;
-	width:210px;
-	}
-	.bodycontainer { max-height: 200px; width: 100%; margin: 0; overflow-y: auto; }
+	
+	.bodycontainer { max-height: 10%; width: 100%; margin: 0; overflow-y: auto; }
 .table-scrollable { margin: 0; padding: 0; }
