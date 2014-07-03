@@ -1,6 +1,6 @@
-<h1>Assessment</h1>
-<div class="row">
-		 <div class="col-md-4 col-lg-offset-5">
+<h2>Record Assessment Result</h2>
+ <div class="row">
+		 <div class=" col-md-4">
          <div class="btn-group">
             <button type="button" class="btn btn-primary">Request Actions</button>
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -12,15 +12,15 @@
               <li><a href="#">Request Reschedule</a></li>
               <li><a href="#">Request Round</a></li>
               </ul>
-		  </div> 
 		  </div>
-		  <div class="col-md-2">
-              <div class="form-group">
+		  </div>
+		 </div>
+		  <div class="row">
+		  <div class="col-md-4">
 			  <button type="submit" class="btn btn-info">Complete Assessment</button>
-			  </div>
 		  </div>
 		  </div>
-            <form role="form">
+		  <form role="form">
 			<div class="row">
 		    <div class="col-md-5">
                <div class="form-group">
@@ -92,7 +92,7 @@
 			 <br>
             </form>
 
-        <table class="table table-striped table-condensed table-hover">
+       <table class="table table-striped table-condensed table-hover">
                 <thead>
                   <tr>
                     <th>Skills<span class="caret"></span></th>

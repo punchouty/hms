@@ -20,14 +20,7 @@ li{
     margin: auto;
 	
 }
-   table tr td:last-child
-	{
-    text-align: right;
-    }
-	table tr th:last-child
-	{
-	  text-align: right;
-	}
+  
 	.mygrid-wrapper-div {
     overflow: scroll;
     height: 210px;

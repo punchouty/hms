@@ -1,10 +1,13 @@
 package com.sapient.hms.controllers
 
+import grails.converters.JSON;
+
 import org.springframework.dao.DataIntegrityViolationException
 
+import com.sapient.hms.domain.InterviewDetail;
 import com.sapient.hms.domain.RoundEvaluation;
 
-class RoundEvaluationResultController {
+class RoundEvaluationController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -17,6 +20,11 @@ class RoundEvaluationResultController {
         [roundEvaluationResultInstanceList: RoundEvaluation.list(params), roundEvaluationResultInstanceTotal: RoundEvaluation.count()]
     }
 
+	def listByInterview(Long id) {
+		def interview = InterviewDetail.get(id)
+		render RoundEvaluation.findByInterview(interview) as JSON
+	}
+	
     def create() {
         [roundEvaluationResultInstance: new RoundEvaluation(params)]
     }

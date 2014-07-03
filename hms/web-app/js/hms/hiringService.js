@@ -19,7 +19,7 @@ hms.factory('hiringService', function($resource, $log){
 		}
 	
 	factory.getRoundSchedulesForInterview = function (interviewId){
-		return $resource('roundSchedule/:interviewId', {interviewId:'@interviewId'}).query({interviewId:interviewId});
+		return $resource('roundEvaluation/listByInterview/:interviewId', {interviewId:'@interviewId'}).query({interviewId:interviewId});
 		}
 	
 			

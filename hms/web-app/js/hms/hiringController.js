@@ -90,8 +90,6 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	   }
 	   
 	
-	   
-	  
 });
 
   

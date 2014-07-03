@@ -1,5 +1,5 @@
 <div ng-controller="hiringController" ng-cloak>
- <h1>Create Interview</h1>
+ <h2>Create Interview</h2>
  <br>
             <form role="form">
 			<fieldset>
@@ -65,7 +65,7 @@
                     <td>{{loggedInUser}}</td>
                     <td>{{interview.dateCreated | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>{{interview.completionStatus | renderStatus}}</td>
-                    <td> <button  ng-hide={{interview.completionStatus}} type="button" ng-click="scheduleInterview(interview.id)" class="glyphicon glyphicon-time"></button></td>
+                    <td> <a href="#/scheduleRounds/{{interview.id}}" ng-hide={{interview.completionStatus}} class="glyphicon glyphicon-time"></a></td>
                     <td><button ng-hide={{interview.completionStatus}} type="button" ng-click="deleteInterview(interview.id)" class="close" style="color: red" aria-hidden="true">&times;</button> </td>
                   </tr>
                   </tbody>
