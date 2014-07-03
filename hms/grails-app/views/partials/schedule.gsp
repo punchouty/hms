@@ -37,8 +37,8 @@
 
             <hr>
             
-     
-              <table class="table table-striped table-condensed table-hover table-responsive bodycontainer">
+     <div class="mygrid-wrapper-div">
+              <table class="table table-striped table-condensed table-hover table-responsive ">
                 <thead>
                   <tr>
                   	<th>Hiring Process<span class="caret"></span></th>
@@ -71,5 +71,5 @@
                   </tbody>
               </table>
            
-              
+              </div>
           </div>
