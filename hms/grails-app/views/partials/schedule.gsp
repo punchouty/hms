@@ -19,7 +19,7 @@
                   <label>Candidate : </label>
                  <input type="hidden" ng-model="selectedCandidateId" class="form-control">
                 <input class="form-control" type="text"  typeahead-on-select="setCandidate($item)" ng-model="selectedCandidate" typeahead="candidate.name for candidate in candidates | filter:$viewValue" />
-                
+                <button ng-show="newCandidate" class="glyphicon glyphicon-plus" ng-click="addCandidate()"></button>
 			  </div>
 			 <div class="col-md-5 col-md-offset-2">
                 <label>Interview Mode</label>

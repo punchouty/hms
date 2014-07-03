@@ -12,7 +12,6 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	  $scope.selectedMode = $scope.modes[0]; 
 	  $scope.positions ={};
 	  
-	  
 	  hiringService.getPositions().$promise.then(function(positions){
 		     $scope.positions = positions;
 			 $scope.selectedPosition = $scope.positions[0]; 
@@ -36,20 +35,24 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	  
 	  
 	 
-	  
+	 $scope.newCandidate="Yes"; 
 	 
+	  $scope.clearSelection = function(){
+		  $scope.newCandidate="Yes";
+	  }
 	  
 	  hiringService.getCandidateDetails().$promise.then(function(candidateDetails){
 		  $scope.candidates = candidateDetails;
 		  $scope.selectedCandidate = '';
 		  $scope.setCandidate = function(site) {
 		  		$scope.selectedCandidateId = site.id;
+		  		$scope.newCandidate = "";
 		  	};
 		});
 	  
 	   $scope.addCandidate = function(){
-		   $scope.candidateDetail = angular.fromJson({"location":'GGN',"name":$scope.selectedCandidate.name});
-		   hiringService.addCandidate( $scope.selectedCandidate).$promise.then(function(candidateDetails){
+		   
+		   hiringService.addCandidate({"name":$scope.selectedCandidate, "location": "Home"}).$promise.then(function(candidateDetails){
 			   $scope.selectedCandidate = candidateDetails;
 			   $scope.selectedCandidateId = candidateDetails.id;
 			   
