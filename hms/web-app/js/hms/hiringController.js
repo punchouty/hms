@@ -23,8 +23,6 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 			 $scope.loadHiringProcessesForPosition = function () {
 				
 				 $scope.selectedPositionId = $scope.selectedPosition.id 
-				 
-				  alert($scope.selectedPositionId);
 					  hiringService.getHiringProcessesForPosition($scope.selectedPositionId).$promise.then(function(hiringProcesses){
 						  $scope.hiringProcesses = hiringProcesses;
 						  $scope.selectedProcess = $scope.hiringProcesses[0]; 
