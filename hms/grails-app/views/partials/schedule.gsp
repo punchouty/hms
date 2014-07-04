@@ -17,7 +17,7 @@
 			 <div class="row">
               <div class="col-md-5">
             
-                  <label>Candidate : </label>
+                  <label>Candidate * : </label>
                  <input type="hidden" ng-model="selectedCandidateId" class="form-control">
                 <input class="form-control" type="text" ng-change="changeCandidate()" typeahead-on-select="setCandidate($item)" ng-model="selectedCandidate" typeahead="candidate.name+' - '+candidate.location for candidate in candidates | filter:$viewValue" />
                 <button ng-show="newCandidate" class="glyphicon glyphicon-plus" ng-click="addCandidate()"></button>
@@ -32,7 +32,7 @@
               
 			 </div>
   				<br>
-              <button type="submit" class="btn btn-primary" ng-click="setInterview()">Set Interview</button>
+              <button type="submit" class="btn btn-primary" ng-click="setInterview()" ng-disabled="isSetInterviewDisabled">Set Interview</button>
               <button type="reset" ng-click="clearForm()" class="btn btn-info">Clear</button>
 			 </fieldset>
             </form>

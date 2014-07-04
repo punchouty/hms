@@ -6,6 +6,8 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	
 	$scope.loggedInUser = 'User';
 	$scope.loggedInUserId = 1;
+	$scope.newCandidate="Yes"; 
+	$scope.isSetInterviewDisabled = true;
 
 	  $scope.name = 'hiringController';
 	  
@@ -36,10 +38,11 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	  
 	  
 	 
-	 $scope.newCandidate="Yes"; 
+	 
 	 
 	  $scope.clearSelection = function(){
 		  $scope.newCandidate="Yes";
+		
 	  }
 	  
 	  hiringService.getCandidateDetails().$promise.then(function(candidateDetails){
@@ -48,6 +51,7 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 		  $scope.setCandidate = function(site) {
 		  		$scope.selectedCandidateId = site.id;
 		  		$scope.newCandidate = "";
+		  		$scope.isSetInterviewDisabled = false;
 		  	};
 		});
 	  
@@ -55,6 +59,7 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	   $scope.selectedCandidateId = "";
 	   $scope.newCandidate="Yes";
 	   $scope.selectedCandidate = '';
+	   $scope.isSetInterviewDisabled = true;
 	   }
 	  
 	   $scope.addCandidate = function(){
@@ -93,6 +98,8 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 	   
 	   $scope.clearForm = function(){
 		   $scope.msg = "";
+		   $scope.isSetInterviewDisabled = true;
+		   $scope.newCandidate="Yes"; 
 	   }
 	   
 	
