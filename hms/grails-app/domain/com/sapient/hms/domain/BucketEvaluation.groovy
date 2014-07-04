@@ -3,7 +3,7 @@ package com.sapient.hms.domain
 
 class BucketEvaluation {
 	
-	Integer candidateScore
+	Integer candidateBucketScore
 	Date dateCreated
 	Date lastUpdated
 

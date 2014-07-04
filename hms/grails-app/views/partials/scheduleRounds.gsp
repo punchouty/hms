@@ -1,16 +1,10 @@
- <div ng-controller="hiringRoundController" ng-cloak>
+ <div ng-controller="hiringRoundController">
  <h2>Schedule Interview Rounds</h2>
  <br>
  	 <form role="form">
-
-
-		
 		 <div class="row">
 			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab">Aptitude</a></li>
-				<li><a data-toggle="tab">Domain</a></li>
-				<li><a data-toggle="tab">Technical</a></li>
-				<li><a data-toggle="tab">HR</a></li>
+				<li ng-repeat="roundEval in rounds"><a data-toggle="tab">{{roundEval.assessmentRound.name}}</a></li>
 			</ul>
 		</div>
 	<br>
@@ -28,18 +22,26 @@
               </div>
 		  </div>
 		 </div>	
+		 
 		  <br>
              <button type="submit" class="btn btn-primary">Save</button>
+	 <br>
 			  <br>
-			  
+			  	<div class="col-md-4">
+              <div class="form-group">
+                 <label>Round Score</label>: 292
+              </div>
+		  </div>
         <!-- <div class="form-group">
                   <label>Interviewer : </label>
                  <input type="text" placeholder="Interviewer name...." class="form-control">
                  <label>Date / Time : </label>
                  <input type="datetime-local" class="form-control">
               </div> -->
+              <br>
 			  <br>
 		<div class="row">
+			
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab">Technology skills</a></li>
 				<li><a data-toggle="tab">Consulting skills</a></li>
@@ -47,7 +49,13 @@
 				<li><a data-toggle="tab">Low Level Aspects</a></li>
 			</ul>
 		</div>
+		<br>
 		
+		<div class="col-md-4">
+              <div class="form-group">
+                 <label>Bucket Score</label>: 292
+              </div>
+		  </div>
 	    <table cellspacing="50" class="table table-striped table-condensed table-hover">
                 <thead>
                   <tr>

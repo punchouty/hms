@@ -8,7 +8,7 @@ class RoundEvaluation{
 	Date actualStartTime
 	Date actualEndTime
 	String assessmentStatus
-	Integer candidateFinalScore
+	Integer candidateRoundScore
 	Boolean willingToHire
 	String hireRejectreason
 	String recommendation

@@ -1,6 +1,10 @@
 package com.sapient.hms.controllers
 
+import java.util.Date;
+
 import grails.converters.JSON;
+import hms.ScheduleRoundsSkillsVO
+import hms.ScheduleRoundsVO
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -21,8 +25,22 @@ class RoundEvaluationController {
     }
 
 	def listByInterview(Long id) {
-		def interview = InterviewDetail.get(id)
-		render RoundEvaluation.findAllByInterview(interview) as JSON
+		def interviewDetail = InterviewDetail.get(id)
+		def roundEvals = RoundEvaluation.findAllByInterviewDetail(interviewDetail)
+		def roundEvalsList = new ArrayList<ScheduleRoundsVO>()
+		roundEvals.each{
+			def roundEvalItem = new ScheduleRoundsVO()
+			roundEvalItem.evaluationRoundId = it.id
+			roundEvalItem.roundName = it.assessmentRound.name
+			roundEvalItem.interviewerId = it.interviewer.id
+			roundEvalItem.interviewerName = it.interviewer.username
+			roundEvalItem.interviewTime = it.scheduledTime
+			def skillsEvals = it.
+			def skillsEvalsList = new ArrayList<ScheduleRoundsSkillsVO>()
+			
+		}
+		
+		render  as JSON
 	}
 	
     def create() {

@@ -3,9 +3,8 @@ package com.sapient.hms.domain
 
 class SkillEvaluation {
 	
-	Integer overAllScore
-	Integer candidaterating
-	Integer score
+	Integer candidateRating
+	Integer candidateSkillScore
 	String feedback
 	Date dateCreated
 	Date lastUpdated
