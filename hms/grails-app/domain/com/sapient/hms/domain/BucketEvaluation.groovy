@@ -13,7 +13,7 @@ class BucketEvaluation {
 	static belongsTo=[roundEvaluation:RoundEvaluation,skillBucket:SkillBucket]
 
     static constraints = {
-		candidateScore nullable: true
+		candidateBucketScore nullable: true
     }
 
 }

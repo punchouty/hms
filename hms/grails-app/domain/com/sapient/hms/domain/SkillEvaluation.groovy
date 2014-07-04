@@ -13,9 +13,8 @@ class SkillEvaluation {
 	static belongsTo=[bucketEvaluation:BucketEvaluation,skillItem:SkillItem]
 
     static constraints = {
-		overAllScore nullable: true
-		candidaterating nullable: true
-		score nullable: true
+		candidateRating nullable: true
+		candidateSkillScore nullable: true
 		feedback nullable: true
     }
 

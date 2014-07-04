@@ -28,7 +28,7 @@ class RoundEvaluation{
 			actualStartTime nullable: true
 			actualEndTime nullable: true
 			assessmentStatus nullable: true
-			candidateFinalScore nullable: true
+			candidateRoundScore nullable: true
 			willingToHire nullable: true
 			hireRejectreason nullable: true
 			recommendation nullable: true

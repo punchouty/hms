@@ -3,6 +3,7 @@ package com.sapient.hms.controllers
 import java.util.Date;
 
 import grails.converters.JSON;
+import hms.ScheduleRoundsBucketsVO
 import hms.ScheduleRoundsSkillsVO
 import hms.ScheduleRoundsVO
 
@@ -30,17 +31,17 @@ class RoundEvaluationController {
 		def roundEvalsList = new ArrayList<ScheduleRoundsVO>()
 		roundEvals.each{
 			def roundEvalItem = new ScheduleRoundsVO()
-			roundEvalItem.evaluationRoundId = it.id
+			//roundEvalItem.evaluationRoundId = it.id
 			roundEvalItem.roundName = it.assessmentRound.name
-			roundEvalItem.interviewerId = it.interviewer.id
-			roundEvalItem.interviewerName = it.interviewer.username
+			//roundEvalItem.interviewerId = it.interviewer.id
+			//roundEvalItem.interviewerName = it.interviewer.username
 			roundEvalItem.interviewTime = it.scheduledTime
-			def skillsEvals = it.
-			def skillsEvalsList = new ArrayList<ScheduleRoundsSkillsVO>()
-			
+			//def skillsEvals = it.
+			//def bucketEvalsList = new ArrayList<ScheduleRoundsBucketsVO>()
+			roundEvalsList.add(roundEvalItem)
 		}
 		
-		render  as JSON
+		render roundEvalsList as JSON
 	}
 	
     def create() {

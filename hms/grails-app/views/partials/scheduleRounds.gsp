@@ -4,7 +4,7 @@
  	 <form role="form">
 		 <div class="row">
 			<ul class="nav nav-tabs">
-				<li ng-repeat="roundEval in rounds"><a data-toggle="tab">{{roundEval.assessmentRound.name}}</a></li>
+				<li ng-repeat="roundEval in rounds"><a data-toggle="tab">{{roundEval.roundName}}</a></li>
 			</ul>
 		</div>
 	<br>
