@@ -16,10 +16,12 @@
 			 <br>
 			 <div class="row">
               <div class="col-md-5">
+            
                   <label>Candidate : </label>
                  <input type="hidden" ng-model="selectedCandidateId" class="form-control">
-                <input class="form-control" type="text"  typeahead-on-select="setCandidate($item)" ng-model="selectedCandidate" typeahead="candidate.name for candidate in candidates | filter:$viewValue" />
+                <input class="form-control" type="text" ng-change="changeCandidate()" typeahead-on-select="setCandidate($item)" ng-model="selectedCandidate" typeahead="candidate.name+' - '+candidate.location for candidate in candidates | filter:$viewValue" />
                 <button ng-show="newCandidate" class="glyphicon glyphicon-plus" ng-click="addCandidate()"></button>
+             
 			  </div>
 			 <div class="col-md-5 col-md-offset-2">
                 <label>Interview Mode</label>
@@ -57,16 +59,16 @@
 			    
                 <tbody>
                   <tr ng-repeat="interview in interviews">
-                      <td>{{interview.hiringProcess.name}}</td>
-                    <td>{{interview.position.name}}</td>
-                    <td>{{interview.candidateDetail.name}}</td>
+                      <td>{{interview.hiringProcessName}}</td>
+                    <td>{{interview.positionName}}</td>
+                    <td>{{interview.candidateName}}</td>
                    
                     <td>{{interview.interviewMode | renderMode}}</td>
                     <td>{{loggedInUser}}</td>
                     <td>{{interview.dateCreated | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>{{interview.completionStatus | renderStatus}}</td>
-                    <td> <a href="#/scheduleRounds/{{interview.id}}" ng-hide={{interview.completionStatus}} class="glyphicon glyphicon-time"></a></td>
-                    <td><button ng-hide={{interview.completionStatus}} type="button" ng-click="deleteInterview(interview.id)" class="close" style="color: red" aria-hidden="true">&times;</button> </td>
+                    <td> <a href="#/scheduleRounds/{{interview.interviewId}}" ng-hide={{interview.completionStatus}} class="glyphicon glyphicon-time"></a></td>
+                    <td><button ng-hide={{interview.completionStatus}} type="button" ng-click="deleteInterview(interview.interviewId)" class="close" style="color: red" aria-hidden="true">&times;</button> </td>
                   </tr>
                   </tbody>
               </table>

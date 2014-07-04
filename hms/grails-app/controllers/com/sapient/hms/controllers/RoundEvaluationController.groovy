@@ -22,7 +22,7 @@ class RoundEvaluationController {
 
 	def listByInterview(Long id) {
 		def interview = InterviewDetail.get(id)
-		render RoundEvaluation.findByInterview(interview) as JSON
+		render RoundEvaluation.findAllByInterview(interview) as JSON
 	}
 	
     def create() {

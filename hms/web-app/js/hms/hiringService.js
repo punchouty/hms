@@ -33,8 +33,8 @@ hms.factory('hiringService', function($resource, $log){
 		return $resource('interviewDetails/save', {}, {'save': {method:'POST'}}).save(interviewDetail);
 	}
 
-	factory.getInterviews = function(userId){
-		return $resource('interviewDetails').query();
+	factory.getInterviewsByUser = function(userId){
+		return $resource('interviewDetails/listByUser/:userId', {userId:'@userId'}).query({userId:userId});
 	}
 
 	factory.deleteInterview = function(id){

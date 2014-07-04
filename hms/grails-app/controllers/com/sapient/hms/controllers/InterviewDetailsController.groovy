@@ -1,7 +1,10 @@
 package com.sapient.hms.controllers
 
+import java.util.Date;
+
 import grails.converters.JSON
 import groovy.json.JsonSlurper;
+import hms.InterviewDetailsVO
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -23,10 +26,29 @@ class InterviewDetailsController {
         redirect(action: "list", params: params)
     }
 
-    def list(Integer max) {
+	 def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-		//JSON.use("deep")
         render InterviewDetail.list(params) as JSON
+    }
+	
+    def listByUser(Long userId) {
+		
+		def user = User.get(1)
+		def interviewDetails = InterviewDetail.findAllByHiringperson(user)
+		def interviewDetailsList = new ArrayList<InterviewDetailsVO>()
+		interviewDetails.each {
+			def interviewDetailVO = new InterviewDetailsVO()
+			interviewDetailVO.interviewId = it.id
+			interviewDetailVO.interviewMode = it.interviewMode
+			interviewDetailVO.completionStatus = it.completionStatus
+			interviewDetailVO.dateCreated = it.dateCreated
+			interviewDetailVO.hiringProcessName = it.hiringProcess.name
+			interviewDetailVO.positionName  = it.position.name
+			interviewDetailVO.candidateName = it.candidateDetail.name
+			interviewDetailsList.add(interviewDetailVO)
+		}
+		
+        render interviewDetailsList as JSON
     }
 
     def create() {

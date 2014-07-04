@@ -5,6 +5,7 @@
 hms.controller('hiringController', function($scope,$routeParams, hiringService) {
 	
 	$scope.loggedInUser = 'User';
+	$scope.loggedInUserId = 1;
 
 	  $scope.name = 'hiringController';
 	  
@@ -50,21 +51,26 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 		  	};
 		});
 	  
+   $scope.changeCandidate = function(){
+	   $scope.selectedCandidateId = "";
+	   $scope.newCandidate="Yes";
+	   $scope.selectedCandidate = '';
+	   }
+	  
 	   $scope.addCandidate = function(){
-		   
-		   hiringService.addCandidate({"name":$scope.selectedCandidate, "location": "Home"}).$promise.then(function(candidateDetails){
+		   hiringService.addCandidate({"name":"New Candidate", "location": "99128271122"}).$promise.then(function(candidateDetails){
 			   $scope.selectedCandidate = candidateDetails;
 			   $scope.selectedCandidateId = candidateDetails.id;
-			   
+			   $scope.addCandidateScreen = "";
 			});
 	   }
 	   
 	  
 	  
 	  $scope.setInterview = function(){
-		  $scope.interviewDetail = angular.fromJson({"candidateDetail":{"id":$scope.selectedCandidateId},"completionStatus":"0","hiringProcess":{"id":$scope.selectedProcess.id},"hiringperson":{"id":1},"interviewMode": $scope.selectedMode.code,"name":"Int1","position":{"id":$scope.selectedPosition.id}});
+		  $scope.interviewDetail = angular.fromJson({"candidateDetail":{"id":$scope.selectedCandidateId},"completionStatus":"0","hiringProcess":{"id":$scope.selectedProcess.id},"hiringperson":{"id":$scope.loggedInUserId},"interviewMode": $scope.selectedMode.code,"name":"Int1","position":{"id":$scope.selectedPosition.id}});
 		  hiringService.createInterview($scope.interviewDetail).$promise.then(function(interviewDetails){
-				 hiringService.getInterviews($scope.loggedInUser).$promise.then(function(interviews){
+				 hiringService.getInterviewsByUser($scope.loggedInUserId).$promise.then(function(interviews){
 					   $scope.interviews = interviews;
 					});
 				
@@ -72,13 +78,13 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 		  }
 	  
 	  
-	   hiringService.getInterviews($scope.loggedInUser).$promise.then(function(interviews){
+	   hiringService.getInterviewsByUser($scope.loggedInUserId).$promise.then(function(interviews){
 		   $scope.interviews = interviews;
 		});
 	  
 	   $scope.deleteInterview = function(id){
 		   hiringService.deleteInterview(id).$promise.then(function(status){
-				 hiringService.getInterviews($scope.loggedInUser).$promise.then(function(interviews){
+				 hiringService.getInterviewsByUser($scope.loggedInUserId).$promise.then(function(interviews){
 					   $scope.interviews = interviews;
 					});
 				
