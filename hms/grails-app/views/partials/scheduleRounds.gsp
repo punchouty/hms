@@ -53,8 +53,10 @@
                   <tr>
                     <th>Skill names<span class="caret"></span></th>
 					<th>Weight of Skill </th>		
-					<th>Bucket Cut-off Score  </th>
+					<th>Cut-off Score  </th>
 					<th>Expected Skill Rating</th>
+					<th>Candidate Skill Rating</th>
+					<th>Candidate Score</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -63,22 +65,30 @@
 					<td>20%</td>
 					<td>3</td>
 					<td>3</td>
+					<td>3</td>
+					<td>20</td>
                   </tr>
                   <tr>
                     <td>Dotnet</td>
 					<td>30%</td>
 					<td>3</td>
 					<td>3</td>
+					<td>3</td>
+					<td>20</td>
                   </tr>
 				  <tr>
                     <td>VBA</td>
 					<td>20%</td>
 					<td>3</td>
 					<td>3</td>
+					<td>3</td>
+					<td>3</td>
                   </tr>
 				  <tr>
                     <td>C++</td>
 					<td>30%</td>
+					<td>3</td>
+					<td>3</td>
 					<td>3</td>
 					<td>3</td>
                   </tr>

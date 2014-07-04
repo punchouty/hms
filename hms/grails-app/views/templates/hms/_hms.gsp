@@ -17,11 +17,11 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" id="sidebar1">
-          <ul class="nav nav-sidebar">
-            <li  class="active"><a >Dashboard</a></li>  
-            <li><a href="#/configureWF">Configure Hiring Process</a></li>
-            <li><a href="#/schedule">Schedule Interview</a></li>
-            <li><a href="#/assessment">Perform Assessment</a></li>
+          <ul class="nav nav-pills nav-stacked" data-toggle="pill">
+            <li  data-toggle="pill" class="active"><a href="#/dashboard">Dashboard</a></li>  
+            <li  data-toggle="pill"><a href="#/configureWF">Configure Hiring Process</a></li>
+            <li data-toggle="pill"><a href="#/schedule" >Schedule Interview</a></li>
+            <li data-toggle="pill"><a href="#/assessment" >Perform Assessment</a></li>
             
           </ul>
       

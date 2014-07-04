@@ -1,5 +1,5 @@
 <div ng-controller="hiringController" ng-cloak>
- <h2>Create Interview</h2>
+ <h2>Schedule Interview</h2>
  <br>
             <form role="form">
 			<fieldset>

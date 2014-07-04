@@ -1,4 +1,4 @@
-<h2>Record Assessment Result</h2>
+<h2>Perform Assessment</h2>
  <div class="row">
 		 <div class=" col-lg-offset-10 col-lg-4">
          <div class="btn-group">
