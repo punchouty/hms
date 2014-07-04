@@ -14,7 +14,7 @@ class UrlMappings {
 		"/scheduleRounds"(view:"/partials/scheduleRounds")
 		"/assessment"(view:"/partials/assessment")
 		"/configureWF"(view:"/partials/configureWF")
-		"/createwf"(view:"/partials/createwf")
+		"/createWF"(view:"/partials/createWF")
 		"500"(view:'/error')
 	}
 }

@@ -1,7 +1,7 @@
     <h2>Configure Hiring Process</h2> 
 		<div class="row">
 		   <div class="col-md-4 col-md-offset-10">
-		     <button type="submit" class="btn btn-primary">Create New Hiring WorkFlow</button>
+		     <a href="#/createWF"><button type="submit" class="btn btn-primary">Create New Hiring WorkFlow</button></a>
 		   </div>
 		</div>
 	 <form role="form">

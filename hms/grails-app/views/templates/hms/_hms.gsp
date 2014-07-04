@@ -29,7 +29,9 @@
 
         <div class="col-sm-4 col-sm-offset-0 col-md-12 col-md-offset-0 main">
         
-		   <div ng-view> </div>
+		   <div ng-view>
+		   
+		    </div>
         </div>
 	</div>
 </div>

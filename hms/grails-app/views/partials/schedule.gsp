@@ -30,8 +30,8 @@
               
 			 </div>
   				<br>
-              <button type="submit" class="btn btn-success" ng-click="setInterview()">Set Interview</button>
-              <button type="reset" ng-click="clearForm()" class="btn btn-danger">Clear</button>
+              <button type="submit" class="btn btn-primary" ng-click="setInterview()">Set Interview</button>
+              <button type="reset" ng-click="clearForm()" class="btn btn-info">Clear</button>
 			 </fieldset>
             </form>
 
