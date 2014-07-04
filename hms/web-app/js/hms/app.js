@@ -10,5 +10,6 @@ hms.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/assessment', {templateUrl: 'assessment', controller: 'hiringController'});
   $routeProvider.when('/configureWF', {templateUrl: 'configureWF', controller: 'hiringController'});
   $routeProvider.when('/createWF', {templateUrl: 'createWF', controller: 'hiringController'});
-   $routeProvider.otherwise({redirectTo: 'schedule'});
+  $routeProvider.when('/dashboard', {templateUrl: 'dashboard', controller: 'hiringController'});
+   $routeProvider.otherwise({redirectTo: 'dashboard'});
 }]);

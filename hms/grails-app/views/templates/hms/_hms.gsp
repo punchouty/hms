@@ -8,7 +8,7 @@
             <span class="sr-only">Toggle navigation</span>
           
           </button>
-          <a class="navbar-brand" href="">Hiring Management System</a>
+          <a class="navbar-brand" href="/hms/">Hiring Management System</a>
         </div>
        
       </div> 
@@ -18,9 +18,9 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" id="sidebar1">
           <ul class="nav nav-sidebar">
-            <li><a >Dashboard</a></li>  
+            <li  class="active"><a >Dashboard</a></li>  
             <li><a href="#/configureWF">Configure Hiring Process</a></li>
-            <li class="active"><a href="#/schedule">Schedule Interview</a></li>
+            <li><a href="#/schedule">Schedule Interview</a></li>
             <li><a href="#/assessment">Perform Assessment</a></li>
             
           </ul>

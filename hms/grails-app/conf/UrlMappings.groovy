@@ -15,6 +15,7 @@ class UrlMappings {
 		"/assessment"(view:"/partials/assessment")
 		"/configureWF"(view:"/partials/configureWF")
 		"/createWF"(view:"/partials/createWF")
+		"/dashboard"(view:"/partials/dashboard")
 		"500"(view:'/error')
 	}
 }
