@@ -1,17 +1,16 @@
  <h1>Create WF</h1> 
             <form role="form">
+            <div class="row">
+             <div class="col-md-4">
               <div class="form-group">
                 <label>Position</label>
                  <input class="form-control" type="text" placeholder="Director" readonly>
               </div>
-          </div> 
+             </div>
 		  <div class="col-md-5 col-md-offset-3">
 		  <div class="form-group">
 			<b>Hiring Process</b>
-             <div class="input-group">
-               <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
-               <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk form-control-feedback"></i></span>
-			  </div>
+               <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name *" required>
 			</div>
 		  </div>
 		  </div>
@@ -28,17 +27,9 @@
               </div>
 		  </div>
 		 </div>
-		<div class="btn-group">
-        <!-- <div class="form-group">
-                  <label>Interviewer : </label>
-                 <input type="text" placeholder="Interviewer name...." class="form-control">
-                 <label>Date / Time : </label>
-                 <input type="datetime-local" class="form-control">
-              </div> -->
               <button type="submit" class="btn btn-primary">Add</button>
 			  <button type="submit" class="btn btn-info">Update</button>
-			  <button type="submit" class="btn btn-warning">Clear</button>
-        </div>		
+			  <button type="submit" class="btn btn-warning">Clear</button>	
             </form>
 
         <table class="table table-striped table-condensed table-hover">
@@ -58,12 +49,10 @@
 					<td>22/02/2013</td>
 					<td>60</td>
 					<td>
-					<div class="btn-group">
 						<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-up"></span></button>
 						<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></button>
 						<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></button>
 						<button type="submit" class="btn btn-default" style="color: red"><span class="glyphicon glyphicon-trash"></button>
-					</div>
 					</td>
                   </tr>
                   <tr>
@@ -72,12 +61,10 @@
 					<td>22/03/2013</td>
 					<td>70</td>
 					<td>
-					<div class="btn-group">
 						<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-up"></span></button>
 						<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-arrow-down"></button>
 						<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></button>
 						<button type="submit" class="btn btn-default"style="color: red"><span class="glyphicon glyphicon-trash"></button>
-					</div>
 					</td>
                   </tr>
                 </tbody>

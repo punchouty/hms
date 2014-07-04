@@ -9,10 +9,7 @@
 		  <div class="col-md-4">
             <div class="form-group">
 			<b>Hiring Process</b>
-             <div class="input-group">
-               <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
-               <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
-			  </div>
+               <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name *" required>
 			</div>
            </div>
 		  <div class="col-md-4 col-md-offset-4">
@@ -31,20 +28,6 @@
               </div>
 		  </div>
 		 </div>
-		 <div class="row">
-		  <div class="col-md-4">
-              <div class="form-group">
-                <label>Creation Date / Time : </label>
-                <input type="datetime-local" class="form-control">
-              </div>
-		  </div>
-		  <div class="col-md-4 col-md-offset-4">
-			  <div class="form-group">
-                <label>Update Date / Time : </label>
-                <input type="datetime-local" class="form-control">
-              </div>
-		</div>	
-        </div>	
         <div class="row">
 		  <div class="col-md-4">		
               <div class="form-group">
@@ -63,7 +46,7 @@
                  <label>Date / Time : </label>
                  <input type="datetime-local" class="form-control">
               </div> -->
-              <button type="button" class="btn btn-default">Search</button>
+              <button type="button" class="btn btn-primary">Search</button>
 			  <button type="submit" class="btn btn-info">Save</button>
             </form>
 
@@ -73,24 +56,26 @@
                     <th>Name<span class="caret"></span></th>
                     <th>Creation Date<span class="caret"></span></th>
 					<th></th>
-					<th></th>
-					<th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>Screening</td>
                     <td>22/2/2014</td>
-					<td><button type="submit" class="btn btn-info">Clone</button></td>
-					<td><button type="submit" class="btn btn-warning">Edit</button></td>
-			        <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                    <td>
+					<button type="button" class="btn btn-info">Clone</button>
+					<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span></button>
+			        <button type="button" class="btn btn-default" style="color: red"><span class="glyphicon glyphicon-trash"></button>
+			        </td>
                   </tr>
                   <tr>
                     <td>Technical</td>
                     <td>23/3/2014</td>
-					<td><button type="submit" class="btn btn-info">Clone</button></td>
-					<td><button type="submit" class="btn btn-warning">Edit</button></td>
-			        <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                    <td>
+					<button type="button" class="btn btn-info">Clone</button>
+					<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span></button>
+			        <button type="button" class="btn btn-default" style="color: red"><span class="glyphicon glyphicon-trash"></button>
+			        </td>
                   </tr>
                 </tbody>
               </table>
