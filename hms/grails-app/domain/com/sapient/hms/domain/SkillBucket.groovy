@@ -4,7 +4,6 @@ package com.sapient.hms.domain
 class SkillBucket {
 
 	String name
-	def skills=[]	
 	Integer cutOffScore
 	Date dateCreated
 	Date lastUpdated
