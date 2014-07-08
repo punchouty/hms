@@ -10,7 +10,7 @@
           </button>
           <a class="navbar-brand" href="/hms/">Hiring Management System</a>
         </div>
-       
+        <div align="right"> <a href="logout">Logout</a></div>
       </div> 
     </div>
 
@@ -19,9 +19,9 @@
         <div class="col-sm-3 col-md-2 sidebar" id="sidebar1">
           <ul class="nav nav-pills nav-stacked" data-toggle="pill">
             <li  data-toggle="pill" class="active"><a href="#/dashboard">Dashboard</a></li>  
-            <li  data-toggle="pill"><a href="#/configureWF">Configure Hiring Process</a></li>
-            <li data-toggle="pill"><a href="#/schedule" >Schedule Interview</a></li>
-            <li data-toggle="pill"><a href="#/assessment" >Perform Assessment</a></li>
+            <n:hasRole name="SYSTEM ADMINISTRATOR"> <li  data-toggle="pill"><a href="#/configureWF">Configure Hiring Process</a></li></n:hasRole>
+            <n:hasRole name="HUMANRESOURCES"><li data-toggle="pill"><a href="#/schedule" >Schedule Interview</a></li></n:hasRole>
+             <n:hasRole name="PANEL"><li data-toggle="pill"><a href="#/assessment" >Perform Assessment</a></li></n:hasRole>
             
           </ul>
       
