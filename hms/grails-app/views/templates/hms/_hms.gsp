@@ -10,9 +10,9 @@
           </button>
           <a class="navbar-brand" href="/hms/">Hiring Management System</a>
         </div>
-        <div align="right"> <a href="logout">Logout</a></div>
+        <div align="right" style="color:white"><n:principal /> <a href="logout">Logout</a></div>
       </div> 
-    </div>
+   </div>
 
     <div class="container-fluid">
       <div class="row">

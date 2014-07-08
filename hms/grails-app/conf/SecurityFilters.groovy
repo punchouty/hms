@@ -1,87 +1,81 @@
 class SecurityFilters {
    def filters = {
-	   secure(controller:"HiringController", action:"schedule") {
+	   
+	   
+	   scheduleInterviewScreen(controller:"default", action:"schedule|scheduleRounds|dashboard|index") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") || permission("interview:schedule")
+				   role("HUMANRESOURCES")
 			   }
 		   }
 		 }
 	   
-	   secure(controller:"HiringController", action:"delete") {
+	   
+	   adminScreen(controller:"default", action:"createWF|configureWF") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") || permission("interview:delete")
+				   role("HUMANRESOURCES")
 			   }
 		   }
 		 }
 	   
-	   secure(controller:"HiringController", action:"cancel") {
+	   interviewerScreen(controller:"default", action:"assessment") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") || permission("interview:cancel")
+				   role("HUMANRESOURCES")
 			   }
 		   }
 		 }
 	   
-	   secure(controller:"HiringController", action:"reschedule") {
+	   getPosition(controller:"position", action:"index|list") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") || permission("interview:reschedule")
+				   role("HUMANRESOURCES")
 			   }
 		   }
 		 }
 	   
-	   secure(controller:"AssessmentController", action:"save") {
+	   hiringProcess(controller:"hiringProcess", action:"listByPosition") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") || permission("interview:round:save:results")
+				   role("HUMANRESOURCES") 
 			   }
 		   }
 		 }
 	   
-	   secure(controller:"AssessmentController", action:"requestReschedule") {
+	   assessment(controller:"assessmentRound", action:"index|list") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") || permission("interview:round:request:reschedule")
+				   role("HUMANRESOURCES") 
 			   }
 		   }
 		 }
-	   secure(controller:"AssessmentController", action:"requestCancel") {
+	   
+	   candidate(controller:"candidateDetails", action:"index|list|save") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") || permission("interview:round:request:cancel")
+				   role("HUMANRESOURCES") 
 			   }
 		   }
 		 }
-	   secure(controller:"AssessmentController", action:"markComplete") {
+	   
+	   roundEval(controller:"roundEvaluation", action:"listByInterview") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") || permission("interview:round:complete")
+				   role("HUMANRESOURCES")
 			   }
 		   }
 		 }
-	   secure(controller:"AssessmentController", action:"markStart") {
+	   
+	  	   
+	   interview(controller:"interviewDetails", action:"listByUser|save|delete") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") || permission("interview:round:start")
+				   role("HUMANRESOURCES") 
 			   }
 		   }
 		 }
-	   secure(controller:"AssessmentController", action:"requestAnotherRound") {
-		   before = {
-			   accessControl {
-				   role("HUMANRESOURCES") || permission("interview:round:request")
-			   }
-		   }
-		 }
-
-	   secure(controller:"AssessmentController", action:"updateResults") {
-		   before = {
-			   accessControl {
-				   role("HUMANRESOURCES") || permission("interview:round:update:results")
-			   }
-		   }
-		 }
+	  
+	   
    }
 }
