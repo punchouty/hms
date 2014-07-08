@@ -1,8 +1,13 @@
 class SecurityFilters {
    def filters = {
 	   
+	  common(controller:"default", action:"dashboard|index") {
+		   before = {
+			   accessControl { true   }
+		   }
+		 }
 	   
-	   scheduleInterviewScreen(controller:"default", action:"schedule|scheduleRounds|dashboard|index") {
+	   scheduleInterviewScreen(controller:"default", action:"schedule|scheduleRounds") {
 		   before = {
 			   accessControl {
 				   role("HUMANRESOURCES")
@@ -10,11 +15,11 @@ class SecurityFilters {
 		   }
 		 }
 	   
-	   
+	 	
 	   adminScreen(controller:"default", action:"createWF|configureWF") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES")
+				   role("SYSTEM ADMINISTRATOR")
 			   }
 		   }
 		 }
@@ -22,7 +27,7 @@ class SecurityFilters {
 	   interviewerScreen(controller:"default", action:"assessment") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES")
+				   role("PANEL")
 			   }
 		   }
 		 }
@@ -30,7 +35,7 @@ class SecurityFilters {
 	   getPosition(controller:"position", action:"index|list") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES")
+				   role("HUMANRESOURCES") || role("PANEL")
 			   }
 		   }
 		 }
@@ -46,7 +51,7 @@ class SecurityFilters {
 	   assessment(controller:"assessmentRound", action:"index|list") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") 
+				   role("PANEL") 
 			   }
 		   }
 		 }
@@ -62,7 +67,7 @@ class SecurityFilters {
 	   roundEval(controller:"roundEvaluation", action:"listByInterview") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES")
+				   role("HUMANRESOURCES") || role("PANEL")
 			   }
 		   }
 		 }
