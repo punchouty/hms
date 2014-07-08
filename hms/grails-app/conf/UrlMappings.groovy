@@ -9,14 +9,14 @@ class UrlMappings {
 		}
 
 		
-		"/"(view:"/index")
-		"/schedule"(view:"/partials/schedule")
-		"/scheduleRounds"(view:"/partials/scheduleRounds")
-		"/assessment"(view:"/partials/assessment")
-		"/configureWF"(view:"/partials/configureWF")
-		"/createWF"(view:"/partials/createWF")
-		"/dashboard"(view:"/partials/dashboard")
-		"500"(view:'/error')
+		"/"(controller: "default", action:"index")
+		"/schedule"(controller: "default", action:"schedule")
+		"/scheduleRounds"(controller: "default", action:"scheduleRounds")
+		"/assessment"(controller: "default", action:"assessment")
+		"/configureWF"(controller: "default", action:"configureWF")
+		"/createWF"(controller: "default", action:"createWF")
+		"/dashboard"(controller: "default", action:"dashboard")
+		"500"(view:"/error")
 	}
 }
 
