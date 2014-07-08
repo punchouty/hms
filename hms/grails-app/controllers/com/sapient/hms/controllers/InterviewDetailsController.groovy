@@ -31,9 +31,9 @@ class InterviewDetailsController {
         render InterviewDetail.list(params) as JSON
     }
 	
-    def listByUser(Long userId) {
+    def listByUser(Long id) {
 		
-		def user = User.get(1)
+		def user = User.get(id)
 		def interviewDetails = InterviewDetail.findAllByHiringperson(user)
 		def interviewDetailsList = new ArrayList<InterviewDetailsVO>()
 		interviewDetails.each {
