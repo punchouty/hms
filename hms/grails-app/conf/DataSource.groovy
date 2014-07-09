@@ -21,7 +21,7 @@ environments {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
            // url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-			url = "jdbc:mysql://http://dlusku20346337/hms"
+			url = "jdbc:mysql://http://localhost/hms"
 			username = "root"
 			password = "mysql"
 			}
@@ -29,7 +29,7 @@ environments {
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://http://dlusku20346337//hms"
+            url = "jdbc:mysql://http://localhost//hms"
 			username = "root"
 			password = "root"
         }
@@ -38,7 +38,7 @@ environments {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
            // url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-			url = "jdbc:mysql://http://dlusku20346337/hms"
+			url = "jdbc:mysql://http://localhost/hms"
 			username = "root"
 			password = "mysql"
 			}
