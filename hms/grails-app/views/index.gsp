@@ -5,8 +5,6 @@
      <title>Hiring Management System</title>
 </head>
 <body>
-
 	<g:render template="../templates/hms/hms"/>	
-	
 </body>
 </html>
