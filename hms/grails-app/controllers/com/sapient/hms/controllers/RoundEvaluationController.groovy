@@ -24,7 +24,6 @@ class RoundEvaluationController {
 
 	def listByInterview(Long id) {
 		println id
-		//def interviewDetail = InterviewDetail.get(id)
 		def roundEvalsQuery = RoundEvaluation.where{
 			interviewDetail.id== id
 		}
