@@ -2,6 +2,8 @@ package com.sapient.hms.controllers
 
 import grails.converters.JSON
 import hms.InterviewDetailsVO
+import hms.ScheduleRoundsBucketsVO
+import hms.ScheduleRoundsSkillsVO
 import hms.ScheduleRoundsVO
 
 import com.sapient.hms.domain.InterviewDetail
@@ -21,47 +23,72 @@ class RoundEvaluationController {
 	//    }
 
 	def listByInterview(Long id) {
-		def interviewDetail = InterviewDetail.get(id)
-		def roundEvals = RoundEvaluation.findAllByInterviewDetail(interviewDetail)
+		println id
+		//def interviewDetail = InterviewDetail.get(id)
+		def roundEvalsQuery = RoundEvaluation.where{
+			interviewDetail.id== id
+		}
+		def roundEvals=roundEvalsQuery.list()
+			//findAllByInterviewDetail(interviewDetail)
 		def roundEvalsList = new ArrayList<ScheduleRoundsVO>()
 		roundEvals.each{
-			def roundEvalItem = new ScheduleRoundsVO()
-			//roundEvalItem.evaluationRoundId = it.id
-			roundEvalItem.roundName = it.assessmentRound.name
-			//roundEvalItem.interviewerId = it.interviewer.id
-			//roundEvalItem.interviewerName = it.interviewer.username
-			roundEvalItem.interviewTime = it.scheduledTime
-			//def skillsEvals = it.
-			//def bucketEvalsList = new ArrayList<ScheduleRoundsBucketsVO>()
-			roundEvalsList.add(roundEvalItem)			
+			def roundVO = new ScheduleRoundsVO()
+			roundVO.evaluationRoundId = it.id
+			roundVO.roundName = it.assessmentRound.name
+			roundVO.interviewerId = it.interviewer.id
+			roundVO.interviewerName = it.interviewer.username
+			roundVO.interviewTime = it.scheduledTime
+			def bucketEvals = it.bucketEvaluations
+			def bucketEvalsList = new ArrayList<ScheduleRoundsBucketsVO>()
+			bucketEvals.each{
+				bucketVO = new ScheduleRoundsBucketsVO()
+				bucketVO.evaluationBucketId = it.id
+				bucketVO.bucketName = it.skillBucket.name
+				def skillEvals = it.skillEvaluations
+				def skillEvalsList = new ArrayList<ScheduleRoundsSkillsVO>()
+				skillEvals.each{
+					def skillVO = new ScheduleRoundsSkillsVO()
+					skillVO.evaluationSkillId = it.id
+					skillVO.skillName = it.skillItem.name
+					skillVO.cutOffScore =it.skillItem.cutOffScore
+					skillVO.weight = it.skillItem.weight
+					skillVO.expectedSkillrating = it.skillItem.expectedSkillrating
+					skillVO.candidaterating = it.candidateRating
+					skillVO.candidateScore = it.candidateSkillScore
+					skillEvalsList.add(skillVO)
+				}
+				bucketEvalsList.add(bucketVO)
+			}
+			
+			roundEvalsList.add(roundVO)			
 		}
 		render roundEvalsList as JSON
 	}
 
-	def searchByInterview (Long id){
-             // def roundEvaluation=RoundEvaluation.findAllByInterviewer(interviewerId);
-              println id
-			   def interviewDetailsList = new ArrayList<InterviewDetailsVO>()
-			   def roundEvaluation=RoundEvaluation.createCriteria();
-			   def results=roundEvaluation.list {
-					  and{
-							eq("interviewer.id",id)
-					  }
-					 // order("scheduledTime",desc)
-			   }
-			   results.each {
-					  def interviewDetailVO = new InterviewDetailsVO();
-					  interviewDetailVO.candidateName=it.interviewDetail.candidateDetail.name
-															   interviewDetailVO.roundName=it.assessmentRound.name
-															   interviewDetailVO.interviewMode=it.interviewDetail.interviewMode
-															   interviewDetailVO.scheduledDate=it.scheduledTime
-															   interviewDetailVO.interviewer=it.interviewer.name
-															   interviewDetailsList.add(interviewDetailVO)
-			   }
- 
-			   render interviewDetailsList as JSON
-			   
-      }
+//	def searchByInterview (Long id){
+//             // def roundEvaluation=RoundEvaluation.findAllByInterviewer(interviewerId);
+//              println id
+//			   def interviewDetailsList = new ArrayList<InterviewDetailsVO>()
+//			   def roundEvaluation=RoundEvaluation.createCriteria();
+//			   def results=roundEvaluation.list {
+//					  and{
+//							eq("interviewer.id",id)
+//					  }
+//					 // order("scheduledTime",desc)
+//			   }
+//			   results.each {
+//					  def interviewDetailVO = new InterviewDetailsVO();
+//					  interviewDetailVO.candidateName=it.interviewDetail.candidateDetail.name
+//															   interviewDetailVO.roundName=it.assessmentRound.name
+//															   interviewDetailVO.interviewMode=it.interviewDetail.interviewMode
+//															   interviewDetailVO.scheduledDate=it.scheduledTime
+//															   interviewDetailVO.interviewer=it.interviewer.name
+//															   interviewDetailsList.add(interviewDetailVO)
+//			   }
+// 
+//			   render interviewDetailsList as JSON
+//			   
+//      }
 
 	
 	def update(long roundId,String newStatus){
