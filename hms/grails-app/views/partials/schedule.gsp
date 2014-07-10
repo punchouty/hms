@@ -59,7 +59,7 @@
 			    
                 <tbody>
                   <tr ng-repeat="interview in interviews">
-                      <td>{{interview.hiringProcessName}}</td>
+                    <td>{{interview.hiringProcessName}}</td>
                     <td>{{interview.positionName}}</td>
                     <td>{{interview.candidateName}}</td>
                    
@@ -75,3 +75,5 @@
            
               </div>
           </div>
+          
+         

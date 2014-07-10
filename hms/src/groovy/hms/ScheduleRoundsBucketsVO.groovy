@@ -9,6 +9,7 @@ class ScheduleRoundsBucketsVO {
 	
 	Long evaluationBucketId
 	String roundName
+	String bucketName
 	Long interviewerId
 	String interviewerName
 	Date interviewTime

@@ -20,7 +20,7 @@ hms.factory('hiringService', function($resource, $log){
 	
 	factory.getRoundSchedulesForInterview = function (interviewId){
 		return $resource('roundEvaluation/listByInterview/:interviewId', {interviewId:'@interviewId'}).query({interviewId:interviewId});
-		}
+    }
 	
 			
 	factory.createCandidate = function(candidate){
@@ -45,6 +45,15 @@ hms.factory('hiringService', function($resource, $log){
 		return $resource('candidateDetails/save', {}, {'save': {method:'POST'}}).save(candidate);
 	}
 	
+	factory.getRoundsByinterview = function(userId){
+	     return $resource('roundEvaluation/searchByInterview/:userId', {userId:'@userId'}).query({userId:userId});		
+	}
 	
+	
+	factory.updateRoundStatus = function(status){
+        return $resource('roundEvaluation/updateStatus/:status', {}, {'updateStatus': {method:'PUT'}}).update(status);
+    }
+	
+
 	return factory;
 });

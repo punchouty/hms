@@ -10,8 +10,9 @@
           </button>
           <a class="navbar-brand" href="/hms/">Hiring Management System</a>
         </div>
-        <div align="right" style="color:white"><n:principal /> <a href="logout">Logout</a></div>
-      </div> 
+        <div align="right" style="color:white"><div id="loggedInUser">${loggedInUser}</div><a href="logout">Logout</a></div>
+		      <div id="loggedInUserId">${loggedInUserId}</div>
+        </div> 
    </div>
 
     <div class="container-fluid">
@@ -21,7 +22,7 @@
             <li  data-toggle="pill" class="active"><a href="#/dashboard">Dashboard</a></li>  
             <n:hasRole name="SYSTEM ADMINISTRATOR"> <li  data-toggle="pill"><a href="#/configureWF">Configure Hiring Process</a></li></n:hasRole>
             <n:hasRole name="HUMANRESOURCES"><li data-toggle="pill"><a href="#/schedule" >Schedule Interview</a></li></n:hasRole>
-             <n:hasRole name="PANEL"><li data-toggle="pill"><a href="#/assessment" >Perform Assessment</a></li></n:hasRole>
+             <n:hasRole name="PANEL"><li data-toggle="pill"><a href="#/assessmentRoundsList" >Search Interviews</a></li></n:hasRole>
             
           </ul>
       
@@ -30,7 +31,7 @@
         <div class="col-sm-4 col-sm-offset-0 col-md-12 col-md-offset-0 main">
         
 		   <div ng-view>
-		   
+		      
 		    </div>
         </div>
 	</div>

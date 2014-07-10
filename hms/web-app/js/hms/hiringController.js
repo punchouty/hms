@@ -4,8 +4,9 @@
 
 hms.controller('hiringController', function($scope,$routeParams, hiringService) {
 	
-	$scope.loggedInUser = 'User';
-	$scope.loggedInUserId = 1;
+	$scope.loggedInUser =  $('#loggedInUser').html();
+	$scope.loggedInUserId = $('#loggedInUserId').html();
+		
 	$scope.newCandidate="Yes"; 
 	$scope.isSetInterviewDisabled = true;
 

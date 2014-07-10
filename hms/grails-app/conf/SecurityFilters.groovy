@@ -24,7 +24,7 @@ class SecurityFilters {
 		   }
 		 }
 	   
-	   interviewerScreen(controller:"default", action:"assessment") {
+	   interviewerScreen(controller:"default", action:"assessment|assessmentRoundsList") {
 		   before = {
 			   accessControl {
 				   role("PANEL")
@@ -59,7 +59,7 @@ class SecurityFilters {
 	   candidate(controller:"candidateDetails", action:"index|list|save") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") 
+				   role("HUMANRESOURCES") ||  role("PANEL") 
 			   }
 		   }
 		 }
@@ -80,7 +80,6 @@ class SecurityFilters {
 			   }
 		   }
 		 }
-	  
 	   
    }
 }

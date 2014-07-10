@@ -1,0 +1,2 @@
+INSERT INTO `_role` (`id`,`version`,`date_created`,`description`,`external`,`last_updated`,`name`,`protect`,`realm`) VALUES (4,3,'2014-06-20 15:07:49','ROLE FOR HR',0,'2014-06-20 15:10:44','HUMANRESOURCES',0,NULL);
+INSERT INTO `_role` (`id`,`version`,`date_created`,`description`,`external`,`last_updated`,`name`,`protect`,`realm`) VALUES (5,19,'2014-06-20 15:11:33','ROLE FOR INTERVIEWERS',0,'2014-06-20 15:16:07','PANEL',0,NULL);

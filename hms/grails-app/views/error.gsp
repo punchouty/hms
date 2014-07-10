@@ -15,6 +15,4 @@
 			</ul>
 		</g:else>
 	</body>
-	
 </html>
-

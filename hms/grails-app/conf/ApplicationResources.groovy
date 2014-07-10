@@ -30,6 +30,7 @@ modules = {
 		resource url:'js/hms/hiringFilter.js'
 		resource url:'js/hms/hiringController.js'
 		resource url:'js/hms/hiringRoundController.js'
-
+		resource url:'js/hms/assessmentRoundController.js'
+		resource url:'js/hms/hiringAssessRoundController.js'
     }
 }
