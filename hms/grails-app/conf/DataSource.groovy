@@ -1,44 +1,40 @@
 dataSource {
     pooled = true
-	driverClassName = "com.mysql.jdbc.Driver"
-	jmxExport = true
-	driverClassName = "com.mysql.jdbc.Driver"
-	dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-	
-   // driverClassName = "org.h2.Driver"
-    //username = "sa"
-    //password = ""
+    driverClassName = "com.mysql.jdbc.Driver"
+    dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
 }
 hibernate {
     cache.use_second_level_cache = true
-    cache.use_query_cache = false
-    cache.region.factory_class = 'net.sf.ehcache.hibernate.EhCacheRegionFactory'
-	show_sql = true
+    cache.use_query_cache = true
+    cache.provider_class = 'net.sf.ehcache.hibernate.EhCacheProvider'
 }
 // environment specific settings
 environments {
     development {
         dataSource {
-            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-			url = "jdbc:mysql://http://localhost/hms"
-			username = "root"
-			password = "mysql"
-			}
+            dbCreate = "update" // one of 'create', 'create-drop','update'
+            url = "jdbc:mysql://localhost/hms?useUnicode=yes&characterEncoding=UTF-8"
+            username = "root"
+            password = "mysql"
+        }
+        hibernate {
+            show_sql = true
+        }
     }
     test {
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:mysql://http://localhost//hms"
-			username = "root"
-			password = "root"
+            dbCreate = "update" // one of 'create', 'create-drop','update'
+            url = "jdbc:mysql://localhost/hms?useUnicode=yes&characterEncoding=UTF-8"
+            username = "root"
+            password = "mysql"
         }
     }
     production {
         dataSource {
             dbCreate = "update"
-			url = "jdbc:mysql://http://localhost/hms"
-			username = "root"
-			password = "mysql"
-			}
+            url = "jdbc:mysql://localhost/hms?useUnicode=yes&characterEncoding=UTF-8"
+            username = "root"
+            password = "mysql"
+        }
     }
 }
