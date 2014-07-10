@@ -30,17 +30,21 @@ class RoundEvaluationController {
 		def roundEvals=roundEvalsQuery.list()
 			//findAllByInterviewDetail(interviewDetail)
 		def roundEvalsList = new ArrayList<ScheduleRoundsVO>()
-		roundEvals.each{
+		roundEvals.each{ 
 			def roundVO = new ScheduleRoundsVO()
 			roundVO.evaluationRoundId = it.id
 			roundVO.roundName = it.assessmentRound.name
+			if(it.interviewer)
+			{
 			roundVO.interviewerId = it.interviewer.id
 			roundVO.interviewerName = it.interviewer.username
 			roundVO.interviewTime = it.scheduledTime
+			}
+			
 			def bucketEvals = it.bucketEvaluations
 			def bucketEvalsList = new ArrayList<ScheduleRoundsBucketsVO>()
 			bucketEvals.each{
-				bucketVO = new ScheduleRoundsBucketsVO()
+				def bucketVO = new ScheduleRoundsBucketsVO()
 				bucketVO.evaluationBucketId = it.id
 				bucketVO.bucketName = it.skillBucket.name
 				def skillEvals = it.skillEvaluations
