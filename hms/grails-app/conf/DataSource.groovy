@@ -1,6 +1,6 @@
 dataSource {
     pooled = true
-	
+	driverClassName = "com.mysql.jdbc.Driver"
 	jmxExport = true
 	driverClassName = "com.mysql.jdbc.Driver"
 	dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
@@ -19,9 +19,7 @@ hibernate {
 environments {
     development {
         dataSource {
-			driverClassName = "com.mysql.jdbc.Driver"
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-           // url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 			url = "jdbc:mysql://http://localhost/hms"
 			username = "root"
 			password = "mysql"
@@ -29,7 +27,6 @@ environments {
     }
     test {
         dataSource {
-			driverClassName = "com.mysql.jdbc.Driver"
             dbCreate = "update"
             url = "jdbc:mysql://http://localhost//hms"
 			username = "root"
@@ -38,9 +35,7 @@ environments {
     }
     production {
         dataSource {
-			driverClassName = "com.mysql.jdbc.Driver"
-            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-           // url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+            dbCreate = "update"
 			url = "jdbc:mysql://http://localhost/hms"
 			username = "root"
 			password = "mysql"
