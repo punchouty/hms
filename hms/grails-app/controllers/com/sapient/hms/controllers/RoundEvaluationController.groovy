@@ -22,7 +22,7 @@ class RoundEvaluationController {
 	//        [roundEvaluationResultInstanceList: RoundEvaluation.list(params), roundEvaluationResultInstanceTotal: RoundEvaluation.count()]
 	//    }
 
-	def listByInterview(Long id) {
+	def listByInterview1(Long id) {
 		println id
 		def roundEvalsQuery = RoundEvaluation.where{
 			interviewDetail.id== id
@@ -68,6 +68,52 @@ class RoundEvaluationController {
 		render roundEvalsList as JSON
 	}
 
+	
+	def listByInterview(Long id) {
+		println id
+		def roundEvalsQuery = RoundEvaluation.where{
+			interviewDetail.id== id
+		}
+		def roundEvals=roundEvalsQuery.list()
+			//findAllByInterviewDetail(interviewDetail)
+		def roundEvalsList = new ArrayList<ScheduleRoundsVO>()
+		roundEvals.each{
+			def roundVO = new ScheduleRoundsVO()
+			roundVO.evaluationRoundId = it.id
+			roundVO.roundName = it.assessmentRound.name
+			if(it.interviewer)
+			{
+			roundVO.interviewerId = it.interviewer.id
+			roundVO.interviewerName = it.interviewer.username
+			roundVO.interviewTime = it.scheduledTime
+			}
+			
+			//def bucketEvals = it.bucketEvaluations
+			def bucketEvalsList = new ArrayList<ScheduleRoundsBucketsVO>()
+		//	bucketEvals.each{
+				def bucketVO = new ScheduleRoundsBucketsVO()
+				bucketVO.evaluationBucketId = 1
+				bucketVO.bucketName = "Technology"
+				//def skillEvals = it.skillEvaluations
+				def skillEvalsList = new ArrayList<ScheduleRoundsSkillsVO>()
+				//skillEvals.each{
+					def skillVO = new ScheduleRoundsSkillsVO()
+					skillVO.evaluationSkillId = 1
+					skillVO.skillName = "Java"
+					skillVO.cutOffScore =5
+					skillVO.weight = 10
+					skillVO.expectedSkillrating = 2
+					skillVO.candidaterating =5
+					skillVO.candidateScore = 100
+					skillEvalsList.add(skillVO)
+			//	}
+				bucketEvalsList.add(bucketVO)
+			//}
+			
+			roundEvalsList.add(roundVO)
+		}
+		render roundEvalsList as JSON
+	}
 //	def searchByInterview (Long id){
 //             // def roundEvaluation=RoundEvaluation.findAllByInterviewer(interviewerId);
 //              println id
