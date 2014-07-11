@@ -15,8 +15,7 @@ class CandidateDetailsController {
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-       render CandidateDetail.list(params) as JSON
+       render CandidateDetail.list() as JSON
     }
 //
 //    def create() {
