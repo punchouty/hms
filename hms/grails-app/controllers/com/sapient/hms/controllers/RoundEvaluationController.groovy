@@ -35,9 +35,8 @@ class RoundEvaluationController {
 			interviewDetail.id== id
 		}
 		.withPopulatedQuery(null, null) { query ->
-			query.@criteria.setFetchMode('bucketEvaluations', FM.EAGER)
-			query.@criteria.setFetchMode('bucketEvaluations.skillEvaluations', FM.EAGER)
-			//query.list()
+			query.@criteria.setFetchMode('bucketEvaluations', FM.SELECT)
+			query.@criteria.setFetchMode('bucketEvaluations.skillEvaluations', FM.SELECT)
 			}
 		def roundEvals=roundEvalsQuery.list()
 		def roundEvalsList = new ArrayList<ScheduleRoundsVO>()
@@ -53,7 +52,6 @@ class RoundEvaluationController {
 			}
 			
 			def bucketEvals = it.bucketEvaluations
-			bucketEvals.each{}
 			bucketEvals = it.bucketEvaluations
 			def bucketEvalsList = new ArrayList<ScheduleRoundsBucketsVO>()
 			bucketEvals.each{
@@ -61,7 +59,6 @@ class RoundEvaluationController {
 				bucketVO.evaluationBucketId = it.id
 				bucketVO.bucketName = it.skillBucket.name
 				def skillEvals = it.skillEvaluations
-				skillEvals.each{}
 				def skillEvalsList = new ArrayList<ScheduleRoundsSkillsVO>()
 				skillEvals.each{
 					def skillVO = new ScheduleRoundsSkillsVO()
