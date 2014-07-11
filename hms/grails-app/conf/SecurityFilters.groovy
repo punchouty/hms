@@ -6,14 +6,6 @@ class SecurityFilters {
 			   accessControl { true   }
 		   }
 		 }
-	   
-	  panelUser(controller:"user", action:"listPanelUsers") {
-		  before = {
-			  accessControl {
-				  role("HUMANRESOURCES")
-			  }
-		  }
-		}
 	  
 	   scheduleInterviewScreen(controller:"default", action:"schedule|scheduleRounds") {
 		   before = {
@@ -72,7 +64,7 @@ class SecurityFilters {
 		   }
 		 }
 	   
-	   roundEval(controller:"roundEvaluation", action:"listByInterview") {
+	   roundEval(controller:"roundEvaluation", action:"listByInterview|listPanelUsers") {
 		   before = {
 			   accessControl {
 				   role("HUMANRESOURCES") || role("PANEL")

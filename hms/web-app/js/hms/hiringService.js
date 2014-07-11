@@ -54,7 +54,7 @@ hms.factory('hiringService', function($resource, $log){
         return $resource('roundEvaluation/update', {}, {'update': {method:'PUT'}}).update(round);
     }
 	factory.getInterviewerDetails = function (){
-		return $resource('user/listPanelUsers').query();
+		return $resource('roundEvaluation/listPanelUsers').query();
 		}
 	
 

@@ -1,6 +1,7 @@
 package com.sapient.hms.controllers
 
 import org.hibernate.FetchMode as FM
+
 import grails.converters.JSON
 import hms.InterviewDetailsVO
 import hms.ScheduleRoundsBucketsVO
@@ -9,10 +10,11 @@ import hms.ScheduleRoundsVO
 
 import com.sapient.hms.domain.InterviewDetail
 import com.sapient.hms.domain.RoundEvaluation
+import com.sapient.hms.security.User;
 
 class RoundEvaluationController {
 
-	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	static allowedMethods = [save: "POST", update: "PUT", delete: "POST"]
 
 	def index() {
 		redirect(action: "list", params: params)
@@ -22,6 +24,15 @@ class RoundEvaluationController {
 	//        params.max = Math.min(max ?: 10, 100)
 	//        [roundEvaluationResultInstanceList: RoundEvaluation.list(params), roundEvaluationResultInstanceTotal: RoundEvaluation.count()]
 	//    }
+	
+	def listPanelUsers() {
+		
+		def users = User.where{
+			"Role" == "PANEL"
+		}
+		render users.list() as JSON
+		
+	}
 
 	def listByInterview(Long id) {
 		
