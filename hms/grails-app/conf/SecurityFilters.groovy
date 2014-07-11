@@ -7,6 +7,14 @@ class SecurityFilters {
 		   }
 		 }
 	   
+	  panelUser(controller:"user", action:"listPanelUsers") {
+		  before = {
+			  accessControl {
+				  role("HUMANRESOURCES")
+			  }
+		  }
+		}
+	  
 	   scheduleInterviewScreen(controller:"default", action:"schedule|scheduleRounds") {
 		   before = {
 			   accessControl {
@@ -80,6 +88,8 @@ class SecurityFilters {
 			   }
 		   }
 		 }
+	   
+	  
 	   
    }
 }

@@ -51,6 +51,7 @@ class RoundEvaluationController {
 			roundVO.interviewTime = it.scheduledTime
 			}
 			
+			roundVO.candidateRoundScore = it.candidateRoundScore
 			def bucketEvals = it.bucketEvaluations
 			bucketEvals = it.bucketEvaluations
 			def bucketEvalsList = new ArrayList<ScheduleRoundsBucketsVO>()
@@ -58,6 +59,7 @@ class RoundEvaluationController {
 				def bucketVO = new ScheduleRoundsBucketsVO()
 				bucketVO.evaluationBucketId = it.id
 				bucketVO.bucketName = it.skillBucket.name
+				bucketVO.candidateBucketScore=it.candidateBucketScore
 				def skillEvals = it.skillEvaluations
 				def skillEvalsList = new ArrayList<ScheduleRoundsSkillsVO>()
 				skillEvals.each{
@@ -66,8 +68,8 @@ class RoundEvaluationController {
 					skillVO.skillName = it.skillItem.name
 					skillVO.cutOffScore =it.skillItem.cutOffScore
 					skillVO.weight = it.skillItem.weight
-					skillVO.expectedSkillrating = it.skillItem.expectedSkillrating
-					skillVO.candidaterating = it.candidateRating
+					skillVO.expectedSkillRating = it.skillItem.expectedSkillRating
+					skillVO.candidateRating = it.candidateRating
 					skillVO.candidateScore = it.candidateSkillScore
 					skillEvalsList.add(skillVO)
 				}
@@ -108,11 +110,13 @@ class RoundEvaluationController {
 //      }
 
 	
-	def update(long roundId,String newStatus){
-		def interviewDetail=InterviewDetail.where {
-			roundEvaluations.id==roundId
-		}		
-		interviewDetail.updateAll(completionStatus:newStatus)		
+	def update(){
+		def roundEval=RoundEvaluation.get(params.evaluationRoundId)	
+		def user = User.get(params.interviewerId)
+		roundEval.interviewer = user
+		roundEval.scheduledTime = params.interviewTime
+		roundEval.save(flush:true)
+		
 	}
 
 	//    def create() {
