@@ -1,10 +1,10 @@
 
 <h1>Assess Rounds</h1>
-  <a href="#/assessRounds">Assess Rounds {{round}}</a>
 		<form role="form">
 		<div class="row">
 		  <div class="col-md-4">
-		   <b>Interviewer: </b>{{loggedInUser}}
+		   <b>Interviewer: </b>
+		    <input type="text" class="form-control"  value="{{loggedInUser}}" readonly>
           </div> 
 		  <div class="col-md-5 col-md-offset-3">
 			<label>Scheduled Date</label>
@@ -16,12 +16,12 @@
 		   <div class="col-md-4">
                  <label>Candidate: </label>
 <%--                  <select class="form-control" ng-model="selectedCandidate" ng-options="candidate.name+' - '+candidate.location for candidate.name for candidate in hiringrounds"></select>--%>
-                  <input type="text" class="form-control" ng-model="selectedCandidate" placeholder="Select Date">
+                  <input type="text" class="form-control" ng-model="selectedCandidate" placeholder="condidate name...">
           </div> 
            <div class="col-md-5 col-md-offset-3">
                  <label>Round Name</label><%--
                   <select class="form-control"  ng-model="selectedRound" ng-options="round.name for rounds in hiringrounds"></select>
-                   --%><input type="text" class="form-control" ng-model="selectedRound" placeholder="Select Date">
+                   --%><input type="text" class="form-control" ng-model="selectedRound" placeholder="round name...">
 		  </div>
 		 </div>
 		  <br>
