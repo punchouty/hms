@@ -106,10 +106,12 @@ class RoundEvaluationController {
 					skillVO.candidaterating =5
 					skillVO.candidateScore = 100
 					skillEvalsList.add(skillVO)
+					
 			//	}
+				bucketVO.skillEval  = skillEvalsList
 				bucketEvalsList.add(bucketVO)
 			//}
-			
+			roundVO.bucketEval = bucketEvalsList
 			roundEvalsList.add(roundVO)
 		}
 		render roundEvalsList as JSON
@@ -162,16 +164,10 @@ class RoundEvaluationController {
 	//        redirect(action: "show", id: roundEvaluationResultInstance.id)
 	//    }
 	//
-	//    def show(Long id) {
-	//        def roundEvaluationResultInstance = RoundEvaluation.get(id)
-	//        if (!roundEvaluationResultInstance) {
-	//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'roundEvaluationResult.label', default: 'RoundEvaluationResult'), id])
-	//            redirect(action: "list")
-	//            return
-	//        }
-	//
-	//        [roundEvaluationResultInstance: roundEvaluationResultInstance]
-	//    }
+	    def show(Long id) {
+	        def roundEvaluationResultInstance = RoundEvaluation.get(id)
+	
+	    }
 	//
 	//    def edit(Long id) {
 	//        def roundEvaluationResultInstance = RoundEvaluation.get(id)
