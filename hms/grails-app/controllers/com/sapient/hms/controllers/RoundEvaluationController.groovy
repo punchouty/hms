@@ -9,7 +9,6 @@ import hms.InterviewDetailsVO
 import hms.ScheduleRoundsBucketsVO
 import hms.ScheduleRoundsSkillsVO
 import hms.ScheduleRoundsVO
-
 import com.sapient.hms.domain.InterviewDetail
 import com.sapient.hms.domain.RoundEvaluation
 import com.sapient.hms.security.User;

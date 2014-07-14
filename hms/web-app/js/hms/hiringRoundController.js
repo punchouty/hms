@@ -1,4 +1,3 @@
-
 hms.controller('hiringRoundController', function($scope, $routeParams, hiringService) {
 	
 	
@@ -37,8 +36,3 @@ hms.controller('hiringRoundController', function($scope, $routeParams, hiringSer
 	
 });
 
-  
-  
-  
-  
- 

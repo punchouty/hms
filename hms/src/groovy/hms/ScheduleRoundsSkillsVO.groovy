@@ -10,7 +10,9 @@ class ScheduleRoundsSkillsVO {
 	String skillName
 	Integer cutOffScore
 	Integer weight
-	Integer expectedSkillrating
-	Integer candidaterating
+	Integer expectedSkillRating
+	Integer candidateRating
 	Integer candidateScore
+	
+	
 }

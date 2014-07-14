@@ -52,6 +52,7 @@ hms.factory('hiringService', function($resource, $log){
 	
 	factory.updateRound = function(round){
         return $resource('roundEvaluation/update', {}, {'update': {method:'PUT'}}).update(round);
+
     }
 	factory.getInterviewerDetails = function (){
 		return $resource('roundEvaluation/listPanelUsers').query();
@@ -59,8 +60,10 @@ hms.factory('hiringService', function($resource, $log){
 		
 		factory.getAssessRoundListForInterview = function (interviewId){
 		return $resource('roundEvaluation/listByInterviewforAssess/:interviewId', {interviewId:'@interviewId'}).query({interviewId:interviewId});
+
+
     }
-	
+
 	factory.getAssessmentsForEvaluationRoundId = function (evaluationRoundId){
 		return $resource('roundEvaluation/listByEvaluationRoundId/:evaluationRoundId', {interviewId:'@evaluationRoundId'}).query({evaluationRoundId:evaluationRoundId});
     } 	

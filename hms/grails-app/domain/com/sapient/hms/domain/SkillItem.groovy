@@ -4,7 +4,7 @@ package com.sapient.hms.domain
 class SkillItem{
 	
 	String name
-	Integer expectedSkillrating
+	Integer expectedSkillRating
 	Integer cutOffScore
 	Integer weight
 	Date dateCreated

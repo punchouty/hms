@@ -9,5 +9,6 @@ class ScheduleRoundsBucketsVO {
 	
 	Long evaluationBucketId
 	String bucketName
+	Integer candidateBucketScore
 	List<ScheduleRoundsSkillsVO>  skillEval
 }

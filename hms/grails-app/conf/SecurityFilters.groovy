@@ -6,7 +6,7 @@ class SecurityFilters {
 			   accessControl { true   }
 		   }
 		 }
-	   
+	  
 	   scheduleInterviewScreen(controller:"default", action:"schedule|scheduleRounds") {
 		   before = {
 			   accessControl {
@@ -64,7 +64,7 @@ class SecurityFilters {
 		   }
 		 }
 	   
-	   roundEval(controller:"roundEvaluation", action:"listByInterview") {
+	   roundEval(controller:"roundEvaluation", action:"listByInterview|listPanelUsers") {
 		   before = {
 			   accessControl {
 				   role("HUMANRESOURCES") || role("PANEL")
@@ -80,6 +80,8 @@ class SecurityFilters {
 			   }
 		   }
 		 }
+	   
+	  
 	   
    }
 }

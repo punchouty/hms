@@ -14,4 +14,6 @@ class ScheduleRoundsVO {
 	Date interviewTime
 	Integer candidateRoundScore
 	List<ScheduleRoundsBucketsVO>  bucketEval
+	
 }
+

@@ -57,17 +57,18 @@ hms.controller('hiringController', function($scope,$routeParams, hiringService) 
 		});
 	  
    $scope.changeCandidate = function(){
-	   $scope.selectedCandidateId = "";
-	   $scope.newCandidate="Yes";
-	   $scope.selectedCandidate = '';
 	   $scope.isSetInterviewDisabled = true;
+	   $scope.newCandidate="Yes";
 	   }
 	  
 	   $scope.addCandidate = function(){
-		   hiringService.addCandidate({"name":"New Candidate", "location": "99128271122"}).$promise.then(function(candidateDetails){
+		   hiringService.addCandidate({"name":$scope.newName, "location": $scope.newInfo}).$promise.then(function(candidateDetails){
 			   $scope.selectedCandidate = candidateDetails;
 			   $scope.selectedCandidateId = candidateDetails.id;
 			   $scope.addCandidateScreen = "";
+			   $scope.newName = "";
+			   $scope.newInfo = "";
+			   $scope.isSetInterviewDisabled = false;
 			});
 	   }
 	   

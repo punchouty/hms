@@ -25,6 +25,7 @@
                 <button ng-show="newCandidate" class="glyphicon glyphicon-plus small" data-toggle="modal" data-target="#basicModal"></button>
 				</span>
 				</div>
+                <button ng-show="newCandidate" class="glyphicon glyphicon-plus small" data-toggle="modal" data-target="#basicModal"></button>
              <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
