@@ -15,7 +15,7 @@ environments {
             dbCreate = "update" // one of 'create', 'create-drop','update'
             url = "jdbc:mysql://localhost/hms?useUnicode=yes&characterEncoding=UTF-8"
             username = "root"
-            password = "root"
+            password = "mysql"
         }
         hibernate {
             show_sql = true
