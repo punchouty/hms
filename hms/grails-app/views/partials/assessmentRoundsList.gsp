@@ -37,18 +37,18 @@
 					<th>Status<span class="caret"></span></th>
 					<th>Hiring Person<span class="caret"></span></th>
 					<th></th>
-					<th></th>
+					
                   </tr>
                 </thead>
                 <tbody>
                   <tr ng-repeat="interview in interviews | filter :search">
-                    <td><a href="#/assessment/{{interview.evaluationRoundId}}">{{interview.roundName}}</a></td>
+                    <td>{{interview.roundName}}</td>
                     <td>{{interview.scheduledDate}}</td>
                     <td>{{interview.candidateName}}</td>
                     <td>{{interview.completionStatus}}</td>
                     <td>{{interview.hiringPersonName}}</td>
-                    <td><a ng-click="updateStatusAsRechudule(interview.completionStatus)" class="glyphicon glyphicon-time" title="completion status"></a></td>
-                    <td><a ng-click="updateStatusAsCancel(interview.completionStatus)" class="close" style="color: red" aria-hidden="true" title="Request Cancel">&times;</a></td>
+                    <td><a href="#/assessment/{{interview.evaluationRoundId}}" ng-click="updateStatusAsRechudule(interview.completionStatus)" class="glyphicon glyphicon-time" title="completion status"></a></td>
+                  
                   </tr>
                 </tbody>
               </table>
