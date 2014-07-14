@@ -9,6 +9,12 @@ hms.controller('hiringRoundController', function($scope, $routeParams, hiringSer
 	   $scope.scheduleRound_interviewId = $routeParams.interviewId;
 	   hiringService.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise.then(function(assessmentRounds){
 		   $scope.rounds = assessmentRounds;
+		   $scope.rounds[0].interviewTime = "03/04/2014 13:00";
+		  alert($scope.rounds[0].interviewTime);
+//		   angular.forEach($scope.rounds, function(value, key){
+//			   value.
+//			   //alert(value.interviewTime)
+//		   });
 		});
 	   
 	   
@@ -26,6 +32,17 @@ hms.controller('hiringRoundController', function($scope, $routeParams, hiringSer
 			  	};
 			});
 	 
-	
+	   $scope.meetsCriteria = function(round)
+	   {
+		   if (round.interviewerId && round.interviewTime)
+			   return false
+			   else return true
+	   }
+	  
+	   $scope.changeInterviewer = function(round)
+	   {
+		   round.interviewerId = "";
+	   }
+
 });
 

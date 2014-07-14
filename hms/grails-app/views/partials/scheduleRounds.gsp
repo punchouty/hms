@@ -11,20 +11,20 @@
           
                  <label>Interviewer name</label>
                  <input type="hidden" ng-model="round.interviewerId" class="form-control">
-                 <input class="form-control" type="text" typeahead-on-select="setInterviewer($item, round)"  ng-model="round.interviewerName" typeahead="interviewer.username for interviewer in interviewers | filter:$viewValue" />
+                 <input class="form-control" ng-change="changeInterviewer(round)" type="text" typeahead-on-select="setInterviewer($item, round)"  ng-model="round.interviewerName" typeahead="interviewer.username for interviewer in interviewers | filter:$viewValue" />
              
                 </div>
                 <div class="col-md-4 col-md-offset-4">
               <div class="form-group">
               <br><br>
                  <label>Interview Time</label>
-                           <input id="dt" type="datetime-local" class="form-control" placeholder="Scheduled Time"  ng-model="round.interviewTime">
+                           <input type="datetime-local" class="form-control" placeholder="Scheduled Time"  ng-model="round.interviewTime">
               </div>
                 </div>
               </div>     
               </div>  
           <br>
-         <button type="submit" class="btn btn-primary"   ng-click='scheduleInterview(round.evaluationRoundId,round.interviewerId, round.interviewTime)'>Save</button>
+         <button type="submit" class="btn btn-primary" ng-disabled="meetsCriteria(round)"  ng-click='scheduleInterview(round.evaluationRoundId,round.interviewerId, round.interviewTime)'>Schedule</button>
           <br>
                        <br>
                             <div class="col-md-4">
