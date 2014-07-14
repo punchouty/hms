@@ -31,9 +31,9 @@ hms.controller('hiringRoundController', function($scope, $routeParams, hiringSer
 	   
 	   hiringService.getInterviewerDetails().$promise.then(function(interviewerDetails){
 			  $scope.interviewers = interviewerDetails;
-			  $scope.selectedInterviewer = '';
-			  $scope.setInterviewer = function(site) {
-			  		$scope.selectedInterviewerId = site.id;
+			  $scope.interviewerName = '';
+			  $scope.setInterviewer = function(site, round) {
+				  round.interviewerId = site.id;
 			  	};
 			});
 	 

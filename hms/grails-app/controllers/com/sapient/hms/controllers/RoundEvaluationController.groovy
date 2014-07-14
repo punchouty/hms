@@ -119,9 +119,13 @@ class RoundEvaluationController {
 		def roundEval=RoundEvaluation.get(result.evaluationRoundId)
 		def user = User.get(result.interviewerId)
 		roundEval.interviewer = user
+		if(result.interviewTime)
+		{
 		roundEval.scheduledTime = new Date().parse("yyyy-MM-dd'T'hh:mm", result.interviewTime)
+		}
+		roundEval.interviewDetail.completionStatus = 1
 		roundEval.save(flush:true)
-		
+		render roundEval as JSON
 	}
 
 	//    def create() {

@@ -10,21 +10,21 @@
               	<br>
           
                  <label>Interviewer name</label>
-                 <input type="hidden" ng-model="selectedInterviewerId" class="form-control">
-                 <input class="form-control" type="text" typeahead-on-select="setInterviewer($item)"  ng-disabled="isScheduled()" ng-model="selectedInterviewer" typeahead="interviewer.username for interviewer in interviewers | filter:$viewValue" />
+                 <input type="hidden" ng-model="round.interviewerId" class="form-control">
+                 <input class="form-control" type="text" typeahead-on-select="setInterviewer($item, round)"  ng-disabled="isScheduled()" ng-model="round.interviewerName" typeahead="interviewer.username for interviewer in interviewers | filter:$viewValue" />
              
                 </div>
                 <div class="col-md-4 col-md-offset-4">
               <div class="form-group">
               <br><br>
                  <label>Interview Time</label>
-                           <input id="dt" type="datetime-local" class="form-control" placeholder="Scheduled Time"  ng-model="interviewTime" ng-disabled="isScheduled()">
+                           <input id="dt" type="datetime-local" class="form-control" placeholder="Scheduled Time"  ng-model="round.interviewTime" ng-disabled="isScheduled()">
               </div>
                 </div>
               </div>     
               </div>  
           <br>
-         <button type="submit" class="btn btn-primary"   ng-disabled="isScheduled()" ng-click='scheduleInterview(round.evaluationRoundId,selectedInterviewerId, interviewTime)'>Save</button>
+         <button type="submit" class="btn btn-primary"   ng-disabled="isScheduled()" ng-click='scheduleInterview(round.evaluationRoundId,round.interviewerId, round.interviewTime)'>Save</button>
           <br>
                        <br>
                             <div class="col-md-4">
