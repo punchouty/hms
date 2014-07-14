@@ -268,13 +268,13 @@ class RoundEvaluationController {
 		}
 		
 		
-		def listByInterviewforAssess(Long id) {
+		def listScheduledRounds(Long id) {
 					
 			def roundEvalsQuery = RoundEvaluation.where{
-				interviewDetail.id== id
+				interviewer.id == id
 			}
-			
-			def roundEvals=roundEvalsQuery.list()
+
+						def roundEvals=roundEvalsQuery.list()
 			def roundEvalsList = new ArrayList<AssessmentRoundsVO>()
 			roundEvals.each{
 				def roundVO = new AssessmentRoundsVO()

@@ -6,12 +6,12 @@
 
 hms.controller('hiringAssessRoundController', function($scope, hiringService) {
        
-       $scope.loggedInUser = 'panelUser';
-       $scope.loggedInUserId = 4;
+	$scope.loggedInUser =  $('#loggedInUser').html();
+	$scope.loggedInUserId = $('#loggedInUserId').html();
        $scope.round = "domain";
 
                      
-         hiringService.getAssessRoundListForInterview(9).$promise.then(function(interviews){
+         hiringService.getScheduledRounds($scope.loggedInUserId).$promise.then(function(interviews){
              $scope.interviews = interviews;
           });
                                   
