@@ -36,12 +36,6 @@ class RoundEvaluationController {
 
 	def listByInterview(Long id) {
 		
-//		def roundEvalsQuery = RoundEvaluation.withCriteria {
-//			eq "interviewDetail.id", id
-//			fetchMode "bucketEvaluations", FM.SELECT
-//		}
-		
-		
 		def roundEvalsQuery = RoundEvaluation.where{
 			interviewDetail.id== id
 		}

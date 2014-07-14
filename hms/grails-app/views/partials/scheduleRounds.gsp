@@ -8,7 +8,7 @@
              
               	<br>
               	   
-                 <label>Round Score</label>: {{round.candidateRoundScore}}
+                <div ng-show="round.candidateRoundScore"> <label>Round Score</label>: {{round.candidateRoundScore}} </div>
            <br>
             <div class="form-group">
                  <label>Interviewer name</label>
@@ -38,7 +38,7 @@
                          <tab ng-repeat='bucket in round.bucketEval' heading="{{bucket.bucketName}}">
                               
                                   <br>
-                                      <label>Bucket Score</label>: {{bucket.candidateBucketScore}}
+                                    <div ng-show="bucket.candidateBucketScore"  <label>Bucket Score</label>: {{bucket.candidateBucketScore}} </div>
                                    
                                
                                     
