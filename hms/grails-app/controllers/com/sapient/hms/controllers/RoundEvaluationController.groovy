@@ -3,6 +3,7 @@ package com.sapient.hms.controllers
 import org.hibernate.FetchMode as FM
 
 import grails.converters.JSON
+import grails.plugin.nimble.core.Role;
 import hms.InterviewDetailsVO
 import hms.ScheduleRoundsBucketsVO
 import hms.ScheduleRoundsSkillsVO
@@ -27,10 +28,8 @@ class RoundEvaluationController {
 	
 	def listPanelUsers() {
 		
-		def users = User.where{
-			"Role" == "PANEL"
-		}
-		render users.list() as JSON
+		def role=Role.findByName("PANEL")
+		render role.users as JSON
 		
 	}
 
