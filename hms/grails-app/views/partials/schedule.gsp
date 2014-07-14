@@ -16,12 +16,14 @@
 			 <br>
 			 <div class="row">
               <div class="col-md-5">
-            
                   <label>Candidate * : </label>
+                 <div class="input-group">
                  <input type="hidden" ng-model="selectedCandidateId" class="form-control">
                 <input class="form-control" type="text" ng-change="changeCandidate()" typeahead-on-select="setCandidate($item)" ng-model="selectedCandidate" typeahead="candidate.name+' - '+candidate.location for candidate in candidates | filter:$viewValue" />
+                <span class="input-group-addon">
                 <button ng-show="newCandidate" class="glyphicon glyphicon-plus" ng-click="addCandidate()"></button>
-             
+                </span>
+			  </div>
 			  </div>
 			 <div class="col-md-5 col-md-offset-2">
                 <label>Interview Mode</label>
