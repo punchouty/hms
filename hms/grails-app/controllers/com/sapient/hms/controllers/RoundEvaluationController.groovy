@@ -115,7 +115,8 @@ class RoundEvaluationController {
 
 	
 	def update(){
-		def roundEval=RoundEvaluation.get(params.evaluationRoundId)	
+		def roundEval=RoundEvaluation.get(params.evaluationRoundId)
+		println params.evaluationRoundId
 		def user = User.get(params.interviewerId)
 		roundEval.interviewer = user
 		roundEval.scheduledTime = params.interviewTime

@@ -3,29 +3,28 @@
 <br>
 <tabset >
     <tab ng-repeat='round in rounds' heading="{{round.roundName}}">
+      <div class="form-group">
         <div class="row">
+         <div ng-show="round.candidateRoundScore"> <label>Round Score</label>: {{round.candidateRoundScore}} </div>
            <div class="col-md-4">
-             
               	<br>
-              	   
-                <div ng-show="round.candidateRoundScore"> <label>Round Score</label>: {{round.candidateRoundScore}} </div>
-           <br>
-            <div class="form-group">
+          
                  <label>Interviewer name</label>
                  <input type="hidden" ng-model="selectedInterviewerId" class="form-control">
                  <input class="form-control" type="text" typeahead-on-select="setInterviewer($item)"  ng-disabled="isScheduled()" ng-model="selectedInterviewer" typeahead="interviewer.username for interviewer in interviewers | filter:$viewValue" />
-              </div>
+             
                 </div>
                 <div class="col-md-4 col-md-offset-4">
               <div class="form-group">
               <br><br>
                  <label>Interview Time</label>
-                           <input type="datetime-local" class="form-control" placeholder="Scheduled Time"  ng-model="interviewTime"  ng-disabled="isScheduled()">
+                           <input id="dt" type="datetime-local" class="form-control" placeholder="Scheduled Time"  ng-model="interviewTime" ng-disabled="isScheduled()">
               </div>
                 </div>
-              </div>       
+              </div>     
+              </div>  
           <br>
-         <button type="submit" class="btn btn-primary"   ng-disabled="isScheduled()" ng-click='scheduleInterview(round.evaluationRoundId,round.interviewerId )'>Save</button>
+         <button type="submit" class="btn btn-primary"   ng-disabled="isScheduled()" ng-click='scheduleInterview(round.evaluationRoundId,selectedInterviewerId, interviewTime)'>Save</button>
           <br>
                        <br>
                             <div class="col-md-4">
