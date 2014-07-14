@@ -19,13 +19,6 @@ hms.controller('hiringRoundController', function($scope, $routeParams, hiringSer
 		   
 	   }
 	   
-	   $scope.isScheduled = function(round){
-//		  if (round.interviewerName=="")
-//			   return false;
-//			   else
-//			   return true;
-	   }
-	   
 	   hiringService.getInterviewerDetails().$promise.then(function(interviewerDetails){
 			  $scope.interviewers = interviewerDetails;
 			  $scope.setInterviewer = function(site, round) {

@@ -57,7 +57,6 @@ class RoundEvaluationController {
 			
 			roundVO.candidateRoundScore = it.candidateRoundScore
 			def bucketEvals = it.bucketEvaluations
-			bucketEvals = it.bucketEvaluations
 			def bucketEvalsList = new ArrayList<ScheduleRoundsBucketsVO>()
 			bucketEvals.each{
 				def bucketVO = new ScheduleRoundsBucketsVO()
