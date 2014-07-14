@@ -115,11 +115,11 @@ class RoundEvaluationController {
 
 	
 	def update(){
-		def roundEval=RoundEvaluation.get(params.evaluationRoundId)
-		println params.evaluationRoundId
-		def user = User.get(params.interviewerId)
+		def result = JSON.parse(request.JSON.toString());
+		def roundEval=RoundEvaluation.get(result.evaluationRoundId)
+		def user = User.get(result.interviewerId)
 		roundEval.interviewer = user
-		roundEval.scheduledTime = params.interviewTime
+		roundEval.scheduledTime = new Date().parse("yyyy-MM-dd'T'hh:mm", result.interviewTime)
 		roundEval.save(flush:true)
 		
 	}
