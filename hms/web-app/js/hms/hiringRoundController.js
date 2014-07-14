@@ -1,12 +1,10 @@
 
 hms.controller('hiringRoundController', function($scope, $routeParams, hiringService) {
 	
-	$scope.loggedInUser = 'User';
+	
 	  $scope.name = 'hiringRoundController';
-	  
-	  $scope.interviewerName="";
-	  $scope.interviewTime="";
-	 // $('input[type="datetime"]').setNow(true);
+	  $scope.loggedInUser =  $('#loggedInUser').html();
+	  $scope.loggedInUserId = $('#loggedInUserId').html();
 	  
    //Schedule Rounds
 	   $scope.scheduleRound_interviewId = $routeParams.interviewId;
@@ -22,16 +20,15 @@ hms.controller('hiringRoundController', function($scope, $routeParams, hiringSer
 		   
 	   }
 	   
-	   $scope.isScheduled = function(){
-		  if ($scope.interviewerName=="")
-			   return false;
-			   else
-			   return true;
+	   $scope.isScheduled = function(round){
+//		  if (round.interviewerName=="")
+//			   return false;
+//			   else
+//			   return true;
 	   }
 	   
 	   hiringService.getInterviewerDetails().$promise.then(function(interviewerDetails){
 			  $scope.interviewers = interviewerDetails;
-			  $scope.interviewerName = '';
 			  $scope.setInterviewer = function(site, round) {
 				  round.interviewerId = site.id;
 			  	};

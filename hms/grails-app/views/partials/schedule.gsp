@@ -92,7 +92,7 @@
                     <td>{{loggedInUser}}</td>
                     <td>{{interview.dateCreated | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>{{interview.completionStatus | renderStatus}}</td>
-                    <td> <a href="#/scheduleRounds/{{interview.interviewId}}" ng-hide={{interview.completionStatus}} class="glyphicon glyphicon-time"></a></td>
+                    <td> <a href="#/scheduleRounds/{{interview.interviewId}}" class="glyphicon glyphicon-time"></a></td>
                     <td><button ng-hide={{interview.completionStatus}} type="button" ng-click="deleteInterview(interview.interviewId)" class="close" style="color: red" aria-hidden="true">&times;</button> </td>
                   </tr>
                   </tbody>

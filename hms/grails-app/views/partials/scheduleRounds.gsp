@@ -11,7 +11,7 @@
           
                  <label>Interviewer name</label>
                  <input type="hidden" ng-model="round.interviewerId" class="form-control">
-                 <input class="form-control" type="text" typeahead-on-select="setInterviewer($item, round)"  ng-disabled="isScheduled()" ng-model="round.interviewerName" typeahead="interviewer.username for interviewer in interviewers | filter:$viewValue" />
+                 <input class="form-control" type="text" typeahead-on-select="setInterviewer($item, round)"  ng-disabled="isScheduled(round)" ng-model="round.interviewerName" typeahead="interviewer.username for interviewer in interviewers | filter:$viewValue" />
              
                 </div>
                 <div class="col-md-4 col-md-offset-4">
