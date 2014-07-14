@@ -17,7 +17,14 @@ class UrlMappings {
 		"/configureWF"(controller: "default", action:"configureWF")
 		"/createWF"(controller: "default", action:"createWF")
 		"/dashboard"(controller: "default", action:"dashboard")
-		"500"(view:"/error")
+		//"500"(view:"/error")
+		"403" (controller: "error", action: "forbidden")
+		
+		"404" (controller: "error", action: "notFound")
+
+		"500" (controller: "error", action: "internalError")
+		
+		
 	}
 }
 

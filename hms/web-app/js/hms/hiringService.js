@@ -48,12 +48,22 @@ hms.factory('hiringService', function($resource, $log){
 	factory.getRoundsByinterview = function(userId){
 	     return $resource('roundEvaluation/searchByInterview/:userId', {userId:'@userId'}).query({userId:userId});		
 	}
+
 	
-	
-	factory.updateRoundStatus = function(status){
-        return $resource('roundEvaluation/updateStatus/:status', {}, {'updateStatus': {method:'PUT'}}).update(status);
+	factory.updateRound = function(round){
+        return $resource('roundEvaluation/update', {}, {'update': {method:'PUT'}}).update(round);
+    }
+	factory.getInterviewerDetails = function (){
+		return $resource('roundEvaluation/listPanelUsers').query();
+		}
+		
+		factory.getAssessRoundListForInterview = function (interviewId){
+		return $resource('roundEvaluation/listByInterviewforAssess/:interviewId', {interviewId:'@interviewId'}).query({interviewId:interviewId});
     }
 	
+	factory.getAssessmentsForEvaluationRoundId = function (evaluationRoundId){
+		return $resource('roundEvaluation/listByEvaluationRoundId/:evaluationRoundId', {interviewId:'@evaluationRoundId'}).query({evaluationRoundId:evaluationRoundId});
+    } 	
 
 	return factory;
 });

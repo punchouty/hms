@@ -8,7 +8,7 @@
           </div> 
 		  <div class="col-md-5 col-md-offset-3">
 			<label>Scheduled Date</label>
-               <input type="date" class="form-control" ng-model="selectedDate" placeholder="Select Date">
+               <input type="date" class="form-control" ng-model="search.scheduledDate" placeholder="Select Date">
 		  </div>
 		  </div>
 		  
@@ -16,16 +16,15 @@
 		   <div class="col-md-4">
                  <label>Candidate: </label>
 <%--                  <select class="form-control" ng-model="selectedCandidate" ng-options="candidate.name+' - '+candidate.location for candidate.name for candidate in hiringrounds"></select>--%>
-                  <input type="text" class="form-control" ng-model="selectedCandidate" placeholder="condidate name...">
+                  <input type="text" class="form-control" ng-model="search.candidateName" placeholder="condidate name...">
           </div> 
            <div class="col-md-5 col-md-offset-3">
                  <label>Round Name</label><%--
                   <select class="form-control"  ng-model="selectedRound" ng-options="round.name for rounds in hiringrounds"></select>
-                   --%><input type="text" class="form-control" ng-model="selectedRound" placeholder="round name...">
+                   --%><input type="text" class="form-control" ng-model="search.roundName" placeholder="round name...">
 		  </div>
 		 </div>
-		  <br>
-              <button type="submit" class="btn btn-primary" ng-click="searchInterviews()">Search</button>
+		
         
          </form>
          <br>
@@ -42,14 +41,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="interview in interviews | filter :selectedCandidate">
-                    <td>{{interview.roundName}}<a href="#/assessment/{{interview.interviewerId}}"></a></td>
+                  <tr ng-repeat="interview in interviews | filter :search">
+                    <td><a href="#/assessment/{{interview.evaluationRoundId}}">{{interview.roundName}}</a></td>
                     <td>{{interview.scheduledDate}}</td>
                     <td>{{interview.candidateName}}</td>
                     <td>{{interview.completionStatus}}</td>
                     <td>{{interview.hiringPersonName}}</td>
-                    <td><button class="default" ng-click="updateStatusAsRechudule(interview.completionStatus)">Request Reschedule</button></td>
-                    <td><button class="default" ng-click="updateStatusAsCancel(interview.completionStatus)">Request Cancel</button></td>
+                    <td><a ng-click="updateStatusAsRechudule(interview.completionStatus)" class="glyphicon glyphicon-time" title="completion status"></a></td>
+                    <td><a ng-click="updateStatusAsCancel(interview.completionStatus)" class="close" style="color: red" aria-hidden="true" title="Request Cancel">&times;</a></td>
                   </tr>
                 </tbody>
               </table>

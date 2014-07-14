@@ -12,5 +12,6 @@ class ScheduleRoundsVO {
 	Long interviewerId
 	String interviewerName
 	Date interviewTime
+	Integer candidateRoundScore
 	List<ScheduleRoundsBucketsVO>  bucketEval
 }
