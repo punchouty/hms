@@ -2,6 +2,7 @@ modules = {
     core {
 	
         resource url:'js/application.js'
+		resource url:'js/ng-grid-2.0.11.min.js'
     }
 	
 	jqr {
@@ -14,6 +15,7 @@ modules = {
 		resource url: 'lib/bower_components/angular-route/angular-route.min.js'
 		resource url: 'lib/bower_components/angular-resource/angular-resource.min.js'
 		resource url: 'lib/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'
+		
 	}
 	
 	btr {
@@ -33,4 +35,5 @@ modules = {
 		resource url:'js/hms/assessmentRoundController.js'
 		resource url:'js/hms/hiringAssessRoundController.js'
     }
+	
 }
