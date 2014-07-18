@@ -4,11 +4,11 @@ package com.sapient.hms.domain
 
 import org.junit.*
 
-import com.sapient.hms.controllers.SkillEvaluationresultController;
+import com.sapient.hms.controllers.SkillEvaluationController;
 
 import grails.test.mixin.*
 
-@TestFor(SkillEvaluationresultController)
+@TestFor(SkillEvaluationController)
 @Mock(SkillEvaluation)
 class SkillEvaluationControllerTests {
 
