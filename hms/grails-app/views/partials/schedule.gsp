@@ -1,5 +1,9 @@
 <div ng-controller="hiringController" ng-cloak>
- <h2>Schedule Interview</h2>
+
+<%-- <h2>Schedule Interview</h2>--%>
+ 	        <ol class="breadcrumb">
+            <li class="active"><a href="#/schedule"">Schedule Interviews</a></li>
+            </ol>
  <br>
             <form role="form">
 			<fieldset>
@@ -16,49 +20,45 @@
 			 <br>
 			 <div class="row">
               <div class="col-md-5">
-            
-                  <label>Candidate * : </label>
-                    <div class="input-group">
-                 <input type="hidden" ng-model="selectedCandidateId" class="form-control">
-                <input class="form-control" ng-change="changeCandidate()" type="text" typeahead-on-select="setCandidate($item)" ng-model="selectedCandidate" typeahead="candidate.name+' - '+candidate.location for candidate in candidates | filter:$viewValue" />
-                <span class="input-group-addon">
-                <button ng-show="newCandidate" class="glyphicon glyphicon-plus small" data-toggle="modal" data-target="#basicModal"></button>
-				</span>
-				</div>
-             <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Candidate Details</h4>
-            </div>
-            <div class="modal-body">
-            <div class="row">
-                         <div class="col-md-5">  
-                         <b>Candidate Name:</b>
-                         <input ng-model="newName" type="text"/> 
-                         </div>
-                         <div class="col-md-5">
-                         <b>Unique Information: </b>
-                         <input type="text" ng-model="newInfo"/>
-                         </div>
-            </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addCandidate()">Add Candidate</button>
-        </div>
-    </div>
-  </div>
-</div>
-			  </div>
-			 <div class="col-md-5 col-md-offset-2">
-                <label>Interview Mode</label>
-                 <select class="form-control" ng-model="selectedMode" ng-options="mode.name for mode in modes"></select>
-              </div>
-              
-              
-              
+                 <label>Candidate * : </label>
+                 <div class="input-group">
+	                 <input type="hidden" ng-model="selectedCandidateId" class="form-control">
+	                 <input class="form-control" ng-change="changeCandidate()" type="text" typeahead-on-select="setCandidate($item)" ng-model="selectedCandidate" typeahead="candidate.name+' - '+candidate.location for candidate in candidates | filter:$viewValue" />
+	                 <span class="input-group-addon">
+	                    <button ng-show="newCandidate" class="glyphicon glyphicon-plus small" data-toggle="modal" data-target="#basicModal"></button>
+					</span>
+				 </div>
+	             <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+					    <div class="modal-dialog">
+					        <div class="modal-content">
+					            <div class="modal-header">
+						            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						            <h4 class="modal-title" id="myModalLabel">Candidate Details</h4>
+					            </div>
+					            <div class="modal-body">
+						            <div class="row">
+				                         <div class="col-md-5">  
+					                         <b>Candidate Name:</b>
+					                         <input ng-model="newName" type="text"/> 
+				                         </div>
+				                         <div class="col-md-5">
+					                         <b>Unique Information: </b>
+					                         <input type="text" ng-model="newInfo"/>
+				                         </div>
+						            </div>
+					            </div>
+					            <div class="modal-footer">
+					                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addCandidate()">Add Candidate</button>
+					            </div>
+					        </div>
+					     </div>
+					 </div>
+               </div>
+				 <div class="col-md-5 col-md-offset-2">
+	                <label>Interview Mode</label>
+	                 <select class="form-control" ng-model="selectedMode" ng-options="mode.name for mode in modes"></select>
+	              </div>
               
 			 </div>
   				<br>
@@ -67,10 +67,11 @@
 			 </fieldset>
             </form>
 
-            <hr>
+         <hr><%--
             
-     <div class="mygrid-wrapper-div">
-              <table class="table table-striped table-condensed table-hover table-responsive ">
+             
+              
+              <table class="table table-striped table-condensed table-hover table-responsive example" id='example'>
                 <thead>
                   <tr>
                   	<th>Hiring Process<span class="caret"></span></th>
@@ -92,7 +93,6 @@
                     <td>{{interview.hiringProcessName}}</td>
                     <td>{{interview.positionName}}</td>
                     <td>{{interview.candidateName}}</td>
-                   
                     <td>{{interview.interviewMode | renderMode}}</td>
                     <td>{{loggedInUser}}</td>
                     <td>{{interview.dateCreated | date:'yyyy-MM-dd HH:mm:ss'}}</td>
@@ -102,8 +102,7 @@
                   </tr>
                   </tbody>
               </table>
-           
-              </div>
+            --%><div ng-grid="gridOptions" class='gridStyle'></div>
           </div>
           
          

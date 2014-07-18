@@ -1,5 +1,9 @@
 
-<h1>Assess Rounds</h1>
+<%--<h1>Scheduled Interviews</h1>--%>
+            <ol class="breadcrumb">
+            <li class="active"><a href="#/assessmentRoundsList"">Scheduled Interviews</a></li>
+            </ol>
+<%--
 		<form role="form">
 		<div class="row">
 		  <div class="col-md-4">
@@ -15,20 +19,20 @@
 		  <div class="row">
 		   <div class="col-md-4">
                  <label>Candidate: </label>
-<%--                  <select class="form-control" ng-model="selectedCandidate" ng-options="candidate.name+' - '+candidate.location for candidate.name for candidate in hiringrounds"></select>--%>
+                  <select class="form-control" ng-model="selectedCandidate" ng-options="candidate.name+' - '+candidate.location for candidate.name for candidate in hiringrounds"></select>
                   <input type="text" class="form-control" ng-model="search.candidateName" placeholder="condidate name...">
           </div> 
            <div class="col-md-5 col-md-offset-3">
-                 <label>Round Name</label><%--
+                 <label>Round Name</label>
                   <select class="form-control"  ng-model="selectedRound" ng-options="round.name for rounds in hiringrounds"></select>
-                   --%><input type="text" class="form-control" ng-model="search.roundName" placeholder="round name...">
+                   <input type="text" class="form-control" ng-model="search.roundName" placeholder="round name...">
 		  </div>
 		 </div>
 		
         
          </form>
          <br>
-        <table class="table table-striped table-condensed table-hover table-responsive">
+       --%><%-- <table class="table table-striped table-condensed table-hover table-responsive example">
                 <thead>
                   <tr>
                     <th>Round Name<span class="caret"></span></th>
@@ -52,3 +56,6 @@
                   </tr>
                 </tbody>
               </table>
+              
+              
+      --%><div ng-grid="gridOptions" class='gridStyle'></div>

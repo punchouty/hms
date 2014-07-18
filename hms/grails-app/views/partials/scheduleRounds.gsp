@@ -1,5 +1,9 @@
 <div ng-controller="hiringRoundController">
-<h2>Schedule Interview Rounds</h2>
+<%--<h2>Schedule Interview Rounds</h2>--%>
+<ol class="breadcrumb">
+  <li><a href="#/schedule"">Schedule Interviews</a></li>
+  <li class="active">Schedule Rounds</li>
+</ol>
 <br>
 <tabset >
     <tab ng-repeat='round in rounds' heading="{{round.roundName}}">
@@ -18,13 +22,14 @@
               <div class="form-group">
               <br><br>
                  <label>Interview Time</label>
-                           <input id="dt" type="datetime-local" class="form-control" placeholder="Scheduled Time"  ng-model="round.interviewTime" ng-disabled="isScheduled()">
+                           <input  type="datetime-local" class="form-control" placeholder="Scheduled Time"  ng-model="round.interviewTime" ng-disabled="isScheduled()" value="round.interviewTime">
+                           {{round.interviewTime | date: "dd-MM-yyyy HH:mma"}}
               </div>
                 </div>
               </div>     
               </div>  
           <br>
-         <button type="submit" class="btn btn-primary"   ng-disabled="isScheduled()" ng-click='scheduleInterview(round.evaluationRoundId,round.interviewerId, round.interviewTime)'>Save</button>
+         <button type="submit" class="btn btn-primary"   ng-disabled="isScheduled()" ng-click='scheduleInterview(round.evaluationRoundId,round.interviewerId, round)'>Save</button>
           <br>
                        <br>
                             <div class="col-md-4">
@@ -37,30 +42,30 @@
                          <tab ng-repeat='bucket in round.bucketEval' heading="{{bucket.bucketName}}">
                               
                                   <br>
-                                    <div ng-show="bucket.candidateBucketScore"  <label>Bucket Score</label>: {{bucket.candidateBucketScore}} </div>
+                                    <div ng-show="bucket.candidateBucketScore" > <label>Bucket Score</label>: {{bucket.candidateBucketScore}} </div>
                                    
                                
                                     
-                     <table cellspacing="50" class="table table-striped table-condensed table-hover">
+                     <table cellspacing="50" class="table table-striped table-condensed table-hover example">
                        <thead>
-                         <tr>
-                           <th>Skill names<span class="caret"></span></th>
-                                         <th>Weight of Skill </th>         
-                                         <th>Cut-off Score  </th>
-                                         <th>Expected Skill Rating</th>
-                                         <th>Candidate Skill Rating</th>
-                                         <th>Candidate Score</th>
-                         </tr>
+	                       <tr>
+	                           <th>Skill names<span class="caret"></span></th>
+	                           <th>Weight of Skill </th>         
+	                           <th>Cut-off Score  </th>
+	                           <th>Expected Skill Rating</th>
+	                           <th>Candidate Skill Rating</th>
+	                           <th>Candidate Score</th>
+	                       </tr>
                        </thead>
                        <tbody>
                           <tr ng-repeat='skill in bucket.skillEval'>
-                                                <td>{{skill.skillName}}</td>
-                                                <td>{{skill.weight}}</td>
-                                                <td>{{skill.cutOffScore}}</td>
-                                                <td>{{skill.expectedSkillRating}}</td>
-                                                <td>{{skill.candidaterating}}</td>
-                                                <td>{{skill.candidateScore}}</td>
-                                    </tr>
+                          	  <td>{{skill.skillName}}</td>
+	                          <td>{{skill.weight}}</td>
+	                          <td>{{skill.cutOffScore}}</td>
+	                          <td>{{skill.expectedSkillRating}}</td>
+	                          <td>{{skill.candidaterating}}</td>
+	                          <td>{{skill.candidateScore}}</td>
+                           </tr>
                        </tbody>
                               </table> 
                          </tab>

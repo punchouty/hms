@@ -32,7 +32,7 @@
 			  <button type="submit" class="btn btn-warning">Clear</button>	
             </form>
 
-        <table class="table table-striped table-condensed table-hover">
+        <table class="table table-striped table-condensed table-hover example">
                 <thead>
                   <tr>
                     <th>Position<span class="caret"></span></th>
