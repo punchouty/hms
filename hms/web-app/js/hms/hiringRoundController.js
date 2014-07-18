@@ -12,9 +12,9 @@ hms.controller('hiringRoundController', function($scope, $routeParams, hiringSer
 		});
 	   
 	   
-	   $scope.scheduleInterview = function(roundId, interviewerId, interviewTime){
-		 
-		   hiringService.updateRound({"evaluationRoundId":roundId, "interviewerId":interviewerId, "interviewTime": document.getElementById("dt").value}).$promise.then(function(round){
+	   $scope.scheduleInterview = function(roundId, interviewerId, round){
+		 console.log(round.interviewTime);
+		   hiringService.updateRound({"evaluationRoundId":roundId, "interviewerId":interviewerId, "interviewTime": round.interviewTime}).$promise.then(function(round){
 		});
 		   
 	   }
@@ -25,6 +25,7 @@ hms.controller('hiringRoundController', function($scope, $routeParams, hiringSer
 //			   else
 //			   return true;
 	   }
+
 	   
 	   hiringService.getInterviewerDetails().$promise.then(function(interviewerDetails){
 			  $scope.interviewers = interviewerDetails;

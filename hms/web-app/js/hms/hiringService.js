@@ -64,9 +64,15 @@ hms.factory('hiringService', function($resource, $log){
 
     }
 
-	factory.getAssessmentsForEvaluationRoundId = function (evaluationRoundId){
-		return $resource('roundEvaluation/listByEvaluationRoundId/:evaluationRoundId', {interviewId:'@evaluationRoundId'}).query({evaluationRoundId:evaluationRoundId});
-    } 	
+	factory.getEvaluationRound = function (evaluationRoundId){
+			return $resource('roundEvaluation/show/:evaluationRoundId', {evaluationRoundId:'@evaluationRoundId'}).query({evaluationRoundId:evaluationRoundId});
+    } 
+	
+	factory.updateSkills = function(skill){
+		
+        return $resource('skillEvaluation/update', {},{'update': {method:'PUT'}}).update(skill);
+
+    }
 
 	return factory;
 });
