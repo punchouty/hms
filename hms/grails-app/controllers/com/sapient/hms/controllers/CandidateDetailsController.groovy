@@ -14,8 +14,9 @@ class CandidateDetailsController {
         redirect(action: "list", params: params)
     }
 
-    def list(Integer max) {
-       render CandidateDetail.list() as JSON
+    def list() {
+		def candidates = CandidateDetail.list()
+       render candidates.collect{ [ id: it.id, name: it.name, location: it.location ] } as JSON
     }
 //
 //    def create() {
