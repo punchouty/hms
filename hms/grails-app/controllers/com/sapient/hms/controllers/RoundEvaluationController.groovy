@@ -4,6 +4,7 @@ import org.hibernate.FetchMode as FM
 
 import grails.converters.JSON
 import grails.plugin.nimble.core.Role;
+import groovy.json.JsonBuilder
 import hms.AssessmentRoundsVO
 import hms.InterviewDetailsVO
 import hms.ScheduleRoundsBucketsVO
@@ -15,7 +16,7 @@ import com.sapient.hms.security.User;
 
 class RoundEvaluationController {
 
-	static allowedMethods = [save: "POST", update: "PUT", delete: "POST"]
+	static allowedMethods = [save: "POST", update: "PUT", delete: "POST", show:"GET"]
 
 	def index() {
 		redirect(action: "list", params: params)
@@ -57,7 +58,6 @@ class RoundEvaluationController {
 			
 			roundVO.candidateRoundScore = it.candidateRoundScore
 			def bucketEvals = it.bucketEvaluations
-			bucketEvals = it.bucketEvaluations
 			def bucketEvalsList = new ArrayList<ScheduleRoundsBucketsVO>()
 			bucketEvals.each{
 				def bucketVO = new ScheduleRoundsBucketsVO()
@@ -75,6 +75,7 @@ class RoundEvaluationController {
 					skillVO.expectedSkillRating = it.skillItem.expectedSkillRating
 					skillVO.candidateRating = it.candidateRating
 					skillVO.candidateScore = it.candidateSkillScore
+					skillVO.feedback = it.feedback
 					skillEvalsList.add(skillVO)
 				}
 				bucketVO.skillEval  = skillEvalsList
@@ -143,10 +144,7 @@ class RoundEvaluationController {
 	//        redirect(action: "show", id: roundEvaluationResultInstance.id)
 	//    }
 	//
-	    def show(Long id) {
-	        def roundEvaluationResultInstance = RoundEvaluation.get(id)
-	
-	    }
+
 	//
 	//    def edit(Long id) {
 	//        def roundEvaluationResultInstance = RoundEvaluation.get(id)
@@ -206,67 +204,50 @@ class RoundEvaluationController {
 	//            redirect(action: "show", id: id)
 	//        }
 	//    }
-	    
-	    def listByEvaluationRoundId(Long id) {
-			
-//			def roundEvalsQuery = RoundEvaluation.withCriteria {
-//				eq "interviewDetail.id", id
-//				fetchMode "bucketEvaluations", FM.SELECT
-//			}
-			
-			
-			def roundEvalsQuery = RoundEvaluation.where{
-				interviewDetail.id== id
+	
+	def show(Long id) {
+		def roundEvaluation = RoundEvaluation.get(id)
+			def roundVO = new ScheduleRoundsVO()
+			roundVO.evaluationRoundId = roundEvaluation.id
+			roundVO.roundName = roundEvaluation.assessmentRound.name
+			if(roundEvaluation.interviewer)
+			{
+			roundVO.interviewerId = roundEvaluation.interviewer.id
+			roundVO.interviewerName = roundEvaluation.interviewer.username
+			roundVO.interviewTime = roundEvaluation.scheduledTime
 			}
-			.withPopulatedQuery(null, null) { query ->
-				query.@criteria.setFetchMode('bucketEvaluations', FM.EAGER)
-				query.@criteria.setFetchMode('bucketEvaluations.skillEvaluations', FM.EAGER)
-				//query.list()
+			
+			def bucketEvals = roundEvaluation.bucketEvaluations
+			def bucketEvalsList = new ArrayList<ScheduleRoundsBucketsVO>()
+			bucketEvals.each{
+				def bucketVO = new ScheduleRoundsBucketsVO()
+				bucketVO.evaluationBucketId = it.id
+				bucketVO.bucketName = it.skillBucket.name
+				def skillEvals = it.skillEvaluations
+				skillEvals.each{}
+				def skillEvalsList = new ArrayList<ScheduleRoundsSkillsVO>()
+				skillEvals.each{
+					def skillVO = new ScheduleRoundsSkillsVO()
+					skillVO.evaluationSkillId = it.id
+					skillVO.skillName = it.skillItem.name
+					skillVO.cutOffScore =it.skillItem.cutOffScore
+					skillVO.weight = it.skillItem.weight
+					skillVO.expectedSkillRating = it.skillItem.expectedSkillRating
+					skillVO.candidateRating = it.candidateRating
+					skillVO.candidateScore = it.candidateSkillScore
+					skillEvalsList.add(skillVO)
 				}
-			def roundEvals=roundEvalsQuery.list()
+				bucketVO.skillEval  = skillEvalsList
+				bucketEvalsList.add(bucketVO)
+			}
+			roundVO.bucketEval = bucketEvalsList
 			def roundEvalsList = new ArrayList<ScheduleRoundsVO>()
-			roundEvals.each{
-				def roundVO = new ScheduleRoundsVO()
-				roundVO.evaluationRoundId = it.id
-				roundVO.roundName = it.assessmentRound.name
-				if(it.interviewer)
-				{
-				roundVO.interviewerId = it.interviewer.id
-				roundVO.interviewerName = it.interviewer.username
-				roundVO.interviewTime = it.scheduledTime
-				}
-				
-				def bucketEvals = it.bucketEvaluations
-				bucketEvals.each{}
-				bucketEvals = it.bucketEvaluations
-				def bucketEvalsList = new ArrayList<ScheduleRoundsBucketsVO>()
-				bucketEvals.each{
-					def bucketVO = new ScheduleRoundsBucketsVO()
-					bucketVO.evaluationBucketId = it.id
-					bucketVO.bucketName = it.skillBucket.name
-					def skillEvals = it.skillEvaluations
-					skillEvals.each{}
-					def skillEvalsList = new ArrayList<ScheduleRoundsSkillsVO>()
-					skillEvals.each{
-						def skillVO = new ScheduleRoundsSkillsVO()
-						skillVO.evaluationSkillId = it.id
-						skillVO.skillName = it.skillItem.name
-						skillVO.cutOffScore =it.skillItem.cutOffScore
-						skillVO.weight = it.skillItem.weight
-						skillVO.expectedSkillrating = it.skillItem.expectedSkillrating
-						skillVO.candidaterating = it.candidateRating
-						skillVO.candidateScore = it.candidateSkillScore
-						skillEvalsList.add(skillVO)
-					}
-					bucketVO.skillEval  = skillEvalsList
-					bucketEvalsList.add(bucketVO)
-				}
-				roundVO.bucketEval = bucketEvalsList
-				roundEvalsList.add(roundVO)
-			}
-			render roundEvalsList as JSON
-		}
-		
+			roundEvalsList.add(roundVO)
+		render roundEvalsList as JSON
+
+	}
+	    
+
 		
 		def listScheduledRounds(Long id) {
 					
@@ -274,7 +255,7 @@ class RoundEvaluationController {
 				interviewer.id == id
 			}
 
-						def roundEvals=roundEvalsQuery.list()
+			def roundEvals=roundEvalsQuery.list()
 			def roundEvalsList = new ArrayList<AssessmentRoundsVO>()
 			roundEvals.each{
 				def roundVO = new AssessmentRoundsVO()
