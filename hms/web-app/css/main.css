@@ -37,6 +37,7 @@ html * {
 }
 
 body {
+	padding-top:0px !important;
 	background: #ffffff;
 	color: #333333;
 	margin: 0 auto;
@@ -593,4 +594,9 @@ th:hover, tr:hover {
 a.skip {
 	position: absolute;
 	left: -9999px;
+}
+
+#logout {
+    margin-left: 10px ;	
+    margin-right: 10px
 }
