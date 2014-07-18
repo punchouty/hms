@@ -9,11 +9,9 @@ li{
   text-align:centre;
   }
   #content {
-    max-width: 70%;
+    width: 70%;
     margin: auto;
-    left: 10%;
-    right: 1%;
-    position: absolute;
+    
 }
 #navstyle {
     max-width: 100%;
