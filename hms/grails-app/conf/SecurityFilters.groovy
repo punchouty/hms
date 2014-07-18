@@ -64,7 +64,7 @@ class SecurityFilters {
 		   }
 		 }
 	   
-	   roundEval(controller:"roundEvaluation", action:"listByInterview|listPanelUsers") {
+	   roundEval(controller:"roundEvaluation", action:"listByInterview|listPanelUsers|show") {
 		   before = {
 			   accessControl {
 				   role("HUMANRESOURCES") || role("PANEL")
