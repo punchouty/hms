@@ -13,6 +13,7 @@ class ScheduleRoundsSkillsVO {
 	Integer expectedSkillRating
 	Integer candidateRating
 	Integer candidateScore
+	String feedback
 	
 	
 }
