@@ -3,6 +3,8 @@ modules = {
 	
         resource url:'js/application.js'
 		resource url:'js/ng-grid-2.0.11.min.js'
+		resource url:'js/moment.js'
+		resource url:'js/bootstrap-datepicker.js'
     }
 	
 	jqr {
