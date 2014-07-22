@@ -6,7 +6,7 @@ hms.controller('assessmentRoundController', function($scope, $routeParams, hirin
 	  $scope.scheduleRound_evaluationRoundId =$routeParams.roundId;
 	 
 	   hiringService.getEvaluationRound($scope.scheduleRound_evaluationRoundId).$promise.then(function(round){
-		   $scope.round = round[0];
+		   $scope.round = round;
 	   });
 	   
 	   $scope.updateskill = function(skillId,round){
