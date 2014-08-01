@@ -14,9 +14,9 @@ class PositionController {
         redirect(action: "list", params: params)
     }
 
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-		render Position.list(params) as JSON
+    def list() {
+       def pos =  Position.list()
+		render pos.collect{ [ id: it.id, name: it.name ] } as JSON
     }
 
     def create() {
