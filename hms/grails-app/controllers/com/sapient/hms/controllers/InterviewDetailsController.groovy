@@ -88,9 +88,6 @@ class InterviewDetailsController {
 			}
 			interviewDetailsInstance.addToRoundEvaluations(roundEval)
 		}
-				
-		
-		
 	}
     def show(Long id) {
         def interviewDetailsInstance = InterviewDetail.get(id)
@@ -154,6 +151,7 @@ class InterviewDetailsController {
         try {
             interviewDetailsInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), id])
+			print interviewDetailsInstance as JSON
             render interviewDetailsInstance as JSON
         }
         catch (DataIntegrityViolationException e) {
