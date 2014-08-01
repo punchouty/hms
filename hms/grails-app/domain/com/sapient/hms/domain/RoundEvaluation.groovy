@@ -4,6 +4,7 @@ import com.sapient.hms.security.User
 
 class RoundEvaluation{
 	
+	//@BindingFormat('MMddyyyy')
 	Date scheduledTime
 	Date actualStartTime
 	Date actualEndTime
