@@ -8,7 +8,7 @@ class DefaultController {
 	
 	def index(){
 		def user = User.get(SecurityUtils.getSubject()?.getPrincipal())
-		render(view: "/index", model: [loggedInUserId: user.id, loggedInUser: user.username])
+			render(view: "/index", model: [loggedInUserId: user?.id, loggedInUser: user?.username])
 		
 	}
 	def schedule(){
@@ -23,14 +23,14 @@ class DefaultController {
 	def createWF(){
 		render view:"/partials/createWF"
 	}
-	def dashboard(){
-		render view:"/partials/dashboard"
-	}
 	def assessmentRoundsList(){
 		render view:"/partials/assessmentRoundsList"
 	}
 	def assessment(){
 		render view:"/partials/assessment"
+	}
+	def dashboard(){
+		render view:"/partials/dashboard"
 	}
 
 }

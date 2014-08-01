@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-var hms = angular.module('hmsApp',  ['ngRoute', 'ngResource', 'ui.bootstrap','ngGrid']);
+var hms = angular.module('hmsApp',  ['ngRoute', 'ngResource', 'ui.bootstrap','ngGrid','ui.bootstrap.datetimepicker']);
 
 hms.config(['$routeProvider', function($routeProvider) {
 	  $routeProvider.when('/schedule', {templateUrl: 'schedule', controller: 'hiringController'});

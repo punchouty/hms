@@ -17,7 +17,9 @@
 		<!-- Bootstrap core CSS -->
         <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/hms/app.css" rel="stylesheet">
-	    <link href="css/hms/ng-grid.css" rel="stylesheet"><%-- 
+	    <link href="css/hms/datetimepicker.css" rel="stylesheet">
+	    <link href="css/hms/ng-grid.css" rel="stylesheet">
+	    <%-- 
 
         <link href="css/hms/dashboard.css" rel="stylesheet">
   
@@ -25,6 +27,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+       
   
   </head>
 	<body>
@@ -37,7 +40,6 @@
   	    <r:require module="application" />
 	    <r:require module="ang" />
 		<r:layoutResources />
-		
 		
 	</body>
 </html>

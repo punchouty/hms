@@ -13,6 +13,7 @@ class ScheduleRoundsVO {
 	String interviewerName
 	Date interviewTime
 	Integer candidateRoundScore
+	String assessmentStatus
 	List<ScheduleRoundsBucketsVO>  bucketEval
 	
 }

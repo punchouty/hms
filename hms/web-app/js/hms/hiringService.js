@@ -1,7 +1,20 @@
 hms.factory('hiringService', function($resource, $log){
 	 
 	var factory = {};
-	 
+	
+	factory.validateStatusChange = function(assessmentStatus, newstaus){    		  
+		  if(assessmentStatus==1&&((newstaus==2)||(newstaus==3)||(newstaus==4)||(newstaus==6)))
+  		    return true;
+  		  else if (assessmentStatus==2&&((newstaus==3)||(newstaus==5)||(newstaus==6)||(newstaus==2))) 
+  		    return true;
+  		  else if(assessmentStatus==3&& newstaus==1)
+  		    return true;
+  		  else if(assessmentStatus==5&&newstaus==1)
+  		    return true;
+  		  else
+  		    return false; 
+	}
+	
 	factory.getPositions = function (){
 		return $resource('position').query();
 		}
@@ -50,29 +63,29 @@ hms.factory('hiringService', function($resource, $log){
 	}
 
 	
+	factory.updateRound2 = function(round){
+        return $resource('roundEvaluation/update2', {}, {'update': {method:'PUT'}}).update(round);
+
+    }
+	
 	factory.updateRound = function(round){
         return $resource('roundEvaluation/update', {}, {'update': {method:'PUT'}}).update(round);
-
     }
 	factory.getInterviewerDetails = function (){
 		return $resource('roundEvaluation/listPanelUsers').query();
 		}
 		
-		factory.getScheduledRounds = function (userId){
-		return $resource('roundEvaluation/listScheduledRounds/:userId', {userId:'@userId'}).query({userId:userId});
-
-
+	factory.getScheduledRounds = function (userId){
+	   return $resource('roundEvaluation/listScheduledRounds/:userId', {userId:'@userId'}).query({userId:userId});
     }
 
 	factory.getEvaluationRound = function (evaluationRoundId){
 			return $resource('roundEvaluation/show/:evaluationRoundId', {evaluationRoundId:'@evaluationRoundId'}).get({evaluationRoundId:evaluationRoundId});
     } 
 	
-	factory.updateSkills = function(skill){
-		
-        return $resource('skillEvaluation/update', {},{'update': {method:'PUT'}}).update(skill);
 
-    }
-
+//	factory.requestRescheduled = function(roundId){
+//		return $resource('roundEvaluation/requestRescheduled',{}, {'update': {method:'PUT'}}).update(roundId);
+//	}
 	return factory;
 });
