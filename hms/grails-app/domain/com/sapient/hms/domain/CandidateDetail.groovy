@@ -5,6 +5,8 @@ class CandidateDetail{
 
 	String name
 	String location
+	String emailId
+	String panNo
 	Date dateCreated
 	Date lastUpdated
 
