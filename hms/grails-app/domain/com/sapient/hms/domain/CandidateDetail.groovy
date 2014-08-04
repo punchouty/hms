@@ -7,6 +7,8 @@ class CandidateDetail{
 	String location
 	String emailId
 	String panNo
+	String contactNumber
+	String passportNumber
 	Date dateCreated
 	Date lastUpdated
 
