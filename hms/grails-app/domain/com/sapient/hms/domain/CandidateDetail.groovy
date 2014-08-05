@@ -16,5 +16,9 @@ class CandidateDetail{
 	
 	
     static constraints = {
-}
+		emailId (unique:true, email:true )
+		panNo (unique:true)
+		passportNumber unique:true		
+	}
+
 }
