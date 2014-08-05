@@ -20,7 +20,7 @@
 
 		<n:hasRole name="SYSTEM ADMINISTRATOR">
 			<a href="administration/adminstrators/index"><button
-					class="btn btn-lg">Administer</button></a>
+					class="btn btn-lg">Administration</button></a>
 		</n:hasRole>
 
 		<n:hasRole name="HUMANRESOURCES">
