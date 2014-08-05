@@ -1,4 +1,4 @@
-<h2>Candidate Details {{mahawar}}</h2>
+<h2>Candidate Details</h2>
 <hr>
 <form role="form">
 	<fieldset>

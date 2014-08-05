@@ -6,12 +6,10 @@ hms
 		.controller(
 				'candidateDetailController',
 				function($scope, $routeParams, hiringService) {
-					$scope.mahawar ="kamlesh";
 					$scope.loggedInUser = $('#loggedInUser').html();
 					$scope.loggedInUserId = $('#loggedInUserId').html();
 
 					$scope.addCandidate = function() {
-						console.log('hello')
 						hiringService.addCandidate({
 							"name" : $scope.newName,
 							"emailId" : $scope.emailId,
