@@ -4,6 +4,7 @@
 var hms = angular.module('hmsApp',  ['ngRoute', 'ngResource', 'ui.bootstrap','ngGrid','ui.bootstrap.datetimepicker']);
 
 hms.config(['$routeProvider', function($routeProvider) {
+	  $routeProvider.when('/candidateDetail', {templateUrl: 'candidateDetail', controller: 'candidateDetailController'});
 	  $routeProvider.when('/schedule', {templateUrl: 'schedule', controller: 'hiringController'});
 	  $routeProvider.when('/scheduleRounds/:interviewId', {templateUrl: 'scheduleRounds', controller: 'hiringRoundController'});
 	  $routeProvider.when('/assessmentRoundsList', {templateUrl: 'assessmentRoundsList', controller: 'hiringAssessRoundController'});

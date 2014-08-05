@@ -32,5 +32,8 @@ class DefaultController {
 	def dashboard(){
 		render view:"/partials/dashboard"
 	}
+	def candidateDetail(){
+		render view:"/partials/candidateDetail"
+	}
 
 }

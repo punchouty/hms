@@ -20,10 +20,6 @@ hms
 							"passportNumber": $scope.passportNumber,
 							"dateCreated" : new Date()
 						}).$promise.then(function(candidateDetails) {
-							alert();
-							$scope.selectedCandidate = candidateDetails;
-							$scope.selectedCandidateId = candidateDetails.id;
-							$scope.addCandidateScreen = "";
 						    $scope.newName = "";
 							$scope.emailId = "";
 							$scope.panNumber = "";
@@ -32,13 +28,7 @@ hms
 						});
 						hiringService.getCandidateDetails().$promise
 						.then(function(candidateDetails) {
-							$scope.candidates = candidateDetails;
-							$scope.selectedCandidate = '';
-							$scope.setCandidate = function(site) {
-								$scope.selectedCandidateId = site.id;
-								$scope.newCandidate = "";
-								$scope.isSetInterviewDisabled = false;
-							};
+							
 						});
 						
 					}

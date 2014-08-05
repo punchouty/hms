@@ -26,6 +26,8 @@
 		<n:hasRole name="HUMANRESOURCES">
 			<a href="#/schedule"><button class="btn btn-lg">Click
 					here to Schedule Interview</button></a>
+		    <a href="#/candidateDetail"><button class="btn btn-lg">Click
+					here to Candidate Detail</button></a>
 		</n:hasRole>
 
 		<n:hasRole name="PANEL">

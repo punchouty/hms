@@ -7,7 +7,7 @@ class SecurityFilters {
 		   }
 		 }
 	  
-	   scheduleInterviewScreen(controller:"default", action:"schedule|scheduleRounds") {
+	   scheduleInterviewScreen(controller:"default", action:"candidateDetail|schedule|scheduleRounds") {
 		   before = {
 			   accessControl {
 				   role("HUMANRESOURCES")

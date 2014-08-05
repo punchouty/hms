@@ -10,6 +10,7 @@ class UrlMappings {
 
 		
 		"/"(controller: "default", action:"index")
+		"/candidateDetail"(controller: "default", action:"candidateDetail")
 		"/schedule"(controller: "default", action:"schedule")
 		"/scheduleRounds"(controller: "default", action:"scheduleRounds")
 		"/assessment"(controller: "default", action:"assessment")
