@@ -29,9 +29,11 @@ class CandidateDetailsController {
 		def df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 		result.dateCreated = df.parse(result.dateCreated)
 		def candidateDetailsInstance = new CandidateDetail(result)
-		boolean flag=candidateDetailsInstance.save(flush: true)			
-		if (!flag) {
-			render candidateDetailsInstance as JSON
+		boolean flag=candidateDetailsInstance.save(flush: true)	
+		response		
+		if (flag==null||flag==false) {
+			def resultMap = [error:'internal error occured,check the records']
+			render  resultMap as JSON
 			return
 		}
 		render candidateDetailsInstance as JSON
