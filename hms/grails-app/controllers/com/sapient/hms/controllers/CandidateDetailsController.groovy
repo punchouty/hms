@@ -36,6 +36,15 @@ class CandidateDetailsController {
 		}
 		render candidateDetailsInstance as JSON
 	}
+	
+	def search(){
+		
+		def result=request.JSON
+		if(result.name){
+			def CandidateDetailInstance=CandidateDetail.findAllByName(result.name)
+			render CandidateDetailInstance.list as JSON
+		}
+	}
 
 	//    def show(Long id) {
 	//        def candidateDetailsInstance = CandidateDetail.get(id)
