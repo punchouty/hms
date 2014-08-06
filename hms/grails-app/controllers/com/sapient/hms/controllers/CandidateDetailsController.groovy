@@ -31,8 +31,9 @@ class CandidateDetailsController {
 		def candidateDetailsInstance = new CandidateDetail(result)
 		boolean flag=candidateDetailsInstance.save(flush: true)			
 		if (flag==null||flag==false) {
-			render "error occured,please try again"
-						return
+			def errorMessage = [error : "error occured,please try again"]
+			render errorMessage
+			return
 		}
 		render candidateDetailsInstance as JSON
 	}
