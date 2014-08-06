@@ -1,6 +1,7 @@
 <div ng-controller="hiringRoundController">
 	<ul id="breadcrumbs-one">
-		<li><a href="#/schedule">Schedule Interview</a></li>
+		 <li><a href="#/candidateDetail">Candidate Detail</a></li>
+	     <li><a href="#/schedule/{{candidateId}}/{{candidateName}}">Schedule Interview</a></li>
 		<li><a href="#/scheduleRounds/{{scheduleRound_interviewId}}"
 			class="current">Schedule Rounds</a></li>
 	</ul>

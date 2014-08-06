@@ -1,4 +1,9 @@
+<ul id="breadcrumbs-one">
+	<li><a href="#/candidateDetail">Candidate Detail</a></li>
+</ul>
+<div class="error" ng-show="showMessage">Entry Pre Exist</div>
 <h2>Candidate Details</h2>
+
 <hr>
 <form role="form">
 	<fieldset>
@@ -30,8 +35,16 @@
 					class="form-control" required />
 			</div>
 		</div>
-		<br>
-		<button type="submit" class="btn btn-primary" ng-click="addCandidate()">Add Candidate</button>
-		<button type="reset" class="btn btn-info">Clear</button>
+		<h1></h1>
+		<div class="row">
+			<div class="col-md-5">
+				<button type="submit" class="btn btn-primary" ng-click="addCandidate()">Add Candidate</button>
+				<button type="reset" class="btn btn-info" ng-click="clearForm()">Clear</button>
+				<button type="search" class="btn btn-primary" ng-click="searchCandidate()">Search Candidate</button>
+			</div>
+		</div>
+		
 	</fieldset>
 </form>
+<h1></h1>
+<div ng-grid="gridOptions" class='gridStyle'></div>

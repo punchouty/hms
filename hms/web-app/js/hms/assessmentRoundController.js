@@ -4,7 +4,8 @@ hms.controller('assessmentRoundController', function($scope, $routeParams, hirin
 	  $scope.loggedInUserId = $('#loggedInUserId').html();
 	  $scope.isDisabled =true;
 	  $scope.scheduleRound_evaluationRoundId =$routeParams.roundId;
-	 
+	  $scope.candidateId =$routeParams.candidateId;
+	  $scope.candidateName =$routeParams.candidateName;
 	   hiringService.getEvaluationRound($scope.scheduleRound_evaluationRoundId).$promise.then(function(round){
 		   $scope.round = round;
 	   });

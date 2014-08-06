@@ -13,5 +13,6 @@ class InterviewDetailsVO {
 	String hiringProcessName
 	String positionName
 	String candidateName
+	Long candidateId
 	
 }

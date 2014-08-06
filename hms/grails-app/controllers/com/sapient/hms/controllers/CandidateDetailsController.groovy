@@ -29,14 +29,21 @@ class CandidateDetailsController {
 		def df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 		result.dateCreated = df.parse(result.dateCreated)
 		def candidateDetailsInstance = new CandidateDetail(result)
-		boolean flag=candidateDetailsInstance.save(flush: true)	
-		response		
+		boolean flag=candidateDetailsInstance.save(flush: true)			
 		if (flag==null||flag==false) {
-			def resultMap = [error:'internal error occured,check the records']
-			render  resultMap as JSON
-			return
+			render "error occured,please try again"
+						return
 		}
 		render candidateDetailsInstance as JSON
+	}
+
+	def search(){
+
+		def result=request.JSON
+		if(result.name){
+			def CandidateDetailInstance=CandidateDetail.findAllByName(result.name)
+			render CandidateDetailInstance.list as JSON
+		}
 	}
 
 	//    def show(Long id) {

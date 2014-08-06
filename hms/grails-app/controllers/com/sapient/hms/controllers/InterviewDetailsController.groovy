@@ -45,6 +45,7 @@ class InterviewDetailsController {
 			interviewDetailVO.hiringProcessName = it.hiringProcess.name
 			interviewDetailVO.positionName  = it.position.name
 			interviewDetailVO.candidateName = it.candidateDetail.name
+			interviewDetailVO.candidateId = it.candidateDetail.id
 			interviewDetailsList.add(interviewDetailVO)
 		}
 		

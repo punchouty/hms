@@ -9,6 +9,8 @@ hms
 
 					$scope.loggedInUser = $('#loggedInUser').html();
 					$scope.loggedInUserId = $('#loggedInUserId').html();
+					$scope.candidateName = $routeParams.candidateName;
+					$scope.candidateId = $routeParams.candidateId;
 
 					$scope.newCandidate = "Yes";
 					$scope.isSetInterviewDisabled = true;
@@ -97,9 +99,9 @@ hms
 					}
 
 					$scope.setInterview = function() {
-						$scope.interviewDetail = angular.fromJson({
+						 $scope.interviewDetail = angular.fromJson({
 							"candidateDetail" : {
-								"id" : $scope.selectedCandidateId
+								"id" : $scope.candidateId
 							},
 							"completionStatus" : "0",
 							"hiringProcess" : {
@@ -253,7 +255,7 @@ hms
 								{
 									field : "",
 									displayName : "Actions",
-									cellTemplate : '<a href="#/scheduleRounds/{{row.entity.interviewId}}" class="glyphicon glyphicon-time" title="Round Detail" style="margin-left:20%"></a><button ng-hide="row.entity.completionStatus" type="button" ng-click="deleteInterview(row.entity.interviewId)" class="close" style="color: red;margin-right: 20%" aria-hidden="true" title="Cancle Round">&times;</button>',
+									cellTemplate : '<a href="#/scheduleRounds/{{row.entity.interviewId}}/{{row.entity.candidateId}}/{{row.entity.candidateName}}" class="glyphicon glyphicon-time" title="Round Detail" style="margin-left:20%"></a><button ng-hide="row.entity.completionStatus" type="button" ng-click="deleteInterview(row.entity.interviewId)" class="close" style="color: red;margin-right: 20%" aria-hidden="true" title="Cancle Round">&times;</button>',
 									width : "20%"
 								} ],
 							showFilter : true,						
