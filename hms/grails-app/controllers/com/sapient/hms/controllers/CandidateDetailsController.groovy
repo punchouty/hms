@@ -30,9 +30,9 @@ class CandidateDetailsController {
 		result.dateCreated = df.parse(result.dateCreated)
 		def candidateDetailsInstance = new CandidateDetail(result)
 		boolean flag=candidateDetailsInstance.save(flush: true)			
-		if (!flag) {
-			render candidateDetailsInstance as JSON
-			return
+		if (flag==null||flag==false) {
+			render "error occured,please try again"
+						return
 		}
 		render candidateDetailsInstance as JSON
 	}
