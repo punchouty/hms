@@ -1,6 +1,7 @@
 package com.sapient.hms.controllers
 
 import grails.converters.JSON;
+import java.text.SimpleDateFormat
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -16,7 +17,7 @@ class CandidateDetailsController {
 
 	def list() {
 		def candidates = CandidateDetail.list()
-		render candidates.collect{ [ id: it.id, name: it.name, location: it.location,emailId:it.emailId,panNo:it.panNo,contactNumber:it.contactNumber ,passportNumber:it.passportNumber] } as JSON
+		render candidates.collect{ [ id: it.id, name: it.name,emailId:it.emailId,panNo:it.panNo,contactNumber:it.contactNumber ,passportNumber:it.passportNumber] } as JSON
 	}
 	//
 	//    def create() {
@@ -25,14 +26,15 @@ class CandidateDetailsController {
 
 	def save() {
 		def result = request.JSON
+		def df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+		result.dateCreated = df.parse(result.dateCreated)
 		def candidateDetailsInstance = new CandidateDetail(result)
-		if (!candidateDetailsInstance.save(flush: true)) {
+		boolean flag=candidateDetailsInstance.save(flush: true)			
+		if (!flag) {
 			render candidateDetailsInstance as JSON
 			return
 		}
-
 		render candidateDetailsInstance as JSON
-
 	}
 
 	//    def show(Long id) {
