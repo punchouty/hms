@@ -42,7 +42,23 @@ hms
 					}
 					
 					$scope.searchCandidate = function(){
-						
+						hiringService.searchCandidate({
+							"name" : $scope.newName,
+							"emailId" : $scope.emailId,
+							"panNo" : $scope.panNumber,
+							"contactNumber": $scope.contactNumber,
+							"passportNumber": $scope.passportNumber,
+							"dateCreated" : new Date()
+						}).$promise.then(function(response) {
+							
+							alert("done");
+							$scope.candidateDetails = response;
+						    $scope.newName = "";
+							$scope.emailId = "";
+							$scope.panNumber = "";
+							$scope.contactNumber= "";
+							$scope.passportNumber = "";
+						});
 					}
 					
 					$scope.clearForm = function() {
