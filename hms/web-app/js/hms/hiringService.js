@@ -58,6 +58,10 @@ hms.factory('hiringService', function($resource, $log){
 		return $resource('candidateDetails/save', {}, {'save': {method:'POST'}}).save(candidate);
 	}
 	
+	factory.updateCandidateDetails = function (data){
+		return $resource('candidateDetails/update',{},{'update': {method:'PUT'}}).update(data);
+	}
+	
 	factory.getRoundsByinterview = function(userId){
 	     return $resource('roundEvaluation/searchByInterview/:userId', {userId:'@userId'}).query({userId:userId});		
 	}

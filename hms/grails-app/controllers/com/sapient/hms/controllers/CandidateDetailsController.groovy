@@ -9,7 +9,7 @@ import com.sapient.hms.domain.CandidateDetail;
 
 class CandidateDetailsController {
 
-	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	static allowedMethods = [save: "POST", update: "PUT", delete: "POST"]
 
 	def index() {
 		redirect(action: "list", params: params)
@@ -48,6 +48,22 @@ class CandidateDetailsController {
 			render CandidateDetailInstance as JSON
 		}
 	}
+	
+	def update(){
+		def result=request.JSON
+		def candidateInstance=CandidateDetail.get(result.id)
+		if(result.name){
+			   candidateInstance.name=result.name
+		}
+		boolean flag=candidateInstance.save(flush: true)
+		if (flag==null||flag==false) {
+			   def errorMessage = [error : "error occured,please try again"]
+			   render errorMessage as JSON
+			   return
+		}
+		render candidateInstance as JSON
+ }
+
 
 	//    def show(Long id) {
 	//        def candidateDetailsInstance = CandidateDetail.get(id)

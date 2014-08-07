@@ -2,7 +2,7 @@
 	<ul id="breadcrumbs-one">
 		 <li><a href="#/candidateDetail">Candidate Detail</a></li>
 	     <li><a href="#/schedule/{{candidateId}}/{{candidateName}}">Schedule Interview</a></li>
-		<li><a href="#/scheduleRounds/{{scheduleRound_interviewId}}"
+		<li><a href="#/scheduleRounds/{{scheduleRound_interviewId}}/{{candidateId}}/{{candidateName}}"
 			class="current">Schedule Rounds</a></li>
 	</ul>
 	<div class="{{class}}" ng-show="isCompleted">Status updated

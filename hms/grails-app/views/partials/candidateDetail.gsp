@@ -43,7 +43,54 @@
 				<button type="search" class="btn btn-primary" ng-click="searchCandidate()">Search Candidate</button>
 			</div>
 		</div>
-		
+		<div class="modal fade" id="basicModal" tabindex="-1" role="dialog"
+					aria-labelledby="basicModal" aria-hidden="true">
+					<div class="modal-dialog" style="margin: 15% 30%;">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">Candidate Details</h4>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-md-5">
+										<label>Candidate Name :</label> <input type="text" ng-model="modalNewName"
+											class="form-control" required />
+									</div>
+									<div class="col-md-5 col-md-offset-2">
+										<label>PAN Number :</label> <input type="text" class="form-control" ng-model="modalPanNumber"
+											required />
+									</div>
+								</div>
+								<h1></h1>
+								<div class="row">
+									<div class="col-md-5">
+										<label>Contact Number :</label> <input type="text" ng-model="modalContactNumber"
+											class="form-control" required />
+									</div>
+									<div class="col-md-5 col-md-offset-2">
+										<label>Passport Number:</label> <input type="text" ng-model="modalPassportNumber"
+											class="form-control" required />
+									</div>
+								</div>
+								<h1></h1>
+								<div class="row">
+									<div class="col-md-5">
+										<label>Email Address :</label> <input type="email" ng-model="modalEmailId"
+											class="form-control" required />
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary"
+									data-dismiss="modal" ng-click="updateCandidateDetails(modalNewName,modalPanNumber,modalContactNumber,modalPassportNumber,modalEmailId)">Update Details</button>
+							</div>
+						</div>
+					</div>
+		      </div>
 	</fieldset>
 </form>
 <h1></h1>

@@ -5,10 +5,11 @@
 hms
 		.controller(
 				'candidateDetailController',
-				function($scope, $routeParams, hiringService) {
+				function($scope, $routeParams, hiringService,$rootScope) {
 					$scope.loggedInUser = $('#loggedInUser').html();
 					$scope.loggedInUserId = $('#loggedInUserId').html();
 					$scope.showMessage = false;
+					$scope.candidateDetails = "";
 										
 					$scope.addCandidate = function() {
 						hiringService.addCandidate({
@@ -87,18 +88,50 @@ hms
 										field : "emailId",
 										displayName : "Email ID",
 										width : "15%"
+									},
+									{
+										displayName : "Action",
+										cellTemplate :'<a class="glyphicon glyphicon-edit" ng-click="updateModalDetails(row.entity)" style="margin-left:20%;cursor:pointer;" title="Request To Rescheduled" data-toggle="modal"	data-target="#basicModal" ></a>', 
+										width : "15%"
 									}
+									
 							   ],
 								showFilter : true,						
 								showFooter : true,
 								showGroupPanel : true,
-								//showColumnMenu : true,
-								//pagingOptions : $scope.pagingOptions,
-								//enablePaging : false,
-								//totalServerItems : 'totalServerItems',
-								//filterOptions : $scope.filterOptions,
+								showColumnMenu : true,
+								pagingOptions : $scope.pagingOptions,
+								enablePaging : false,
+								totalServerItems : 'totalServerItems',
+								filterOptions : $scope.filterOptions,
 								enableRowSelection : false
 						};
+					
+					   $scope.updateModalDetails = function(details){
+						   $rootScope.modalNewName = details.name;
+						   $rootScope.modalPanNumber = details.panNo;
+						   $rootScope.modalEmailId = details.emailId;
+						   $rootScope.modalContactNumber = details.contactNumber;
+						   $rootScope.modalPassportNumber = details.passportNumber;
+						   $rootScope.modalCandidateId =details.id; 
+					   }
+					   
+					   $scope.updateCandidateDetails = function(modalNewName,modalPanNumber,modalContactNumber,modalPassportNumber,modalEmailId){
+						   var data = {
+							   'name' : modalNewName,
+							   'panNo' : modalPanNumber,
+							   'emailId' : modalEmailId ,
+							   'contactNumber' : modalContactNumber,
+							   'passportNumber' : modalPassportNumber,
+							   'id' : $rootScope.modalCandidateId 
+						   };
+						   console.log(data);
+						   
+						   hiringService.updateCandidateDetails(data).$promise.then(function(response){
+							   
+						   })
+  
+					   }
 
 					
 				});
