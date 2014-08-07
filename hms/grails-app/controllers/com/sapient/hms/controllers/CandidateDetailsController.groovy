@@ -64,6 +64,7 @@ class CandidateDetailsController {
 		render candidateInstance as JSON
  }
 
+
 	//    def show(Long id) {
 	//        def candidateDetailsInstance = CandidateDetail.get(id)
 	//        if (!candidateDetailsInstance) {
