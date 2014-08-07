@@ -42,8 +42,10 @@ class CandidateDetailsController {
 
 		def result=request.JSON
 		if(result.name){
-			def CandidateDetailInstance=CandidateDetail.findAllByName(result.name)
-			render CandidateDetailInstance.list as JSON
+			def CandidateDetailInstance=CandidateDetail.findAll{
+				name==result.name
+			}
+			render CandidateDetailInstance as JSON
 		}
 	}
 

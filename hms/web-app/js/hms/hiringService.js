@@ -84,7 +84,7 @@ hms.factory('hiringService', function($resource, $log){
     } 
 	
 	factory.searchCandidate = function (candidate){
-		return $resource('candidateDetails/search').query();
+		return $resource('candidateDetails/search', {}, {'save': {method:'POST',isArray: true}}).save(candidate);
 	}
 //	factory.requestRescheduled = function(roundId){
 //		return $resource('roundEvaluation/requestRescheduled',{}, {'update': {method:'PUT'}}).update(roundId);

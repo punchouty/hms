@@ -9,12 +9,7 @@ hms
 					$scope.loggedInUser = $('#loggedInUser').html();
 					$scope.loggedInUserId = $('#loggedInUserId').html();
 					$scope.showMessage = false;
-					
-					hiringService.getCandidateDetails().$promise
-					.then(function(candidateDetails) {
-						$scope.candidateDetails = candidateDetails;
-					});
-					
+										
 					$scope.addCandidate = function() {
 						hiringService.addCandidate({
 							"name" : $scope.newName,
@@ -27,6 +22,8 @@ hms
 							
 							if(response.error){
 								$scope.showMessage = true;
+							}else{
+								$scope.candidateDetails = [response];
 							}
 						    $scope.newName = "";
 							$scope.emailId = "";
@@ -34,11 +31,6 @@ hms
 							$scope.contactNumber= "";
 							$scope.passportNumber = "";
 						});
-						hiringService.getCandidateDetails().$promise
-						.then(function(candidateDetails) {
-							$scope.candidateDetails = candidateDetails;
-						});
-						
 					}
 					
 					$scope.searchCandidate = function(){
@@ -49,10 +41,8 @@ hms
 							"contactNumber": $scope.contactNumber,
 							"passportNumber": $scope.passportNumber,
 							"dateCreated" : new Date()
-						}).$promise.then(function(response) {
-							
-							alert("done");
-							$scope.candidateDetails = response;
+						}).$promise.then(function(candidateDetails) {
+							$scope.candidateDetails = candidateDetails;
 						    $scope.newName = "";
 							$scope.emailId = "";
 							$scope.panNumber = "";
