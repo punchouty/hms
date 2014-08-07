@@ -43,7 +43,7 @@ class CandidateDetailsController {
 		def result=request.JSON
 		if(result.name){
 			def CandidateDetailInstance=CandidateDetail.findAll{
-				name==result.name
+				like('name','%'+result.name+'%')
 			}
 			render CandidateDetailInstance as JSON
 		}
