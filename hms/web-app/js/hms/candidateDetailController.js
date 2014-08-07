@@ -60,6 +60,23 @@ hms
 							$scope.passportNumber = "";					
 					}
 					
+					   $scope.updateCandidateDetails = function(modalNewName,modalPanNumber,modalContactNumber,modalPassportNumber,modalEmailId){
+						   var data = {
+							   'name' : modalNewName,
+							   'panNo' : modalPanNumber,
+							   'emailId' : modalEmailId ,
+							   'contactNumber' : modalContactNumber,
+							   'passportNumber' : modalPassportNumber,
+							   'id' : $rootScope.modalCandidateId 
+						   };
+						   console.log(data);
+						   
+						   hiringService.updateCandidateDetails(data).$promise.then(function(response){
+							   $scope.candidateDetails = [response];							   
+						   })
+  
+					   }
+					
 					$scope.gridOptions = {
 							data : 'candidateDetails',
 							columnDefs : [
@@ -116,22 +133,7 @@ hms
 						   $rootScope.modalCandidateId =details.id; 
 					   }
 					   
-					   $scope.updateCandidateDetails = function(modalNewName,modalPanNumber,modalContactNumber,modalPassportNumber,modalEmailId){
-						   var data = {
-							   'name' : modalNewName,
-							   'panNo' : modalPanNumber,
-							   'emailId' : modalEmailId ,
-							   'contactNumber' : modalContactNumber,
-							   'passportNumber' : modalPassportNumber,
-							   'id' : $rootScope.modalCandidateId 
-						   };
-						   console.log(data);
-						   
-						   hiringService.updateCandidateDetails(data).$promise.then(function(response){
-							   
-						   })
-  
-					   }
+
 
 					
 				});
