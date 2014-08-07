@@ -54,6 +54,10 @@ class CandidateDetailsController {
 		def candidateInstance=CandidateDetail.get(result.id)
 		if(result.name){
 			   candidateInstance.name=result.name
+			   candidateInstance.emailId=result.emailId
+			   candidateInstance.panNo=result.panNo
+			   candidateInstance.passportNumber=result.passportNumber
+			   candidateInstance.contactNumber=result.passportNumber
 		}
 		boolean flag=candidateInstance.save(flush: true)
 		if (flag==null||flag==false) {
