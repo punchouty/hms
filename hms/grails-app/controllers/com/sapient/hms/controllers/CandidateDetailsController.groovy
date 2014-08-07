@@ -57,7 +57,7 @@ class CandidateDetailsController {
 			   candidateInstance.emailId=result.emailId
 			   candidateInstance.panNo=result.panNo
 			   candidateInstance.passportNumber=result.passportNumber
-			   candidateInstance.contactNumber=result.passportNumber
+			   candidateInstance.contactNumber=result.contactNumber
 		}
 		boolean flag=candidateInstance.save(flush: true)
 		if (flag==null||flag==false) {
