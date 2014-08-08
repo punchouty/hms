@@ -77,9 +77,9 @@
 								<h1></h1>
 								<div class="row">
 									<div class="col-md-5">
-										<label>Email Address :</label>
-										  <input type="hidden" ng-model="modal.modalCandidateId"/>
-										 <input type="email" ng-model="modal.modalEmailId"
+										<label>Email Address :</label> 
+										<input type="hidden" ng-model="modal.modalCandidateId"/>
+										<input type="email" ng-model="modal.modalEmailId"
 											class="form-control" required />
 									</div>
 								</div>

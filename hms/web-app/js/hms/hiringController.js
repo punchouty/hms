@@ -261,7 +261,7 @@ hms
 							showFilter : true,						
 							showFooter : true,
 							showGroupPanel : true,
-							showColumnMenu : true,
+							//showColumnMenu : true,
 							//pagingOptions : $scope.pagingOptions,
 							//enablePaging : false,
 							//totalServerItems : 'totalServerItems',

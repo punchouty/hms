@@ -76,11 +76,10 @@ hms
 					$scope.candidateId =$routeParams.candidateId;
 					$scope.candidateName =$routeParams.candidateName;
 					$scope.scheduleRound_interviewId = $routeParams.interviewId;
-					
 					hiringService
 							.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise
 							.then(function(assessmentRounds) {
-								console.log($scope.scheduleRound_interviewId);
+								console.log($routeParams);
 								$scope.rounds = assessmentRounds;
 							});
 
