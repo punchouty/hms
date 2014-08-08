@@ -12,11 +12,7 @@ hms
 												.html();
 										$scope.loggedInUserId = $(
 												'#loggedInUserId').html();
-										$scope.candidateId =$routeParams.candidateId;
-										$scope.candidateName =$routeParams.candidateName;
-
-										// Schedule Rounds
-										$scope.scheduleRound_interviewId = $routeParams.interviewId;
+										
 										hiringService
 												.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise
 												.then(function(assessmentRounds) {
@@ -77,12 +73,14 @@ hms
 					$scope.loggedInUser = $('#loggedInUser').html();
 					$scope.loggedInUserId = $('#loggedInUserId').html();
 
-					// Schedule Rounds
+					$scope.candidateId =$routeParams.candidateId;
+					$scope.candidateName =$routeParams.candidateName;
 					$scope.scheduleRound_interviewId = $routeParams.interviewId;
+					
 					hiringService
 							.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise
 							.then(function(assessmentRounds) {
-								console.log($routeParams);
+								console.log($scope.scheduleRound_interviewId);
 								$scope.rounds = assessmentRounds;
 							});
 

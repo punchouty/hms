@@ -39,7 +39,7 @@
 			</div>
 			<div class="col-md-4 col-md-offset-3">
 				<div class="form-group">
-					<label>Interview Time <span class="required"></span></label>
+					<label>Interview Time (DD-MM-YYYY HH:MM)<span class="required"></span></label>
 					<div class="dropdown">
 					  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
 					    <div class="input-group"><span class="form-control" required>{{round.interviewTime | date:"dd-MM-yyyy HH:mm"}}</span><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
