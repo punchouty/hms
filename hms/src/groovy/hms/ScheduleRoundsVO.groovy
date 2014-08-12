@@ -10,6 +10,7 @@ class ScheduleRoundsVO {
 	Long evaluationRoundId
 	String roundName
 	Long interviewerId
+	Long assessmentRoundSequence
 	String interviewerName
 	Date interviewTime
 	Integer candidateRoundScore

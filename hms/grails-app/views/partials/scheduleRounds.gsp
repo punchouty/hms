@@ -8,7 +8,7 @@
 	<div class="{{class}}" ng-show="isCompleted">Status updated
 		{{message}}{{statusTo|renderAssessmentStatus}}{{center}}{{status|renderAssessmentStatus}}</div>
 	<br>
-	<tabset> <tab ng-repeat='round in rounds | orderBy:roundName'
+	<tabset> <tab ng-repeat="round in rounds | orderBy: 'assessmentRoundSequence'"
 		heading="{{round.roundName}}">
 
 <form>

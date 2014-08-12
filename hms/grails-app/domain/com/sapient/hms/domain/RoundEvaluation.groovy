@@ -37,6 +37,10 @@ class RoundEvaluation{
 			instructions nullable: true
 			interviewer nullable: true
 		}
+		
+		static mapping = {
+			assessmentRound sort: 'id', order: 'asc'
+	   }
     }
 
 

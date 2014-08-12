@@ -52,7 +52,7 @@ class RoundEvaluationController {
 			def roundVO = new ScheduleRoundsVO()
 			roundVO.evaluationRoundId = it.id
 			roundVO.roundName = it.assessmentRound.name
-			
+			roundVO.assessmentRoundSequence=it.assessmentRound.sequence
 			roundVO.assessmentStatus = it.assessmentStatus
 			
 			if(it.interviewer)

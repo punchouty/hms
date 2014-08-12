@@ -19,4 +19,7 @@ class HiringProcess{
     static constraints = {
     }
 
+	static mapping = {
+		 assessmentRounds sort: 'id', order: 'asc'
+	}
 }
