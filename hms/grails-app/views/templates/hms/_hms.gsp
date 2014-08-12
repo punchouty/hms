@@ -8,7 +8,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	        </button>
-          <a class="navbar-brand" href="http://www.sapient.com/"  class="nav navbar-nav navbar-right">
+          <a class="navbar-brand" href="#/dashboard"  class="nav navbar-nav navbar-right">
              <img src="images/logo.jpg"  height="30px">
              <span>Hiring Management System</span>
           </a>
