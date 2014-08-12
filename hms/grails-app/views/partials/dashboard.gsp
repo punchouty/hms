@@ -3,7 +3,7 @@
 
 	<div class="row">
 
-		<font font size="10" color="light-blue">Welcome to Hiring Management
+		<font font size="10" color="#8F3972" >Welcome to Hiring Management
 			System</font>
 
 	</div>
