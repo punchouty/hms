@@ -229,7 +229,7 @@ hms
 						columnDefs : [
 								{
 									field : "positionName",
-									displayName : "Position",
+									displayName : "Job Title",
 									width : "12%"
 								},
 								{
@@ -261,7 +261,7 @@ hms
 							showFilter : true,						
 							showFooter : true,
 							showGroupPanel : true,
-							//showColumnMenu : true,
+							showColumnMenu : true,
 							//pagingOptions : $scope.pagingOptions,
 							//enablePaging : false,
 							//totalServerItems : 'totalServerItems',

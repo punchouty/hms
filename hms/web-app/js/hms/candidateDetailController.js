@@ -96,14 +96,14 @@ hms
 										width : "12%"
 									},
 									{
-										field : "contactNumber",
-										displayName : "Contact Number",
-										width : "15%"
-									},
-									{
 										field : "panNo",
 										displayName : "PAN Number",
 										width : "16%"
+									},
+									{
+										field : "contactNumber",
+										displayName : "Contact Number",
+										width : "15%"
 									},
 									{
 										field : "passportNumber",
@@ -126,10 +126,10 @@ hms
 								showFooter : true,
 								showGroupPanel : true,
 								showColumnMenu : true,
-								pagingOptions : $scope.pagingOptions,
-								enablePaging : false,
-								totalServerItems : 'totalServerItems',
-								filterOptions : $scope.filterOptions,
+								//pagingOptions : $scope.pagingOptions,
+								//enablePaging : false,
+								//totalServerItems : 'totalServerItems',
+								//filterOptions : $scope.filterOptions,
 								enableRowSelection : false
 						};
 					

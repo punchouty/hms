@@ -31,7 +31,7 @@
 		<h1></h1>
 		<div class="row">
 			<div class="col-md-5">
-				<label>Email Address :</label> <input type="email" ng-model="emailId"
+				<label>Email ID :</label> <input type="email" ng-model="emailId"
 					class="form-control" required />
 			</div>
 		</div>
