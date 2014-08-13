@@ -21,12 +21,12 @@ hms
 							'<a class="glyphicon glyphicon-trash" ng-click="updateStatus(row.entity, 4)"  style="margin-left:20%;cursor:pointer;" title="Request To Cancel "></a>'
 
 					
-				 hiringService.getScheduledRounds($scope.loggedInUserId).$promise
+				 /*hiringService.getScheduledRounds($scope.loggedInUserId).$promise
 							.then(function(interviews) {
 								$scope.interviews = interviews;
-							});
+							});*/
 					 
-/*					$scope.filterOptions = {
+    				$scope.filterOptions = {
 						filterText : "",
 						useExternalFilter : false
 					};
@@ -92,9 +92,9 @@ hms
 									$scope.pagingOptions.currentPage,
 									$scope.filterOptions.filterText);
 						}
-					}, true);*/
+					}, true);
 					$scope.gridOptions = {
-						data : 'interviews',
+						data : 'myData',
 						columnDefs : [
 								{
 									field : "roundName",
@@ -129,11 +129,11 @@ hms
 						showFilter : true,						
 						showFooter : true,
 						showGroupPanel : true,
-						//showColumnMenu : true,
-						//pagingOptions : $scope.pagingOptions,
-						//enablePaging : false,
-						//totalServerItems : 'totalServerItems',
-						//filterOptions : $scope.filterOptions,
+						showColumnMenu : true,
+						pagingOptions : $scope.pagingOptions,
+						enablePaging : true,
+						totalServerItems : 'totalServerItems',
+						filterOptions : $scope.filterOptions,
 						enableRowSelection : false
 					};
 
@@ -160,6 +160,7 @@ hms
 								$scope.class = "error";
 								$scope.isCompleted = true;
 						  }
+						
 					}
 
 					// $scope.updateStatusAsRechudule = function(status){
