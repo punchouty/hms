@@ -146,18 +146,17 @@ hms
 					}
 					
 					$scope.enableTab = function (round){
-						
-						if(round.isDisabled == true){
-							round.isDisabled = false;
-							hiringService.updateRound2(round).$promise
-							.then(function(round) {
-								hiringService
-										.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise
-										.then(function(assessmentRounds) {
-											$scope.rounds = assessmentRounds;
-										});
-							});
-						}
+							if(round.isDisabled == true ){
+								round.isDisabled = false;
+								hiringService.updateRound2(round).$promise
+								.then(function(round) {
+									hiringService
+											.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise
+											.then(function(assessmentRounds) {
+												$scope.rounds = assessmentRounds;
+											});
+								});
+							}
 						
 					}
 				});
