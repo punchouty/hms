@@ -137,8 +137,9 @@ class RoundEvaluationController {
 
 	def update(){
 		def result = JSON.parse(request.JSON.toString());
+		def roundEval=new RoundEvaluation();
 		if(result.evaluationRoundId)
-		def roundEval=RoundEvaluation.get(result.evaluationRoundId)
+		 roundEval=RoundEvaluation.get(result.evaluationRoundId)
 		def user = User.get(result.interviewerId)
 		if(result.assessmentStatus){
 			roundEval.assessmentStatus = result.assessmentStatus

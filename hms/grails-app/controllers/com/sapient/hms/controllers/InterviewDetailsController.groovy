@@ -59,14 +59,20 @@ class InterviewDetailsController {
     def save() {
 		def result = JSON.parse(request.JSON.toString());
         def interviewDetailsInstance = new InterviewDetail(result)
+		println interviewDetailsInstance
 		interviewDetailsInstance.candidateDetail = CandidateDetail.get(result.candidateDetail.id)
 		interviewDetailsInstance.position = Position.get(result.position.id)
 		interviewDetailsInstance.hiringperson = User.get(result.hiringperson.id)
 		interviewDetailsInstance.hiringProcess = HiringProcess.get(result.hiringProcess.id)
 		populateDetails(interviewDetailsInstance)
-        if (!interviewDetailsInstance.save(flush: true)) {
-			interviewDetailsInstance.errors.rejectValue('interviewDetailsInstance','default.failure')
-        }
+		boolean flag=interviewDetailsInstance.save(flush: true)
+        if (flag==false||flag==null) {
+			def errorMessage = [error : "error occured,please try again"]
+			render errorMessage as JSON
+			return			
+		}
+		println interviewDetailsInstance
+		println flag
 		render interviewDetailsInstance as JSON
     }
 

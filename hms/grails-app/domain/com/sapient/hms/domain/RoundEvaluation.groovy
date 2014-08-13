@@ -38,6 +38,7 @@ class RoundEvaluation{
 			guideline nullable: true
 			instructions nullable: true
 			interviewer nullable: true
+			isDisabled nullable:true
 		}
 		
 		static mapping = {
