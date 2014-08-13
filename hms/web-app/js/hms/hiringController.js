@@ -118,26 +118,22 @@ hms
 						});
 						hiringService.createInterview($scope.interviewDetail).$promise
 								.then(function(interviewDetails) {
-									hiringService.getInterviewsByUser($scope.loggedInUserId).$promise
-									.then(function(interviews) {
-										$scope.interviews = interviews;
-									});
+									$scope.getPagedDataAsync($scope.pagingOptions.pageSize,
+											$scope.pagingOptions.currentPage);
 								});
 					}
 
 					
-					  hiringService.getInterviewsByUser($scope.loggedInUserId).$promise
+					/*  hiringService.getInterviewsByUser($scope.loggedInUserId).$promise
 							.then(function(interviews) {
 								$scope.interviews = interviews;
 							});
-
+*/
 					$scope.deleteInterview = function(id) {
 						hiringService.deleteInterview(id).$promise
 								.then(function(status) {
-									hiringService.getInterviewsByUser($scope.loggedInUserId).$promise
-									.then(function(interviews) {
-										$scope.interviews = interviews;
-									});
+									$scope.getPagedDataAsync($scope.pagingOptions.pageSize,
+											$scope.pagingOptions.currentPage);
 
 								});
 					}
@@ -147,7 +143,8 @@ hms
 						$scope.isSetInterviewDisabled = true;
 						$scope.newCandidate = "Yes";
 					}
-/*					$scope.filterOptions = {
+					
+					$scope.filterOptions = {
 						filterText : "",
 						useExternalFilter : false
 					};
@@ -222,10 +219,10 @@ hms
 									$scope.pagingOptions.currentPage,
 									$scope.filterOptions.filterText);
 						}
-					}, true);*/
+					}, true);
 
 					$scope.gridOptions = {
-						data : 'interviews',
+						data : 'myData',
 						columnDefs : [
 								{
 									field : "positionName",
@@ -262,11 +259,11 @@ hms
 							showFooter : true,
 							showGroupPanel : true,
 							showColumnMenu : true,
-							//pagingOptions : $scope.pagingOptions,
-							//enablePaging : false,
-							//totalServerItems : 'totalServerItems',
-							//filterOptions : $scope.filterOptions,
-							enableRowSelection : false
+							pagingOptions : $scope.pagingOptions,
+							enablePaging : true,
+							enableRowSelection:false,
+							totalServerItems : 'totalServerItems',
+							filterOptions : $scope.filterOptions
 					};
 
 				});
