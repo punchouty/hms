@@ -147,6 +147,7 @@ hms
 					
 					$scope.enableTab = function (round){
 							if(round.isDisabled == true ){
+								console.log(round)
 								round.isDisabled = false;
 								hiringService.updateRound2(round).$promise
 								.then(function(round) {
