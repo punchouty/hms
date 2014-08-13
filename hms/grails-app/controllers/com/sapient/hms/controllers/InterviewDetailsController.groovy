@@ -64,6 +64,7 @@ class InterviewDetailsController {
 		interviewDetailsInstance.position = Position.get(result.position.id)
 		interviewDetailsInstance.hiringperson = User.get(result.hiringperson.id)
 		interviewDetailsInstance.hiringProcess = HiringProcess.get(result.hiringProcess.id)
+				
 		populateDetails(interviewDetailsInstance)
 		boolean flag=interviewDetailsInstance.save(flush: true)
         if (flag==false||flag==null) {
@@ -81,6 +82,7 @@ class InterviewDetailsController {
 		processRounds.each() {
 			def roundEval = new RoundEvaluation()
 			roundEval.assessmentRound = it
+			roundEval.isDisabled=true
 			def skillBucketsDef = it.skillBuckets
 			skillBucketsDef.each(){
 				BucketEvaluation bucketEval = new BucketEvaluation()
