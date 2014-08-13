@@ -23,6 +23,7 @@ hms
 						}).$promise.then(function(response) {
 							
 							if(response.error){
+								$scope.message=response.error
 								$scope.showMessage = true;
 							}else{
 								$scope.candidateDetails = [response];

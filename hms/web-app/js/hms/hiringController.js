@@ -118,8 +118,14 @@ hms
 						});
 						hiringService.createInterview($scope.interviewDetail).$promise
 								.then(function(interviewDetails) {
-									$scope.getPagedDataAsync($scope.pagingOptions.pageSize,
-											$scope.pagingOptions.currentPage);
+									if(interviewDetails.error){
+										$scope.message=interviewDetails.error;
+										$scope.showMessage = true;
+									}else{
+										$scope.getPagedDataAsync($scope.pagingOptions.pageSize,
+												$scope.pagingOptions.currentPage);
+									}
+									
 								});
 					}
 

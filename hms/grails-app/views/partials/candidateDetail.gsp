@@ -1,7 +1,7 @@
 <ul id="breadcrumbs-one">
 	<li><a href="#/candidateDetail">Candidate Detail</a></li>
 </ul>
-<div class="error" ng-show="showMessage">Entry Pre Exist</div>
+<div class="error" ng-show="showMessage">{{message}}</div>
 <h2>Candidate Details</h2>
 
 <hr>
