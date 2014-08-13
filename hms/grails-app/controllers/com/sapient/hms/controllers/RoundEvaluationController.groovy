@@ -129,7 +129,10 @@ class RoundEvaluationController {
 			roundEval.assessmentStatus = result.assessmentStatus
 		}
 		
-		roundEval.isDisabled = result.isDisabled
+		if(result.isDisabled){
+			roundEval.isDisabled = result.isDisabled
+		}
+		
 		//DateFormat df=new SimpleDateFormat(pattern);
 		roundEval.save(flush:true)
 		render roundEval as JSON
