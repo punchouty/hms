@@ -9,7 +9,7 @@
 		{{message}}{{statusTo|renderAssessmentStatus}}{{center}}{{status|renderAssessmentStatus}}</div>
 	<br>
 	<tabset> <tab ng-repeat="round in rounds | orderBy: 'assessmentRoundSequence'"
-		heading="{{round.roundName}}">
+		heading="{{round.roundName}}" disabled="{{round.isDisabled}}" ng-click="enableTab(round)">
 
 <form>
 	<div class="form-group">

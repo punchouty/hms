@@ -15,6 +15,7 @@ class ScheduleRoundsVO {
 	Date interviewTime
 	Integer candidateRoundScore
 	String assessmentStatus
+	Boolean isDisabled
 	List<ScheduleRoundsBucketsVO>  bucketEval
 	
 }

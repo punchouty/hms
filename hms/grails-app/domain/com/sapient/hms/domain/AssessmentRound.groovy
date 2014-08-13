@@ -9,7 +9,6 @@ class AssessmentRound{
 	Integer overAllCutOffScore
 	Date dateCreated
 	Date lastUpdated
-	Boolean isDisabled
 	
 	static hasMany=[skillBuckets:SkillBucket]
 	

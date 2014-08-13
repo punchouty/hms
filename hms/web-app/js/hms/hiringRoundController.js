@@ -79,7 +79,6 @@ hms
 					hiringService
 							.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise
 							.then(function(assessmentRounds) {
-								console.log($routeParams);
 								$scope.rounds = assessmentRounds;
 							});
 
@@ -144,5 +143,21 @@ hms
 							$scope.class = "error";
 							$scope.isCompleted = true;
 						}
+					}
+					
+					$scope.enableTab = function (round){
+						
+						if(round.isDisabled == true){
+							round.isDisabled = false;
+							hiringService.updateRound2(round).$promise
+							.then(function(round) {
+								hiringService
+										.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise
+										.then(function(assessmentRounds) {
+											$scope.rounds = assessmentRounds;
+										});
+							});
+						}
+						
 					}
 				});

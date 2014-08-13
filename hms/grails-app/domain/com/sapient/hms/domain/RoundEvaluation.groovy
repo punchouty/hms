@@ -18,6 +18,8 @@ class RoundEvaluation{
 	User interviewer
 	Date dateCreated
 	Date lastUpdated
+	
+	Boolean isDisabled
 
 	
 	static hasMany=[bucketEvaluations:BucketEvaluation]

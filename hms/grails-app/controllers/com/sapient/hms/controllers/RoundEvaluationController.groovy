@@ -54,6 +54,7 @@ class RoundEvaluationController {
 			roundVO.roundName = it.assessmentRound.name
 			roundVO.assessmentRoundSequence=it.assessmentRound.sequence
 			roundVO.assessmentStatus = it.assessmentStatus
+			roundVO.isDisabled = it.isDisabled
 			
 			if(it.interviewer)
 			{
@@ -127,6 +128,8 @@ class RoundEvaluationController {
 		if(result.assessmentStatus){
 			roundEval.assessmentStatus = result.assessmentStatus
 		}
+		
+		roundEval.isDisabled = result.isDisabled
 		//DateFormat df=new SimpleDateFormat(pattern);
 		roundEval.save(flush:true)
 		render roundEval as JSON
@@ -134,6 +137,7 @@ class RoundEvaluationController {
 
 	def update(){
 		def result = JSON.parse(request.JSON.toString());
+		if(result.evaluationRoundId)
 		def roundEval=RoundEvaluation.get(result.evaluationRoundId)
 		def user = User.get(result.interviewerId)
 		if(result.assessmentStatus){
@@ -268,6 +272,7 @@ class RoundEvaluationController {
 		roundVO.roundName = roundEvaluation.assessmentRound.name
 		roundVO.assessmentStatus = roundEvaluation.assessmentStatus
 		roundVO.candidateRoundScore = roundEvaluation.candidateRoundScore
+		roundVO.isDisabled = roundEvaluation.assessmentRound.isDisabled
 		if(roundEvaluation.interviewer)
 		{
 			roundVO.interviewerId = roundEvaluation.interviewer.id
