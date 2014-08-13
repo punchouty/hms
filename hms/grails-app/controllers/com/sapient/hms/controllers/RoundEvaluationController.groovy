@@ -273,7 +273,7 @@ class RoundEvaluationController {
 		roundVO.roundName = roundEvaluation.assessmentRound.name
 		roundVO.assessmentStatus = roundEvaluation.assessmentStatus
 		roundVO.candidateRoundScore = roundEvaluation.candidateRoundScore
-		roundVO.isDisabled = roundEvaluation.assessmentRound.isDisabled
+		roundVO.isDisabled = roundEvaluation.isDisabled
 		if(roundEvaluation.interviewer)
 		{
 			roundVO.interviewerId = roundEvaluation.interviewer.id
