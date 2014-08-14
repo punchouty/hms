@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat
 
 import org.hibernate.FetchMode as FM
+import org.hibernate.criterion.Order
 
 import grails.converters.JSON
 import grails.plugin.nimble.core.Role;
@@ -40,7 +41,6 @@ class RoundEvaluationController {
 	}
 
 	def listByInterview(Long id) {
-
 		def roundEvalsQuery = RoundEvaluation.where{ interviewDetail.id== id }
 		.withPopulatedQuery(null, null) { query ->
 			query.@criteria.setFetchMode('bucketEvaluations', FM.SELECT)
@@ -91,6 +91,7 @@ class RoundEvaluationController {
 			roundVO.bucketEval = bucketEvalsList
 			roundEvalsList.add(roundVO)
 		}
+		Collections.sort(roundEvalsList, new SequenceComparator())
 		render roundEvalsList as JSON
 	}
 
@@ -345,3 +346,11 @@ class RoundEvaluationController {
 
 
 }
+
+class SequenceComparator implements Comparator<ScheduleRoundsVO> {
+		
+			@Override
+			public int compare(ScheduleRoundsVO o1, ScheduleRoundsVO o2) {
+				return o1.getAssessmentRoundSequence().compareTo(o2.getAssessmentRoundSequence());
+			}
+		}

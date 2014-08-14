@@ -1,3 +1,4 @@
+
 hms
 		.controller(
 				'hiringRoundController',
@@ -7,19 +8,35 @@ hms
 									'hiringRoundController',
 									function($scope, $routeParams,
 											hiringService) {
+										alert("hi2");
 										$scope.name = 'hiringRoundController';
 										$scope.loggedInUser = $('#loggedInUser')
 												.html();
 										$scope.loggedInUserId = $(
 												'#loggedInUserId').html();
 										
-										hiringService
+									/*	hiringService
 												.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise
 												.then(function(assessmentRounds) {
+												
 													$scope.rounds = assessmentRounds;
-													$scope.rounds[0].interviewTime = "03/04/2014 13:00";
-													alert($scope.rounds[0].interviewTime);
-												});
+													var flag = true;
+													
+												for(var i=0;i<$scope.rounds.length;i++){
+													if(flag){
+														$scope.rounds[i].show = true;
+														flag= false;
+													}
+                                                   if(i>0){
+                                                	  if($scope.rounds[i-1].assessmentStatus == 6){
+                                                		  $scope.rounds[i].show = true;
+														  }
+                                                   }
+													
+												}
+													
+													console.log($scope.rounds);
+												});*/
 
 										$scope.scheduleInterview = function(
 												roundId, interviewerId,
@@ -80,6 +97,27 @@ hms
 							.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise
 							.then(function(assessmentRounds) {
 								$scope.rounds = assessmentRounds;
+								var flag = true;
+								$scope.rounds.noData=false;
+								for(var i=0;i<$scope.rounds.length;i++){
+									if(flag){
+										$scope.rounds[i].show = true;
+										$scope.rounds.noData=true;
+										flag= false;
+									}
+                                   if(i>0){
+                                	  if($scope.rounds[i-1].assessmentStatus == 6){
+                                		  $scope.rounds[i].show = true;
+                                		  $scope.rounds.noData=true;
+										  }
+                                	  else
+                                		  {
+                                		  $scope.rounds[i].show = false;
+                                		  }
+                                	  
+                                   }
+								}
+								
 							});
 
 					$scope.scheduleInterview = function(roundId, interviewerId,
@@ -145,18 +183,4 @@ hms
 						}
 					}
 					
-					$scope.enableTab = function (round){
-							if(round.isDisabled == true ){
-								round.isDisabled = false;
-								hiringService.updateRound2(round).$promise
-								.then(function(round) {
-									hiringService
-											.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise
-											.then(function(assessmentRounds) {
-												$scope.rounds = assessmentRounds;
-											});
-								});
-							}
-						
-					}
 				});

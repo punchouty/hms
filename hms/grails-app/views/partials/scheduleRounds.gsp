@@ -8,9 +8,10 @@
 	<div class="{{class}}" ng-show="isCompleted">Status updated
 		{{message}}{{statusTo|renderAssessmentStatus}}{{center}}{{status|renderAssessmentStatus}}</div>
 	<br>
-	<tabset> <tab ng-repeat="round in rounds | orderBy: 'assessmentRoundSequence'"
-		heading="{{round.roundName}}" disabled="{{round.isDisabled}}" ng-click="enableTab(round)">
-
+	<tabset> 
+	
+	<tab heading="{{round.roundName}}" ng-repeat="round in rounds" ng-show="{{round.show}}">
+	<div ng-show="{{round.show}}">
 <form>
 	<div class="form-group">
 		<h1></h1>
@@ -118,5 +119,12 @@
 			</tr>
 		</tbody>
 	</table>
-	</tab> </tabset> </tab> </tabset>
+	</tab> 
+	</tabset> 
+	</div>
+	</tab> 
+	</tabset>
+	<div ng-hide="{{rounds.noData}}">
+	No Rounds to display
+	</div>
 </div>

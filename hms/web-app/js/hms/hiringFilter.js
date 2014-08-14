@@ -19,9 +19,9 @@ hms.filter('renderAssessmentStatus', function(){
 		if(assessmentStatus=='0') return "UnScheduled";
 		else if(assessmentStatus=='1') return "Scheduled";
 		else if(assessmentStatus == '2') return "Interview In Progress";
-		else if(assessmentStatus == '3') return "Reschedule";
-		else if(assessmentStatus == '4') return "Cancel";
-		else if(assessmentStatus == '5') return "New Round";
+		else if(assessmentStatus == '3') return "Request Reschedule";
+		else if(assessmentStatus == '4') return "Request To Cancel";
+		else if(assessmentStatus == '5') return "Request for New Round";
 		else if(assessmentStatus == '6') return "Completed";
 	}
 });
