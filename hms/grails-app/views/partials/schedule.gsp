@@ -3,7 +3,7 @@
 	<li><a href="#/schedule/{{candidateId}}/{{candidateName}}">Schedule Interview</a></li>
 </ul>
 <h2>Schedule Interview</h2>
-<div class="error" ng-show="showMessage">{{message}}</div>
+<div class="success" ng-show="showMessage">Interview Scheduled Successfully</div>
 <hr>
 <form role="form">
 	<fieldset>

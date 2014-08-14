@@ -68,7 +68,7 @@
 		<div class="col-md-1">
 			<button type="submit" class="btn btn-primary"
 				
-				ng-click='scheduleInterview(round.evaluationRoundId,round.interviewerId, round)'>Save</button>
+				ng-click='scheduleInterview(round.evaluationRoundId,round.interviewerId, round)' ng-disabled="isScheduled(round)">Save</button>
 
 		</div>
 		<div class="col-md-2">

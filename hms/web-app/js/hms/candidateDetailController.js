@@ -10,7 +10,7 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
     $scope.modal = {};
     $scope.isAddBtnEnable = true;
     $scope.isSearchBtnEnable = true;
-
+    $scope.showMessage = true;
     $scope.addCandidate = function () {
         hiringService.addCandidate({
             "name": $scope.newName,
@@ -128,11 +128,18 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
     };
     
     $scope.enableSearchBtn = function (){
-    	$scope.isSearchBtnEnable = false;
+    	if( $scope.newName || $scope.emailId || $scope.panNumber || $scope.contactNumber || $scope.passportNumber){
+    		return false;
+    	}else{
+    		return true;
+    	} 
     }
     
     $scope.enableAddBtn = function (){
-    	$scope.isAddBtnEnable = false;
-    	$scope.isSearchBtnEnable = false;
+    	if( $scope.newName && $scope.emailId && $scope.panNumber && $scope.contactNumber && $scope.passportNumber){
+    		return false;
+    	}else{
+    		return true;
+    	} 	
     }
 });

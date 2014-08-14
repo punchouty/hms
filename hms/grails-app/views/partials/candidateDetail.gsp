@@ -1,46 +1,43 @@
-<ul id="breadcrumbs-one">
+<ul id="breadcrumbs-one" ng-hide="enableSearchBtn()">
 	<li><a href="#/candidateDetail">Candidate Detail</a></li>
 </ul>
-<div class="error" ng-show="showMessage">{{message}}</div>
+<div class="info" ng-show="enableSearchBtn()"><b>For search type detail or for Add new Candidate Fill all the field</b></div>
 <h2>Candidate Details</h2>
-
-<hr>
 <form role="form">
 	<fieldset>
 		<div class="row">
 			<div class="col-md-5">
-				<label>Candidate Name :</label> <input type="text" ng-model="newName"
-					class="form-control"   ng-change="enableSearchBtn()"/>
+				<label>Candidate Name <span class="required"></span>:</label> <input type="text" ng-model="newName"
+					class="form-control"/>
 			</div>
 			<div class="col-md-5 col-md-offset-2">
-				<label>PAN Number :</label> <input type="text" class="form-control" ng-model="panNumber"
-					 ng-change="enableSearchBtn()"/>
+				<label>PAN Number <span class="required"></span>:</label> <input type="text" class="form-control" ng-model="panNumber"/>
 			</div>
 		</div>
 		<h1></h1>
 		<div class="row">
 			<div class="col-md-5">
-				<label>Contact Number :</label> <input type="text" ng-model="contactNumber"
-					class="form-control"  ng-change="enableSearchBtn()"/>
+				<label>Contact Number <span class="required"></span>:</label> <input type="text" ng-model="contactNumber"
+					class="form-control" />
 			</div>
 			<div class="col-md-5 col-md-offset-2">
-				<label>Passport Number:</label> <input type="text" ng-model="passportNumber"
-					class="form-control"  ng-change="enableAddBtn()"/>
+				<label>Passport Number<span class="required"></span>:</label> <input type="text" ng-model="passportNumber"
+					class="form-control" />
 			</div>
 		</div>
 		<h1></h1>
 		<div class="row">
 			<div class="col-md-5">
-				<label>Email ID :</label> <input type="email" ng-model="emailId"
+				<label>Email ID <span class="required"></span>:</label> <input type="text" ng-model="emailId"
 					class="form-control"  />
 			</div>
 		</div>
 		<h1></h1>
 		<div class="row">
 			<div class="col-md-5">
-				<button type="submit" class="btn btn-primary" ng-click="addCandidate()" ng-disabled="isAddBtnEnable">Add Candidate</button>
+				<button type="submit" class="btn btn-primary" ng-click="addCandidate()" ng-disabled="enableAddBtn()">Add Candidate</button>
 				<button type="reset" class="btn btn-info" ng-click="clearForm()">Clear</button>
-				<button type="search" class="btn btn-primary" ng-click="searchCandidate()" ng-disabled="isSearchBtnEnable">Search Candidate</button>
+				<button type="search" class="btn btn-primary" ng-click="searchCandidate()" ng-disabled="enableSearchBtn()">Search Candidate</button>
 			</div>
 		</div>
 		<div class="modal fade" id="basicModal" tabindex="-1" role="dialog"
