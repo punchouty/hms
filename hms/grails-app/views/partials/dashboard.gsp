@@ -34,6 +34,7 @@
 		</n:hasRole>
 
 	</div>
+	<script>window.localStorage.clear();</script>
 
 </div>
 

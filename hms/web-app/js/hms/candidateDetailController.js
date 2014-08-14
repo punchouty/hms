@@ -11,6 +11,9 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
     $scope.isAddBtnEnable = true;
     $scope.isSearchBtnEnable = true;
     $scope.showMessage = true;
+    if(window.localStorage.getItem("candidateDetails") != null){
+      $scope.candidateDetails = JSON.parse(window.localStorage.getItem("candidateDetails"));
+    }
     $scope.addCandidate = function () {
         hiringService.addCandidate({
             "name": $scope.newName,
@@ -44,7 +47,10 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
             "passportNumber": $scope.passportNumber,
             "dateCreated": new Date()
         }).$promise.then(function (candidateDetails) {
-            $scope.candidateDetails = candidateDetails;
+        	 $scope.candidateDetails = candidateDetails;
+        	var candidateDetails = JSON.stringify(candidateDetails);
+        	window.localStorage.clear();
+        	window.localStorage.setItem("candidateDetails",candidateDetails);
             $scope.newName = "";
             $scope.emailId = "";
             $scope.panNumber = "";
