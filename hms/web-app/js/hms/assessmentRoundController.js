@@ -60,21 +60,10 @@ hms.controller('assessmentRoundController', function($scope, $routeParams, hirin
 				$scope.status = status;
 				$scope.class = "error";
 				$scope.isCompleted = true;
-				//window.location.href = 'http://localhost:8090/hms';
 			}
 		}
 		
 		$scope.enableButton = function() {
 			$scope.isDisabled =false;
-		}
-
-  /*  hiringService.getPositions().$promise.then(function(positions){
-		   $scope.assessments = positions;
-		});
-   
-    hiringService.getRoundsByinterview(1,null ,null ,null ).$promise.then(function(positions){
-    	
-	      console.log(positions);
-	});*/
-	
+		}	
 });
