@@ -8,6 +8,8 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
     $scope.showMessage = false;
     $scope.candidateDetails = "";
     $scope.modal = {};
+    $scope.isAddBtnEnable = true;
+    $scope.isSearchBtnEnable = true;
 
     $scope.addCandidate = function () {
         hiringService.addCandidate({
@@ -109,7 +111,7 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
             width: "15%"
         }, {
             displayName: "Action",
-            cellTemplate: '<a class="glyphicon glyphicon-edit" ng-click="updateModalDetails(row.entity)" style="margin-left:20%;cursor:pointer;" title="Request To Rescheduled" data-toggle="modal"	data-target="#basicModal" ></a>',
+            cellTemplate: '<a class="glyphicon glyphicon-edit" ng-click="updateModalDetails(row.entity)" style="margin-left:20%;cursor:pointer;" title="Update Candidate Detail" data-toggle="modal"	data-target="#basicModal" ></a>',
             width: "15%"
         }
 
@@ -124,4 +126,13 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
         //filterOptions : $scope.filterOptions,
         enableRowSelection: false
     };
+    
+    $scope.enableSearchBtn = function (){
+    	$scope.isSearchBtnEnable = false;
+    }
+    
+    $scope.enableAddBtn = function (){
+    	$scope.isAddBtnEnable = false;
+    	$scope.isSearchBtnEnable = false;
+    }
 });

@@ -10,37 +10,37 @@
 		<div class="row">
 			<div class="col-md-5">
 				<label>Candidate Name :</label> <input type="text" ng-model="newName"
-					class="form-control" required />
+					class="form-control"   ng-change="enableSearchBtn()"/>
 			</div>
 			<div class="col-md-5 col-md-offset-2">
 				<label>PAN Number :</label> <input type="text" class="form-control" ng-model="panNumber"
-					required />
+					 ng-change="enableSearchBtn()"/>
 			</div>
 		</div>
 		<h1></h1>
 		<div class="row">
 			<div class="col-md-5">
-				<label>Contact Number :</label> <input type="number" ng-model="contactNumber"
-					class="form-control" required />
+				<label>Contact Number :</label> <input type="text" ng-model="contactNumber"
+					class="form-control"  ng-change="enableSearchBtn()"/>
 			</div>
 			<div class="col-md-5 col-md-offset-2">
 				<label>Passport Number:</label> <input type="text" ng-model="passportNumber"
-					class="form-control" required />
+					class="form-control"  ng-change="enableAddBtn()"/>
 			</div>
 		</div>
 		<h1></h1>
 		<div class="row">
 			<div class="col-md-5">
 				<label>Email ID :</label> <input type="email" ng-model="emailId"
-					class="form-control" required />
+					class="form-control"  />
 			</div>
 		</div>
 		<h1></h1>
 		<div class="row">
 			<div class="col-md-5">
-				<button type="submit" class="btn btn-primary" ng-click="addCandidate()">Add Candidate</button>
+				<button type="submit" class="btn btn-primary" ng-click="addCandidate()" ng-disabled="isAddBtnEnable">Add Candidate</button>
 				<button type="reset" class="btn btn-info" ng-click="clearForm()">Clear</button>
-				<button type="search" class="btn btn-primary" ng-click="searchCandidate()">Search Candidate</button>
+				<button type="search" class="btn btn-primary" ng-click="searchCandidate()" ng-disabled="isSearchBtnEnable">Search Candidate</button>
 			</div>
 		</div>
 		<div class="modal fade" id="basicModal" tabindex="-1" role="dialog"
@@ -56,22 +56,22 @@
 								<div class="row">
 									<div class="col-md-5">
 										<label>Candidate Name :</label> <input type="text" ng-model="modal.modalNewName"
-											class="form-control" required />
+											class="form-control"  />
 									</div>
 									<div class="col-md-5 col-md-offset-2">
 										<label>PAN Number :</label> <input type="text" class="form-control" ng-model="modal.modalPanNumber"
-											required />
+											 />
 									</div>
 								</div>
 								<h1></h1>
 								<div class="row">
 									<div class="col-md-5">
 										<label>Contact Number :</label> <input type="text" ng-model="modal.modalContactNumber"
-											class="form-control" required />
+											class="form-control"  />
 									</div>
 									<div class="col-md-5 col-md-offset-2">
 										<label>Passport Number:</label> <input type="text" ng-model="modal.modalPassportNumber"
-											class="form-control" required />
+											class="form-control"  />
 									</div>
 								</div>
 								<h1></h1>
@@ -80,7 +80,7 @@
 										<label>Email Address :</label> 
 										<input type="hidden" ng-model="modal.modalCandidateId"/>
 										<input type="email" ng-model="modal.modalEmailId"
-											class="form-control" required />
+											class="form-control"  />
 									</div>
 								</div>
 							</div>
