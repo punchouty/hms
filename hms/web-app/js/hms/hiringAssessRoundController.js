@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-hms.controller('hiringAssessRoundController', function ($scope, $route, hiringService) {
+hms.controller('hiringAssessRoundController', function ($scope, $route, hiringService, $timeout) {
 
     $scope.loggedInUser = $('#loggedInUser').html();
     $scope.loggedInUserId = $('#loggedInUserId').html();
@@ -15,97 +15,103 @@ hms.controller('hiringAssessRoundController', function ($scope, $route, hiringSe
     '<a class="glyphicon glyphicon-trash" ng-click="updateStatus(row.entity, 4)"  style="margin-left:20%;cursor:pointer;" title="Request To Cancel "></a>'
 
     $scope.filterOptions = {
-        filterText: "",
-        useExternalFilter: false
-    };
-    $scope.totalServerItems = 0;
-    $scope.pagingOptions = {
-        pageSizes: [5, 10, 20],
-        pageSize: 5,
-        currentPage: 1
-    };
-    $scope.setPagingData = function (data, page, pageSize) {
-        var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
-        $scope.myData = pagedData;
-        $scope.totalServerItems = data.length;
-        if (!$scope.$$phase) {
-            $scope.$apply();
-        }
-    };
-    $scope.getPagedDataAsync = function (pageSize, page, searchText) {
-        setTimeout(
-
-        function () {
-            var data;
-            if (searchText) {
-                var ft = searchText.toLowerCase();
-                hiringService.getScheduledRounds($scope.loggedInUserId).$promise.then(function (interviews) {
-                    $scope.interviews = interviews;
-                    $scope.setPagingData(
-                    interviews, page, pageSize);
-                });
-
-            } else {
-                hiringService.getScheduledRounds($scope.loggedInUserId).$promise.then(function (interviews) {
-                    $scope.setPagingData(
-                    interviews, page, pageSize);
-                });
+            filterText: "",
+            useExternalFilter: true
+        };
+        $scope.totalServerItems = 0;
+        $scope.pagingOptions = {
+            pageSizes: [5, 10, 20],
+            pageSize: 10,
+            currentPage: 1
+        };
+        $scope.setPagingData = function (data, page, pageSize) {
+            var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+            $scope.myData = pagedData;
+            $scope.totalServerItems = data.length;
+            if (!$scope.$$phase) {
+                $scope.$apply();
             }
-        }, 100);
-    };
+        };
+        $scope.getPagedDataAsync = function (pageSize, page, searchText) {
+            setTimeout(
 
-    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+            function () {
+                var data;
+                if (searchText) {
+                    var ft = searchText.toLowerCase();
+                    hiringService.getInterviewsByUser($scope.loggedInUserId).$promise.then(function (interviews) {
+                        data = interviews.filter(function (
+                        item) {
+                            return JSON.stringify(
+                            item).toLowerCase().indexOf(
+                            ft) != -1;
+                        });
+                        $scope.setPagingData(data, page, pageSize);
+                    });
 
-    $scope.$watch('pagingOptions', function (newVal, oldVal) {
-        if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
-            $scope.getPagedDataAsync(
-            $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-        }
-    }, true);
-    $scope.$watch('filterOptions', function (newVal, oldVal) {
-        if (newVal !== oldVal) {
-            $scope.getPagedDataAsync(
-            $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-        }
-    }, true);
-    $scope.gridOptions = {
-        data: 'myData',
-        columnDefs: [{
-            field: "roundName",
-            displayName: "Round Name",
-            width: "10%",
-            pinned: true
-        }, {
-            field: "scheduledDate | date: 'dd-MM-yyyy HH:mm'",
-            displayName: "Scheduled Date(DD-MM-YYYY HH:MM)",
-            width: "25%"
-        }, {
-            field: "candidateName",
-            displayName: "Candidate Name",
-            width: "15%"
-        }, {
-            field: "hiringPersonName",
-            displayName: "Hiring Person",
-            width: "14%"
-        }, {
-            field: "assessmentStatus |renderAssessmentStatus",
-            displayName: "Assessment Status",
-            width: "16%"
-        }, {
-            displayName: "Action",
-            cellTemplate: template,
-            width: "20%"
-        }],
-        showFilter: true,
-        showFooter: true,
-        showGroupPanel: true,
-        showColumnMenu: true,
-        pagingOptions: $scope.pagingOptions,
-        enablePaging: true,
-        totalServerItems: 'totalServerItems',
-        filterOptions: $scope.filterOptions,
-        enableRowSelection: false
-    };
+                } else {
+                    hiringService.getInterviewsByUser($scope.loggedInUserId).$promise.then(function (interviews) {
+                        $scope.setPagingData(
+                        interviews, page, pageSize);
+                    });
+                }
+            }, 100);
+        };
+
+        $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+
+        $scope.$watch('pagingOptions', function (newVal, oldVal) {
+            if (newVal !== oldVal) {
+                $scope.getPagedDataAsync(
+                $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+            }
+        }, true);
+
+        $scope.$watch('filterOptions', function (newVal, oldVal) {
+            if (newVal !== oldVal) {
+                $scope.getPagedDataAsync(
+                $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+            }
+        }, true);
+
+        $scope.gridOptions = {
+            data: 'myData',
+            columnDefs: [{
+                field: "positionName",
+                displayName: "Job Title",
+                width: "12%"
+            }, {
+                field: "hiringProcessName",
+                displayName: "Hiring Process",
+                width: "16%"
+            }, {
+                field: "candidateName",
+                displayName: "Candidate Name",
+                width: "15%"
+            }, {
+                displayName: "Date Created (dd-MM-yyyy)",
+                field: "dateCreated | date: 'dd-MM-yyyy HH:mma'",
+                width: "22%"
+            }, {
+                field: "completionStatus | renderStatus",
+                displayName: "Completion Status ",
+                width: "15%"
+            }, {
+                field: "",
+                displayName: "Actions",
+                cellTemplate: '<a href="#/scheduleRounds/{{row.entity.interviewId}}/{{row.entity.candidateId}}/{{row.entity.candidateName}}" class="glyphicon glyphicon-time" title="Round Detail" style="margin-left:20%"></a><button ng-hide="row.entity.completionStatus" type="button" ng-click="deleteInterview(row.entity.interviewId)" class="close" style="color: red;margin-right: 20%" aria-hidden="true" title="Cancle Round">&times;</button>',
+                width: "20%"
+            }],
+            showFilter: true,
+            showFooter: true,
+            showGroupPanel: true,
+            showColumnMenu: true,
+            pagingOptions: $scope.pagingOptions,
+            enablePaging: true,
+            enableRowSelection: false,
+            totalServerItems: 'totalServerItems',
+            filterOptions: $scope.filterOptions
+        };
 
     $scope.updateStatus = function (round, status) {
         if (hiringService.validateStatusChange(

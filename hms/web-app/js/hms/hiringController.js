@@ -77,7 +77,7 @@ hms.controller('hiringController', function ($scope, $routeParams, hiringService
 
     $scope.filterOptions = {
         filterText: "",
-        useExternalFilter: false
+        useExternalFilter: true
     };
     $scope.totalServerItems = 0;
     $scope.pagingOptions = {
@@ -122,7 +122,7 @@ hms.controller('hiringController', function ($scope, $routeParams, hiringService
     $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
 
     $scope.$watch('pagingOptions', function (newVal, oldVal) {
-        if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
+        if (newVal !== oldVal) {
             $scope.getPagedDataAsync(
             $scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
         }

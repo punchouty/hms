@@ -124,7 +124,7 @@
 	</div>
 	</tab> 
 	</tabset>
-	<div ng-hide="{{rounds.noData}}">
+	<div ng-show="{{rounds.noData}}">
 	No Rounds to display
 	</div>
 </div>
