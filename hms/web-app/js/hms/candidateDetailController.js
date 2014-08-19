@@ -10,7 +10,6 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
     $scope.modal = {};
     $scope.isAddBtnEnable = true;
     $scope.isSearchBtnEnable = true;
-    $scope.showMessage = true;
     if(window.localStorage.getItem("candidateDetails") != null){
       $scope.candidateDetails = JSON.parse(window.localStorage.getItem("candidateDetails"));
     }
@@ -126,10 +125,6 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
         showFooter: true,
         showGroupPanel: true,
         showColumnMenu: true,
-        //pagingOptions : $scope.pagingOptions,
-        //enablePaging : false,
-        //totalServerItems : 'totalServerItems',
-        //filterOptions : $scope.filterOptions,
         enableRowSelection: false
     };
     

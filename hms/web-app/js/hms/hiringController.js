@@ -43,54 +43,6 @@ hms.controller('hiringController', function ($scope, $routeParams, hiringService
 
     })
 
-    $scope.clearSelection = function () {
-        $scope.newCandidate = "Yes";
-
-    }
-
-    $scope.validateCandidate = function () {
-        $scope.isAddCandidate = false;
-    }
-
-    hiringService.getCandidateDetails().$promise.then(function (
-    candidateDetails) {
-        $scope.candidates = candidateDetails;
-        $scope.selectedCandidate = '';
-        $scope.setCandidate = function (site) {
-            $scope.selectedCandidateId = site.id;
-            $scope.newCandidate = "";
-            $scope.isSetInterviewDisabled = false;
-        };
-    });
-
-    $scope.changeCandidate = function () {
-        $scope.isSetInterviewDisabled = true;
-        $scope.newCandidate = "Yes";
-    }
-
-    $scope.addCandidate = function () {
-        hiringService.addCandidate({
-            "name": $scope.newName,
-            "location": $scope.newInfo
-        }).$promise.then(function (candidateDetails) {
-            $scope.selectedCandidate = candidateDetails;
-            $scope.selectedCandidateId = candidateDetails.id;
-            $scope.addCandidateScreen = "";
-            $scope.newName = "";
-            $scope.newInfo = "";
-            $scope.isSetInterviewDisabled = false;
-        });
-        hiringService.getCandidateDetails().$promise.then(function (candidateDetails) {
-            $scope.candidates = candidateDetails;
-            $scope.selectedCandidate = '';
-            $scope.setCandidate = function (site) {
-                $scope.selectedCandidateId = site.id;
-                $scope.newCandidate = "";
-                $scope.isSetInterviewDisabled = false;
-            };
-        });
-    }
-
     $scope.setInterview = function () {
         $scope.interviewDetail = angular.fromJson({
             "candidateDetail": {
@@ -121,12 +73,6 @@ hms.controller('hiringController', function ($scope, $routeParams, hiringService
             $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
 
         });
-    }
-
-    $scope.clearForm = function () {
-        $scope.msg = "";
-        $scope.isSetInterviewDisabled = true;
-        $scope.newCandidate = "Yes";
     }
 
     $scope.filterOptions = {
