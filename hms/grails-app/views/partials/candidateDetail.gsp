@@ -1,7 +1,7 @@
-<ul id="breadcrumbs-one" ng-hide="enableSearchBtn()">
+<ul id="breadcrumbs-one" ng-hide="showMessage">
 	<li><a href="#/candidateDetail">Candidate Detail</a></li>
 </ul>
-<div class="info" ng-show="enableSearchBtn()"><b>For search type detail or for Add new Candidate Fill all the field</b></div>
+<div class="{{styleClass}}" ng-show="showMessage"><b>{{message}}</b></div>
 <h2>Candidate Details</h2>
 <form role="form">
 	<fieldset>

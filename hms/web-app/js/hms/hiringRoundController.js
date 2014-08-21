@@ -1,41 +1,6 @@
-hms.controller('hiringRoundController', function ($scope, $routeParams, hiringService) {
-    hms.controller('hiringRoundController', function ($scope, $routeParams, hiringService) {
-        $scope.name = 'hiringRoundController';
+hms.controller('hiringRoundController', function ($scope, $routeParams, hiringService, $timeout) {
         $scope.loggedInUser = $('#loggedInUser').html();
         $scope.loggedInUserId = $('#loggedInUserId').html();
-
-        $scope.scheduleInterview = function (
-        roundId, interviewerId, interviewTime) {
-
-            hiringService.updateRound({
-                "evaluationRoundId": roundId,
-                "interviewerId": interviewerId,
-                "interviewTime": document.getElementById("dt").value
-            }).$promise.then(function (
-            round) {});
-
-        }
-
-        hiringService.getInterviewerDetails().$promise.then(function (
-        interviewerDetails) {
-            $scope.interviewers = interviewerDetails;
-            $scope.setInterviewer = function (
-            site, round) {
-                round.interviewerId = site.id;
-            };
-        });
-
-        $scope.meetsCriteria = function (round) {
-            if (round.interviewerId && round.interviewTime) return false
-            else return true
-        }
-
-        $scope.changeInterviewer = function (
-        round) {
-            round.interviewerId = "";
-        }
-
-    });
 
     $scope.modes = [{
         "name": "Telephonic",
@@ -44,9 +9,6 @@ hms.controller('hiringRoundController', function ($scope, $routeParams, hiringSe
         "name": "Face-To-Face",
         "code": "F"
     }];
-    $scope.name = 'hiringRoundController';
-    $scope.loggedInUser = $('#loggedInUser').html();
-    $scope.loggedInUserId = $('#loggedInUserId').html();
 
     $scope.candidateId = $routeParams.candidateId;
     $scope.candidateName = $routeParams.candidateName;
@@ -86,6 +48,10 @@ hms.controller('hiringRoundController', function ($scope, $routeParams, hiringSe
                 $scope.message = "Interview Schedule Successfully ";
                 $scope.class = "success";
                 $scope.isCompleted = true;
+                $timeout(function(){
+                	$scope.isCompleted = false;
+        		},2000);
+                
             });
         });
 
@@ -116,6 +82,9 @@ hms.controller('hiringRoundController', function ($scope, $routeParams, hiringSe
                 $scope.statusTo = "";
                 $scope.center = " ";
                 $scope.status = "";
+                $timeout(function(){
+                	$scope.isCompleted = false;
+        		},2000);
             });
         } else {
             $scope.message = " failed as not allowed to move from ";
@@ -124,6 +93,9 @@ hms.controller('hiringRoundController', function ($scope, $routeParams, hiringSe
             $scope.status = status;
             $scope.class = "error";
             $scope.isCompleted = true;
+            $timeout(function(){
+            	$scope.isCompleted = false;
+    		},2000);
         }
     }
 

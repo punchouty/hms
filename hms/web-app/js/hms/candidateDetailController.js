@@ -2,11 +2,12 @@
 
 /* Controllers */
 
-hms.controller('candidateDetailController', function ($scope, $routeParams, hiringService, $rootScope) {
+hms.controller('candidateDetailController', function ($scope, $routeParams, hiringService, $rootScope, $timeout) {
     $scope.loggedInUser = $('#loggedInUser').html();
     $scope.loggedInUserId = $('#loggedInUserId').html();
-    $scope.showMessage = false;
     $scope.candidateDetails = "";
+    $scope.message = "For search type detail or for Add new Candidate Fill all the field";
+    $scope.styleClass = 'info';
     $scope.modal = {};
     $scope.isAddBtnEnable = true;
     $scope.isSearchBtnEnable = true;
@@ -26,8 +27,16 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
             if (response.error) {
                 $scope.message = response.error
                 $scope.showMessage = true;
+                $scope.styleClass = 'error'; 
             } else {
                 $scope.candidateDetails = [response];
+                $scope.styleClass = 'success'; 
+                $scope.message = 'New Candidate Add Susscessfully';
+                $timeout(function(){
+                	$scope.styleClass = 'info';
+        			$scope.message = "For search type detail or for Add new Candidate Fill all the field";
+        		},2000);
+                
             }
             $scope.newName = "";
             $scope.emailId = "";
@@ -46,10 +55,19 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
             "passportNumber": $scope.passportNumber,
             "dateCreated": new Date()
         }).$promise.then(function (candidateDetails) {
-        	 $scope.candidateDetails = candidateDetails;
-        	var candidateDetails = JSON.stringify(candidateDetails);
-        	window.localStorage.clear();
-        	window.localStorage.setItem("candidateDetails",candidateDetails);
+        	if(candidateDetails.length == 0){
+        		$scope.notFound = true;
+        		 $scope.message = $scope.newName +"  Not Found";
+        		$timeout(function(){
+        			$scope.notFound = false;
+        			$scope.message = "For search type detail or for Add new Candidate Fill all the field";
+        		},2000);
+        	}else{
+        		$scope.candidateDetails = candidateDetails;
+            	var candidateDetails = JSON.stringify(candidateDetails);
+            	window.localStorage.clear();
+            	window.localStorage.setItem("candidateDetails",candidateDetails);
+        	}
             $scope.newName = "";
             $scope.emailId = "";
             $scope.panNumber = "";
@@ -77,6 +95,12 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
         };
         hiringService.updateCandidateDetails(data).$promise.then(function (response) {
             $scope.candidateDetails = [response];
+            $scope.styleClass = 'success'; 
+            $scope.message = 'Candidate Detail Updated Susscessfully';
+            $timeout(function(){
+            	$scope.styleClass = 'info';
+    			$scope.message = "For search type detail or for Add new Candidate Fill all the field";
+    		},2000);
         })
 
     }
@@ -130,9 +154,9 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
     
     $scope.enableSearchBtn = function (){
     	if( $scope.newName || $scope.emailId || $scope.panNumber || $scope.contactNumber || $scope.passportNumber){
-    		return false;
+    		$scope.showMessage = false;
     	}else{
-    		return true;
+    		$scope.showMessage =  true;
     	} 
     }
     

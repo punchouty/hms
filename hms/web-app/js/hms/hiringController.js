@@ -2,17 +2,18 @@
 
 /* Controllers */
 
-hms.controller('hiringController', function ($scope, $routeParams, hiringService) {
+hms.controller('hiringController', function ($scope, $routeParams, hiringService,$timeout) {
 
     $scope.loggedInUser = $('#loggedInUser').html();
     $scope.loggedInUserId = $('#loggedInUserId').html();
     $scope.candidateName = $routeParams.candidateName;
     $scope.candidateId = $routeParams.candidateId;
-    $scope.showMessage = false;
     $scope.newCandidate = "Yes";
     $scope.isSetInterviewDisabled = true;
     $scope.isAddCandidate = true;
     $scope.name = 'hiringController';
+    $scope.message = "For Set Interview Click On Set Interview Button";
+    $scope.styleClass = 'info';
 
     $scope.modes = [{
         "name": "Telephonic",
@@ -63,8 +64,12 @@ hms.controller('hiringController', function ($scope, $routeParams, hiringService
         });
         hiringService.createInterview($scope.interviewDetail).$promise.then(function (interviewDetails) {
             $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
-            $scope.showMessage = true;
-            setTimeout(function(){$scope.showMessage = false;},200);
+            $scope.styleClass = 'success'; 
+            $scope.message = 'Interview Set Successfully';
+            $timeout(function(){
+            	$scope.styleClass = 'info';
+    			$scope.message = "For Set Interview Click On Set Interview Button";
+    		},2000);
         });
     }
 
