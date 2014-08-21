@@ -76,7 +76,7 @@ class SecurityFilters {
 	   interview(controller:"interviewDetails", action:"listByUser|save|delete") {
 		   before = {
 			   accessControl {
-				   role("HUMANRESOURCES") || role("PANEL")
+				   role("HUMANRESOURCES") || role("PANEL") 
 			   }
 		   }
 		 }
