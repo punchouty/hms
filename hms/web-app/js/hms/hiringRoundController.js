@@ -15,7 +15,32 @@ hms.controller('hiringRoundController', function ($scope, $routeParams, hiringSe
     $scope.scheduleRound_interviewId = $routeParams.interviewId;
     hiringService.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise.then(function (assessmentRounds) {
         $scope.rounds = assessmentRounds;
-        var flag = true;
+        checkRoundStatus();
+    });
+
+    $scope.scheduleInterview = function (roundId, interviewerId, round) {
+        hiringService.updateRound({
+            "evaluationRoundId": roundId,
+            "interviewerId": interviewerId,
+            "interviewTime": round.interviewTime,
+            "interviewMode": round.selectedMode.code
+        }).$promise.then(function (round) {
+            hiringService.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise.then(function (assessmentRounds) {
+                $scope.rounds = assessmentRounds; 
+                checkRoundStatus();
+                $scope.message = "Interview Schedule Successfully ";
+                $scope.class = "success";
+                $scope.isCompleted = true;
+                $timeout(function(){
+                	$scope.isCompleted = false;
+        		},2000);
+            });
+        });
+
+    }
+
+    function checkRoundStatus(){
+    	var flag = true;
         $scope.rounds.noData = false;
         for (var i = 0; i < $scope.rounds.length; i++) {
             if (flag) {
@@ -33,30 +58,8 @@ hms.controller('hiringRoundController', function ($scope, $routeParams, hiringSe
 
             }
         }
-
-    });
-
-    $scope.scheduleInterview = function (roundId, interviewerId, round) {
-        hiringService.updateRound({
-            "evaluationRoundId": roundId,
-            "interviewerId": interviewerId,
-            "interviewTime": round.interviewTime,
-            "interviewMode": round.selectedMode.code
-        }).$promise.then(function (round) {
-            hiringService.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise.then(function (assessmentRounds) {
-                $scope.rounds = assessmentRounds;
-                $scope.message = "Interview Schedule Successfully ";
-                $scope.class = "success";
-                $scope.isCompleted = true;
-                $timeout(function(){
-                	$scope.isCompleted = false;
-        		},2000);
-                
-            });
-        });
-
-    }
-
+    };
+    
     $scope.isScheduled = function (round) {
 
         if (round.interviewerName && round.interviewTime && round.selectedMode) return false;
