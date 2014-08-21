@@ -2,7 +2,7 @@
    <li><a href="#/assessmentRoundsList">Scheduled Interviews</a></li>
    <li><a href="#/assessment/{{scheduleRound_evaluationRoundId}}" class="current">Start Assessment</a></li>
 </ul>
-<div class="{{class}}" ng-show="isCompleted">Status updated {{message}}{{statusTo|renderAssessmentStatus}}{{center}}{{status|renderAssessmentStatus}}</div>
+<div class="{{class}}" ng-show="isCompleted">STATUS UPDATE {{message | uppercase}}{{statusTo|renderAssessmentStatus| uppercase}}{{center| uppercase}}{{status|renderAssessmentStatus| uppercase}}</div>
 <div class="row">
    <div class="col-md-6">
       <h2>Perform Assessment Round:  {{round.roundName}}</h2>
