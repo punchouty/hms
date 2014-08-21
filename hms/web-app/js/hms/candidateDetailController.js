@@ -114,6 +114,11 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
         $scope.modal.modalCandidateId = details.id;
         console.log($scope.modal);
     }
+    
+    $scope.filterOptions = {
+            filterText: "",
+            useExternalFilter: false
+        };
 
     $scope.gridOptions = {
         data: 'candidateDetails',
@@ -149,7 +154,8 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
         showFooter: true,
         showGroupPanel: true,
         showColumnMenu: true,
-        enableRowSelection: false
+        enableRowSelection: false,
+        filterOptions: $scope.filterOptions
     };
     
     $scope.enableSearchBtn = function (){
