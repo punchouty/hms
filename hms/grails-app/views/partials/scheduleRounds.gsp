@@ -67,7 +67,6 @@
 	<div class="row">
 		<div class="col-md-1">
 			<button type="submit" class="btn btn-primary"
-				
 				ng-click='scheduleInterview(round.evaluationRoundId,round.interviewerId, round)' ng-disabled="isScheduled(round)">Save</button>
 
 		</div>
@@ -88,7 +87,7 @@
 	<hr>
 	<%----------new tabSet ---------%> 
 	<tabset> 
-	   <tab ng-repeat='bucket in round.bucketEval | orderBy: bucketName'
+	   <tab ng-repeat='bucket in round.bucketEval | orderBy: "bucketName"'
 		heading="{{bucket.bucketName}}">
 	<h1></h1>
 	<div ng-show="bucket.candidateBucketScore">
@@ -109,7 +108,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat='skill in bucket.skillEval'>
+			<tr ng-repeat='skill in bucket.skillEval | orderBy: "skillName"'>
 				<td>{{skill.skillName}}</td>
 				<td>{{skill.weight}}</td>
 				<td>{{skill.cutOffScore}}</td>

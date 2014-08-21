@@ -62,7 +62,7 @@
 <hr>
 <%----------new tabSet ---------%>
 <tabset>
-   <tab ng-repeat='bucket in round.bucketEval |orderBy: bucketName' heading="{{bucket.bucketName}}">
+   <tab ng-repeat='bucket in round.bucketEval |orderBy: "bucketName"' heading="{{bucket.bucketName}}">
       <h1></h1>
       <div class="col-md-4" >
          <div class="form-group" ng-show="bucket.candidateBucketScore">
@@ -73,17 +73,17 @@
       <table  class="table table-striped table-condensed table-hover ">
          <thead>
             <tr>
-               <th><a href="" ng-click="predicate = 'skillName'; reverse=!reverse">Skill names</a></th>
+               <th><a href="">Skill names</a></th>
                <th><a href="">Weight of Skill</a></th>
                <th><a href="">Cut-off Score</a></th>
                <th><a href="">Expected Skill Rating</a></th>
                <th><a href="">Candidate Skill Rating</a></th>
-               <th><a href="" ng-click="predicate = 'candidateRating'; reverse=!reverse">Candidate Score</a></th>
-               <th><a href="" ng-click="predicate = 'candidateRating'; reverse=!reverse">feedback</a></th>
+               <th><a href="">Candidate Score</a></th>
+               <th><a href="">feedback</a></th>
             </tr>
          </thead>
          <tbody>
-            <tr ng-repeat='skill in bucket.skillEval | orderBy:predicate:reverse'>
+            <tr ng-repeat='skill in bucket.skillEval | orderBy:"skillName"'>
                <td><a href="" ng-click="setSkillName(skill,bucket)">{{skill.skillName}}</a></td>
                <td>{{skill.weight}}</td>
                <td>{{skill.cutOffScore}}</td>
