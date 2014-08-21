@@ -1,4 +1,4 @@
-hms.controller('assessmentRoundController', function($scope, $routeParams, hiringService) {
+hms.controller('assessmentRoundController', function($scope, $routeParams, hiringService, $timeout) {
 
 	  $scope.loggedInUser =  $('#loggedInUser').html();
 	  $scope.loggedInUserId = $('#loggedInUserId').html();
@@ -28,6 +28,12 @@ hms.controller('assessmentRoundController', function($scope, $routeParams, hirin
 					   $scope.skill = "";
 						$scope.bucket = "";
 						$scope.toggle = false;
+						$scope.message = "Successfully";
+						$scope.class = "success";
+						$scope.isCompleted = true;
+						 $timeout(function(){
+			                	$scope.isCompleted = false;
+			        		},2000);
 					});
 		   });
 	   }
@@ -52,6 +58,9 @@ hms.controller('assessmentRoundController', function($scope, $routeParams, hirin
 							$scope.statusTo ="";
 							$scope.center = " ";
 							$scope.status = "";
+							 $timeout(function(){
+				                	$scope.isCompleted = false;
+				        		},2000);
 						});
 			} else {
 				$scope.message = " failed as not allowed to move from ";
@@ -60,6 +69,9 @@ hms.controller('assessmentRoundController', function($scope, $routeParams, hirin
 				$scope.status = status;
 				$scope.class = "error";
 				$scope.isCompleted = true;
+				 $timeout(function(){
+	                	$scope.isCompleted = false;
+	        		},2000);
 			}
 		}
 		

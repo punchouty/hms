@@ -155,8 +155,10 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
     $scope.enableSearchBtn = function (){
     	if( $scope.newName || $scope.emailId || $scope.panNumber || $scope.contactNumber || $scope.passportNumber){
     		$scope.showMessage = false;
+    		return false;
     	}else{
     		$scope.showMessage =  true;
+    		return true;
     	} 
     }
     

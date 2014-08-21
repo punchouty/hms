@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-hms.controller('hiringAssessRoundController', function ($scope, $route, hiringService) {
+hms.controller('hiringAssessRoundController', function ($scope, $route, hiringService, $timeout) {
 
     $scope.loggedInUser = $('#loggedInUser').html();
     $scope.loggedInUserId = $('#loggedInUserId').html();
@@ -123,6 +123,9 @@ hms.controller('hiringAssessRoundController', function ($scope, $route, hiringSe
                 $scope.statusTo = "";
                 $scope.center = " ";
                 $scope.status = "";
+                $timeout(function(){
+                	$scope.isCompleted = false;
+        		},2000);
             });
             window.location.href = '#/assessment/' + round.evaluationRoundId;
         } else {
@@ -132,6 +135,9 @@ hms.controller('hiringAssessRoundController', function ($scope, $route, hiringSe
             $scope.status = status;
             $scope.class = "error";
             $scope.isCompleted = true;
+            $timeout(function(){
+            	$scope.isCompleted = false;
+    		},2000);
         }
 
     }     
