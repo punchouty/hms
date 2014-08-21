@@ -3,7 +3,7 @@
 	<li><a href="#/schedule/{{candidateId}}/{{candidateName}}">Schedule Interview</a></li>
 </ul>
 <h2>Schedule Interview</h2>
-<div class="{{styleClass}}"><b>{{message}}</b></div>
+<div class="{{styleClass}}"><b>{{message | uppercase}}</b></div>
 <hr>
 <form role="form">
 	<fieldset>

@@ -5,8 +5,8 @@
 		<li><a href="#/scheduleRounds/{{scheduleRound_interviewId}}/{{candidateId}}/{{candidateName}}"
 			class="current">Schedule Rounds</a></li>
 	</ul>
-	<div class="{{class}}" ng-show="isCompleted">Status updated
-		{{message}}{{statusTo|renderAssessmentStatus}}{{center}}{{status|renderAssessmentStatus}}</div>
+	<div class="{{class}}" ng-show="isCompleted">STATUS UPDATE
+		{{message | uppercase}}{{statusTo|renderAssessmentStatus | uppercase}}{{center | uppercase}}{{status|renderAssessmentStatus | uppercase }}</div>
 	<br>
 	<tabset> 
 	
