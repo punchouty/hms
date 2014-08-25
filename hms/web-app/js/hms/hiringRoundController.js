@@ -1,7 +1,7 @@
 hms.controller('hiringRoundController', function ($scope, $routeParams, hiringService, $timeout) {
         $scope.loggedInUser = $('#loggedInUser').html();
         $scope.loggedInUserId = $('#loggedInUserId').html();
-
+        $scope.updateBtnEnable = true;
     $scope.modes = [{
         "name": "Telephonic",
         "code": "T"
@@ -61,9 +61,15 @@ hms.controller('hiringRoundController', function ($scope, $routeParams, hiringSe
     };
     
     $scope.isScheduled = function (round) {
-
-        if (round.interviewerName && round.interviewTime && round.selectedMode) return false;
-        else return true;
+    	if(round.assessmentStatus == 2){
+        	$scope.updateBtnEnable = false;  
+        }
+        if (round.interviewerName && round.interviewTime && round.selectedMode && (round.assessmentStatus!= 2 || round.assessmentStatus != 6)) 
+        	return false;
+        else
+        	return true;
+        
+    	 
     }
 
     hiringService.getInterviewerDetails().$promise.then(function (interviewerDetails) {

@@ -8,6 +8,7 @@ hms.controller('hiringController', function ($scope, $routeParams, hiringService
     $scope.loggedInUserId = $('#loggedInUserId').html();
     $scope.candidateName = $routeParams.candidateName;
     $scope.candidateId = $routeParams.candidateId;
+    $scope.showMessage = false;
     $scope.newCandidate = "Yes";
     $scope.isSetInterviewDisabled = true;
     $scope.isAddCandidate = true;
@@ -64,11 +65,11 @@ hms.controller('hiringController', function ($scope, $routeParams, hiringService
         });
         hiringService.createInterview($scope.interviewDetail).$promise.then(function (interviewDetails) {
             $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+            $scope.showMessage = true;
             $scope.styleClass = 'success'; 
             $scope.message = 'Interview Set Successfully';
             $timeout(function(){
-            	$scope.styleClass = 'info';
-    			$scope.message = "For Set Interview Click On Set Interview Button";
+            	$scope.showMessage = false;
     		},2000);
         });
     }

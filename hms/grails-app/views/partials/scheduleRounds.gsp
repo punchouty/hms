@@ -72,13 +72,13 @@
 		</div>
 		<div class="col-md-2">
 			<button type="submit" class="btn btn-primary"
-				ng-disabled="isScheduled(round)" ng-click="updateStatus(round, 3)">Request
+				ng-disabled="updateBtnEnable" ng-click="updateStatus(round, 3)">Request
 				Reschedule</button>
 
 		</div>
 		<div class="col-md-2">
 			<button type="submit" class="btn btn-primary"
-				ng-disabled="isScheduled(round)" ng-click="updateStatus(round, 4)">Request
+				ng-disabled="updateBtnEnable" ng-click="updateStatus(round, 4)">Request
 				Cancel</button>
 
 		</div>
