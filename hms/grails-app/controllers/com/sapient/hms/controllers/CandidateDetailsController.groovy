@@ -31,15 +31,25 @@ class CandidateDetailsController {
 	}
 	def search(){
 		def result=request.JSON
-		if(!result.name){
-			def errorMessage = [error : "error occured,please try again"]
-			render errorMessage as JSON
-			return
+		def CandidateDetailInstance=new CandidateDetail();
+				
+		if(result.name){
+			 CandidateDetailInstance=CandidateDetail.findAll{
+				like('name','%'+result.name+'%')
+			}
 		}
 		
-		def CandidateDetailInstance=CandidateDetail.findAll{
-			like('name','%'+result.name+'%')
+		 else if(result.panNo){
+			 CandidateDetailInstance=CandidateDetail.findAllByPanNo(result.panNo)			
 		}
+		 
+		 else{
+			 def errorMessage = [error : "error occured,please try again"]
+			 render errorMessage as JSON
+			 return
+		 }
+ 
+		
 		render CandidateDetailInstance as JSON
 	}
 	
