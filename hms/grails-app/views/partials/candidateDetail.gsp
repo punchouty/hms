@@ -28,7 +28,7 @@
 		<h1></h1>
 		<div class="row">
 			<div class="col-md-5">
-				<label>Email ID <span class="required"></span>:</label> <input type="text" ng-model="emailId"
+				<label>Email ID <span class="required"></span>:</label> <input type="email" ng-model="emailId"
 					class="form-control"  />
 			</div>
 		</div>
@@ -52,29 +52,29 @@
 							<div class="modal-body">
 								<div class="row">
 									<div class="col-md-5">
-										<label>Candidate Name :</label> <input type="text" ng-model="modal.modalNewName"
+										<label>Candidate Name <span class="required"></span>:</label> <input type="text" ng-model="modal.modalNewName"
 											class="form-control"  />
 									</div>
 									<div class="col-md-5 col-md-offset-2">
-										<label>PAN Number :</label> <input type="text" class="form-control" ng-model="modal.modalPanNumber"
+										<label>PAN Number <span class="required"></span>:</label> <input type="text" class="form-control" ng-model="modal.modalPanNumber"
 											 />
 									</div>
 								</div>
 								<h1></h1>
 								<div class="row">
 									<div class="col-md-5">
-										<label>Contact Number :</label> <input type="text" ng-model="modal.modalContactNumber"
+										<label>Contact Number <span class="required"></span>:</label> <input type="text" ng-model="modal.modalContactNumber"
 											class="form-control"  />
 									</div>
 									<div class="col-md-5 col-md-offset-2">
-										<label>Passport Number:</label> <input type="text" ng-model="modal.modalPassportNumber"
+										<label>Passport Number<span class="required"></span>:</label> <input type="text" ng-model="modal.modalPassportNumber"
 											class="form-control"  />
 									</div>
 								</div>
 								<h1></h1>
 								<div class="row">
 									<div class="col-md-5">
-										<label>Email Address :</label> 
+										<label>Email Address <span class="required"></span>:</label> 
 										<input type="hidden" ng-model="modal.modalCandidateId"/>
 										<input type="email" ng-model="modal.modalEmailId"
 											class="form-control"  />
