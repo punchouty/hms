@@ -1,4 +1,4 @@
-<ul id="breadcrumbs-one" ng-hide="showMessage">
+<ul id="breadcrumbs-one">
 	<li><a href="#/candidateDetail">Candidate Detail</a></li>
 </ul>
 <div class="{{styleClass}}" ng-show="showMessage"><b>{{message | uppercase}}</b></div>
