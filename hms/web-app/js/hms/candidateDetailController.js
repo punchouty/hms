@@ -111,8 +111,15 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
         $scope.modal.modalContactNumber = details.contactNumber;
         $scope.modal.modalPassportNumber = details.passportNumber;
         $scope.modal.modalCandidateId = details.id;
-        console.log($scope.modal);
+        $scope.modal.updateDisable = function(){
+        	if( $scope.modal.modalNewName &&  $scope.modal.modalPanNumber && $scope.modal.modalEmailId &&  $scope.modal.modalContactNumber && $scope.modal.modalPassportNumber)
+        		return false;
+        	else
+        		return true;
+        }
+       
     }
+   
     
     $scope.filterOptions = {
             filterText: "",
@@ -157,7 +164,7 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
     };
     
     $scope.enableSearchBtn = function (){
-    	if( ($scope.newName && $scope.newName.length>2) || $scope.emailId || $scope.panNumber || ($scope.contactNumber && $scope.contactNumber.length>=10) || $scope.passportNumber){
+    	if( ($scope.newName && $scope.newName.length>2)|| $scope.panNumber){
     		return false;
     	}else{
     		return true;

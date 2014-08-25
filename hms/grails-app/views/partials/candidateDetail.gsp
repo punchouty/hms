@@ -7,11 +7,22 @@
 	<fieldset>
 		<div class="row">
 			<div class="col-md-5">
-				<label>Candidate Name <span class="required"></span>:</label> <input type="text" ng-model="newName"
-					class="form-control"/>
+			    <label>Candidate Name <span class="required"></span>:</label> 
+				<div class=" input-group">
+					<input type="text" ng-model="newName" class="form-control"/>
+					<div class="input-group-btn">
+					    <button type="search" class="btn btn-default" ng-click="searchCandidate()" ng-disabled="enableSearchBtn()"><i class="glyphicon glyphicon-search"></i></button>
+				    </div>
+				</div>
 			</div>
 			<div class="col-md-5 col-md-offset-2">
-				<label>PAN Number <span class="required"></span>:</label> <input type="text" class="form-control" ng-model="panNumber"/>
+				<label>PAN Number <span class="required"></span>:</label>
+				<div class=" input-group">
+					<input type="text" class="form-control" ng-model="panNumber"/>
+					<div class="input-group-btn">
+					    <button type="search" class="btn btn-default" ng-click="searchCandidate()" ng-disabled="enableSearchBtn()"><i class="glyphicon glyphicon-search"></i></button>
+				    </div>
+				</div>
 			</div>
 		</div>
 		<h1></h1>
@@ -37,8 +48,7 @@
 			<div class="col-md-5">
 				<button type="submit" class="btn btn-primary" ng-click="addCandidate()" ng-disabled="enableAddBtn()">Add Candidate</button>
 				<button type="reset" class="btn btn-info" ng-click="clearForm()">Clear</button>
-				<button type="search" class="btn btn-primary" ng-click="searchCandidate()" ng-disabled="enableSearchBtn()">Search Candidate</button>
-			</div>
+		   </div>
 		</div>
 		<div class="modal fade" id="basicModal" tabindex="-1" role="dialog"
 					aria-labelledby="basicModal" aria-hidden="true">
@@ -85,7 +95,7 @@
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">Close</button>
 								<button type="button" class="btn btn-primary"
-									data-dismiss="modal" ng-click="updateCandidateDetails(modal)">Update Details</button>
+									data-dismiss="modal" ng-click="updateCandidateDetails(modal)" ng-disabled="modal.updateDisable()">Update Details</button>
 							</div>
 						</div>
 					</div>
