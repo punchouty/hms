@@ -123,8 +123,7 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
         data: 'candidateDetails',
         columnDefs: [{
             field: "name",
-            displayName: "Candidate Name",
-            cellTemplate: "<a href='#/schedule/{{row.entity.id}}/{{row.entity.name}}'>{{row.entity.name}}</a>",
+            displayName: "Candidate Name",           
             width: "12%"
         }, {
             field: "panNo",
@@ -144,7 +143,7 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
             width: "15%"
         }, {
             displayName: "Action",
-            cellTemplate: '<a class="glyphicon glyphicon-edit" ng-click="updateModalDetails(row.entity)" style="margin-left:20%;cursor:pointer;" title="Update Candidate Detail" data-toggle="modal"	data-target="#basicModal" ></a>',
+            cellTemplate: '<a class="glyphicon glyphicon-edit" ng-click="updateModalDetails(row.entity)" style="margin-left:20%;cursor:pointer;" title="Update Candidate Detail" data-toggle="modal"	data-target="#basicModal" ></a> <a href="#/schedule/{{row.entity.id}}/{{row.entity.name}}" class="glyphicon glyphicon-time" title="schedule" style="margin-left:20px;"></a>',
             width: "15%"
         }
 
