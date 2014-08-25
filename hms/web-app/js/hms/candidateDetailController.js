@@ -30,11 +30,11 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
                 $scope.styleClass = 'error'; 
             } else {
                 $scope.candidateDetails = [response];
+                $scope.showMessage = true;
                 $scope.styleClass = 'success'; 
                 $scope.message = 'New Candidate Add Susscessfully';
                 $timeout(function(){
-                	$scope.styleClass = 'info';
-        			$scope.message = "For search type detail or for Add new Candidate Fill all the field";
+                	 $scope.showMessage = false;
         		},2000);
                 
             }
@@ -56,11 +56,10 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
             "dateCreated": new Date()
         }).$promise.then(function (candidateDetails) {
         	if(candidateDetails.length == 0){
-        		$scope.notFound = true;
+        		 $scope.showMessage = true;
         		 $scope.message = $scope.newName +"  Not Found";
         		$timeout(function(){
-        			$scope.notFound = false;
-        			$scope.message = "For search type detail or for Add new Candidate Fill all the field";
+        			 $scope.showMessage = false;
         		},2000);
         	}else{
         		$scope.candidateDetails = candidateDetails;
@@ -159,11 +158,9 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
     };
     
     $scope.enableSearchBtn = function (){
-    	if( $scope.newName || $scope.emailId || $scope.panNumber || $scope.contactNumber || $scope.passportNumber){
-    		$scope.showMessage = false;
+    	if( ($scope.newName && $scope.newName.length>2) || $scope.emailId || $scope.panNumber || ($scope.contactNumber && $scope.contactNumber.length>=10) || $scope.passportNumber){
     		return false;
     	}else{
-    		$scope.showMessage =  true;
     		return true;
     	} 
     }
