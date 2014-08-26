@@ -124,11 +124,14 @@ hms.factory('hiringService', function ($resource, $log) {
         return $resource('roundEvaluation/listPanelUsers').query();
     }
 
-    factory.getScheduledRounds = function (userId) {
-        return $resource('roundEvaluation/listScheduledRounds/:userId', {
-            userId: '@userId'
-        }).query({
-            userId: userId
+    factory.getScheduledRounds = function (userId, userName) {
+    	return $resource('roundEvaluation/listScheduledRounds',{}, {
+    		 'update': {
+                 method: 'PUT',
+                 isArray: true
+             }
+        }).update({
+            userId: userId,userName: userName
         });
     }
 

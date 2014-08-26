@@ -319,10 +319,10 @@ class RoundEvaluationController {
 
 
 
-	def listScheduledRounds(Long id) {
-
+	def listScheduledRounds() {
+		def result = JSON.parse(request.JSON.toString());
 		def roundEvalsQuery = RoundEvaluation.where{
-			interviewer.id == id && interviewDetail.completionStatus=='1'
+			interviewer.id == result.userId && interviewDetail.completionStatus=='1' && assessmentRound.name ==result.userName
 		}
 
 		def roundEvals=roundEvalsQuery.list()
