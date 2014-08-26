@@ -49,13 +49,13 @@
    <div class="col-lg-5 col-md-offset-2">
       <div class="form-group">
          <label>Feedback/Remarks<span class="required"></span></label>
-         <textarea class="form-control" placeholder="Feedback/Remarks"ng-model="skill.feedback" ng-change="enableButton()" required></textarea>
+         <textarea class="form-control" placeholder="Feedback/Remarks"ng-model="skill.feedback" required></textarea>
       </div>
    </div>
 </div>
 <div class="row">
    <div class="col-md-4">
-      <button type="button" class="btn btn-primary" ng-click="updateScore(round)" ng-disabled="isDisabled" ng-show="isShowForm">Update score</button>
+      <button type="button" class="btn btn-primary" ng-click="updateScore(round)" ng-disabled="isDisabled()" ng-show="isShowForm">Update score</button>
    </div>
 </div>
 </form>

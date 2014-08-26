@@ -31,6 +31,7 @@ hms.controller('assessmentRoundController', function($scope, $routeParams, hirin
 						$scope.message = "Successfully";
 						$scope.class = "success";
 						$scope.isCompleted = true;
+						$scope.isShowForm = false;
 						 $timeout(function(){
 			                	$scope.isCompleted = false;
 			        		},2000);
@@ -75,7 +76,12 @@ hms.controller('assessmentRoundController', function($scope, $routeParams, hirin
 			}
 		}
 		
-		$scope.enableButton = function() {
-			$scope.isDisabled =false;
+		$scope.isDisabled = function() {
+			if($scope.skill.candidateRating && $scope.skill.feedback){
+				alert();
+				return false;
+			}else{
+				return true;
+			}	
 		}	
 });

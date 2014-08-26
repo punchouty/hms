@@ -1,5 +1,6 @@
 package com.sapient.hms.controllers
 import grails.converters.JSON;
+import hms.CandidateDetailVO
 import java.text.SimpleDateFormat
 import org.springframework.dao.DataIntegrityViolationException
 import com.sapient.hms.domain.CandidateDetail;
@@ -48,9 +49,18 @@ class CandidateDetailsController {
 			 render errorMessage as JSON
 			 return
 		 }
- 
-		
-		render CandidateDetailInstance as JSON
+		def CandidateList = new ArrayList<CandidateDetailVO>()
+		   CandidateDetailInstance.each{
+			def candidateVO = new CandidateDetailVO();
+			candidateVO.id = it.id;
+			candidateVO.name = it.name;
+			candidateVO.contactNumber = it.contactNumber
+			candidateVO.panNo = it.panNo
+			candidateVO.passportNumber = it.passportNumber
+			candidateVO.emailId = it.emailId
+			CandidateList.add(candidateVO)
+		}
+		render CandidateList as JSON
 	}
 	
 	
