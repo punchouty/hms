@@ -9,7 +9,7 @@ hms.controller('hiringAssessRoundController', function ($scope, $route, hiringSe
     $scope.round = "domain";
     if(window.localStorage.getItem("candidateDetails") != null){
         $scope.myData = JSON.parse(window.localStorage.getItem("candidateDetails"));
-        $scope.newName = window.localStorage.getItem("roundName");
+        $scope.searchRoundName = window.localStorage.getItem("roundName");
       }
 
     var template = '<a ng-click="updateStatus(row.entity, 2)" class="glyphicon glyphicon-time" style="margin-left:20%;cursor:pointer;" title="Evaluate"></a>' +
@@ -34,7 +34,7 @@ hms.controller('hiringAssessRoundController', function ($scope, $route, hiringSe
         	var candidateDetails = JSON.stringify(data);
         	window.localStorage.clear();
         	window.localStorage.setItem("candidateDetails",candidateDetails);
-        	window.localStorage.setItem("roundName",$scope.newName);
+        	window.localStorage.setItem("roundName",$scope.searchRoundName);
             $scope.totalServerItems = data.length;
             if (!$scope.$$phase) {
                 $scope.$apply();
@@ -47,7 +47,7 @@ hms.controller('hiringAssessRoundController', function ($scope, $route, hiringSe
             var data;
             if (searchText) {
                 var ft = searchText.toLowerCase();
-                hiringService.getScheduledRounds($scope.loggedInUserId, $scope.newName).$promise.then(function (interviews) {
+                hiringService.getScheduledRounds($scope.loggedInUserId, $scope.searchRoundName).$promise.then(function (interviews) {
                     data = interviews.filter(function (
                     item) {
                         return JSON.stringify(
@@ -58,7 +58,7 @@ hms.controller('hiringAssessRoundController', function ($scope, $route, hiringSe
                 });
 
             } else {
-                hiringService.getScheduledRounds($scope.loggedInUserId, $scope.newName).$promise.then(function (interviews) {
+                hiringService.getScheduledRounds($scope.loggedInUserId, $scope.searchRoundName).$promise.then(function (interviews) {
                     $scope.setPagingData(
                     interviews, page, pageSize);
                 });
@@ -151,7 +151,7 @@ hms.controller('hiringAssessRoundController', function ($scope, $route, hiringSe
     $scope.searchCandidate = function () {
         /*dataRequired = {
         	"loggedInUserId" : $scope.loggedInUserId,
-            "name": $scope.newName,
+            "name": $scope.searchRoundName,
             "panNo": $scope.assessmentStatus
         };*/
         $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);

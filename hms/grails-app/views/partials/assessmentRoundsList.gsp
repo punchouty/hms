@@ -9,7 +9,7 @@
 			<div class="col-md-5">
 			    <label>Round Name <span class="required"></span>:</label> 
 				<div class=" input-group">
-					<input type="text" ng-model="newName" class="form-control"/>
+					<input type="text" ng-model="searchRoundName" class="form-control"/>
 					<div class="input-group-btn">
 					    <button type="search" class="btn btn-default" ng-click="searchCandidate()"><i class="glyphicon glyphicon-search"></i></button>
 				    </div>
