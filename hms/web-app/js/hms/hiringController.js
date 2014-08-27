@@ -16,14 +16,6 @@ hms.controller('hiringController', function ($scope, $routeParams, hiringService
     $scope.message = "For Set Interview Click On Set Interview Button";
     $scope.styleClass = 'info';
 
-    $scope.modes = [{
-        "name": "Telephonic",
-        "code": "T"
-    }, {
-        "name": "Face-To-Face",
-        "code": "F"
-    }];
-    $scope.selectedMode = $scope.modes[0];
     $scope.positions = {};
 
     hiringService.getPositions().$promise.then(function (positions) {
@@ -57,27 +49,35 @@ hms.controller('hiringController', function ($scope, $routeParams, hiringService
             "hiringperson": {
                 "id": $scope.loggedInUserId
             },
-            "interviewMode": $scope.selectedMode.code,
+            "interviewMode":"",
             "name": "Int1",
             "position": {
                 "id": $scope.selectedPosition.id
             }
         });
         hiringService.createInterview($scope.interviewDetail).$promise.then(function (interviewDetails) {
-            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
-            $scope.showMessage = true;
-            $scope.styleClass = 'success'; 
-            $scope.message = 'Interview Set Successfully';
-            $timeout(function(){
-            	$scope.showMessage = false;
-    		},2000);
+        	if(interviewDetails.error){
+        		$scope.showMessage = true;
+                $scope.styleClass = 'error'; 
+                $scope.message = 'Interview Set Failed';
+                $timeout(function(){
+                	$scope.showMessage = false;
+        		},2000);
+        	}else{
+	            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+	            $scope.showMessage = true;
+	            $scope.styleClass = 'success'; 
+	            $scope.message = 'Interview Set Successfully';
+	            $timeout(function(){
+	            	$scope.showMessage = false;
+	    		},2000);
+        	}
         });
     }
 
     $scope.deleteInterview = function (id) {
         hiringService.deleteInterview(id).$promise.then(function (status) {
             $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
-
         });
     }
 

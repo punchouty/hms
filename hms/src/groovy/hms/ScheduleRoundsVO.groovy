@@ -13,6 +13,7 @@ class ScheduleRoundsVO {
 	Long assessmentRoundSequence
 	String interviewerName
 	Date interviewTime
+	String interviewMode
 	Integer candidateRoundScore
 	String assessmentStatus
 	Boolean isDisabled

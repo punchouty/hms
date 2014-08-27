@@ -55,7 +55,7 @@ class RoundEvaluationController {
 			roundVO.assessmentRoundSequence=it.assessmentRound.sequence
 			roundVO.assessmentStatus = it.assessmentStatus
 			roundVO.isDisabled = it.isDisabled
-			
+			roundVO.interviewMode = it.interviewDetail.interviewMode
 			if(it.interviewer)
 			{
 				roundVO.interviewerId = it.interviewer.id
@@ -141,6 +141,7 @@ class RoundEvaluationController {
 
 	def update(){
 		def result = JSON.parse(request.JSON.toString());
+		def df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 		def roundEval=new RoundEvaluation();
 		if(result.evaluationRoundId)
 		 roundEval=RoundEvaluation.get(result.evaluationRoundId)
@@ -148,18 +149,22 @@ class RoundEvaluationController {
 		if(result.assessmentStatus){
 			roundEval.assessmentStatus = result.assessmentStatus
 		}
-		//DateFormat df=new SimpleDateFormat(pattern);
+		if(roundEval.assessmentStatus == null || roundEval.assessmentStatus=='3' || roundEval.assessmentStatus=='1')
+		{
+			roundEval.assessmentStatus = 1
+		}else{
+			def errorMessage = [error : "error occured,please try again"]
+			render errorMessage as JSON
+			return
+		}
 		roundEval.interviewer = user
 		if(result.interviewTime)
 		{
-			def df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+			df.parse(result.interviewTime)
 			roundEval.scheduledTime = df.parse(result.interviewTime)
 		}
 		roundEval.interviewDetail.completionStatus = 1
-		if(roundEval.assessmentStatus == null || roundEval.assessmentStatus=='3')
-		{
-			roundEval.assessmentStatus = 1
-		}
+		
 		if(result.candidateRoundScore)
 		{
 			roundEval.candidateRoundScore = result.candidateRoundScore

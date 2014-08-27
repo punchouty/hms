@@ -1,7 +1,6 @@
 hms.controller('hiringRoundController', function ($scope, $routeParams, hiringService, $timeout) {
         $scope.loggedInUser = $('#loggedInUser').html();
         $scope.loggedInUserId = $('#loggedInUserId').html();
-        $scope.updateBtnEnable = true;
     $scope.modes = [{
         "name": "Telephonic",
         "code": "T"
@@ -19,22 +18,34 @@ hms.controller('hiringRoundController', function ($scope, $routeParams, hiringSe
     });
 
     $scope.scheduleInterview = function (roundId, interviewerId, round) {
+    	var round1 = round;
         hiringService.updateRound({
             "evaluationRoundId": roundId,
             "interviewerId": interviewerId,
             "interviewTime": round.interviewTime,
             "interviewMode": round.selectedMode.code
         }).$promise.then(function (round) {
-            hiringService.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise.then(function (assessmentRounds) {
-                $scope.rounds = assessmentRounds; 
-                checkRoundStatus();
-                $scope.message = "Interview Schedule Successfully ";
-                $scope.class = "success";
+        	if(round.error){
+        		$scope.message = "Interview Schedule Failed because Assessment status is ";
+        		$scope.status = round1.assessmentStatus;
+                $scope.class = "error";
                 $scope.isCompleted = true;
                 $timeout(function(){
                 	$scope.isCompleted = false;
-        		},2000);
-            });
+        		},5000);        	
+            }else{
+        		 hiringService.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise.then(function (assessmentRounds) {
+                     $scope.rounds = assessmentRounds; 
+                     checkRoundStatus();
+                     $scope.message = "Interview Schedule Successfully ";
+                     $scope.class = "success";
+                     $scope.isCompleted = true;
+                     $timeout(function(){
+                     	$scope.isCompleted = false;
+             		},3000);
+                 });
+        	}
+           
         });
 
     }
@@ -61,15 +72,10 @@ hms.controller('hiringRoundController', function ($scope, $routeParams, hiringSe
     };
     
     $scope.isScheduled = function (round) {
-    	if(round.assessmentStatus == 2){
-        	$scope.updateBtnEnable = false;  
-        }
-        if (round.interviewerName && round.interviewTime && round.selectedMode && (round.assessmentStatus!= 2 || round.assessmentStatus != 6)) 
+        if (round.interviewerName && round.interviewTime && round.selectedMode) 
         	return false;
         else
-        	return true;
-        
-    	 
+        	return true; 
     }
 
     hiringService.getInterviewerDetails().$promise.then(function (interviewerDetails) {

@@ -59,7 +59,6 @@ class InterviewDetailsController {
     def save() {
 		def result = JSON.parse(request.JSON.toString());
         def interviewDetailsInstance = new InterviewDetail(result)
-		println interviewDetailsInstance
 		interviewDetailsInstance.candidateDetail = CandidateDetail.get(result.candidateDetail.id)
 		interviewDetailsInstance.position = Position.get(result.position.id)
 		interviewDetailsInstance.hiringperson = User.get(result.hiringperson.id)
@@ -72,8 +71,6 @@ class InterviewDetailsController {
 			render errorMessage as JSON
 			return			
 		}
-		println interviewDetailsInstance
-		println flag
 		render interviewDetailsInstance as JSON
     }
 
@@ -160,14 +157,11 @@ class InterviewDetailsController {
         try {
             interviewDetailsInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), id])
-			print interviewDetailsInstance as JSON
-            render interviewDetailsInstance as JSON
+            render  interviewDetailsInstance as JSON
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), id])
             redirect(action: "show", id: id)
         }
-    }
-	
-	
+    }	
 }
