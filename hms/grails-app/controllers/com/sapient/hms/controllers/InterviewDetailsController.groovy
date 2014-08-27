@@ -157,7 +157,7 @@ class InterviewDetailsController {
         try {
             interviewDetailsInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), id])
-            render  interviewDetailsInstance as JSON
+            render  "data deleted"
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'interviewDetails.label', default: 'InterviewDetails'), id])

@@ -94,6 +94,9 @@ hms.controller('candidateDetailController', function ($scope, $routeParams, hiri
         };
         hiringService.updateCandidateDetails(data).$promise.then(function (response) {
             $scope.candidateDetails = [response];
+            var candidateDetails = JSON.stringify( $scope.candidateDetails);
+        	window.localStorage.clear();
+        	window.localStorage.setItem("candidateDetails",candidateDetails);
             $scope.styleClass = 'success'; 
             $scope.message = 'Candidate Detail Updated Susscessfully';
             $timeout(function(){
