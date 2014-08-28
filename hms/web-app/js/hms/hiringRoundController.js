@@ -19,35 +19,44 @@ hms.controller('hiringRoundController', function ($scope, $routeParams, hiringSe
 
     $scope.scheduleInterview = function (roundId, interviewerId, round) {
     	var round1 = round;
-        hiringService.updateRound({
-            "evaluationRoundId": roundId,
-            "interviewerId": interviewerId,
-            "interviewTime": round.interviewTime,
-            "interviewMode": round.selectedMode.code
-        }).$promise.then(function (round) {
-        	if(round.error){
-        		$scope.message = "Interview Schedule Failed because Assessment status is ";
-        		$scope.status = round1.assessmentStatus;
-                $scope.class = "error";
-                $scope.isCompleted = true;
-                $timeout(function(){
-                	$scope.isCompleted = false;
-        		},5000);        	
-            }else{
-        		 hiringService.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise.then(function (assessmentRounds) {
-                     $scope.rounds = assessmentRounds; 
-                     checkRoundStatus();
-                     $scope.message = "Interview Schedule Successfully ";
-                     $scope.class = "success";
-                     $scope.isCompleted = true;
-                     $timeout(function(){
-                     	$scope.isCompleted = false;
-             		},3000);
-                 });
-        	}
-           
-        });
+    	if(round.assessmentStatus){
+    		if($scope.updateStatus(round,round.assessmentStatus)){
+    			setInterview(roundId, interviewerId, round);
+    		}else{
+    			$scope.message = "Interview Schedule Failed because Assessment status is ";
+         		$scope.status = round1.assessmentStatus;
+                 $scope.class = "error";
+                 $scope.isCompleted = true;
+                 $timeout(function(){
+                 	$scope.isCompleted = false;
+         		},5000); 
+                return;
+    		}
+    	}else{
+    		setInterview(roundId, interviewerId, round);
+    	}
+       
 
+    }
+    
+    function setInterview(roundId, interviewerId, round){
+    	 hiringService.updateRound({
+             "evaluationRoundId": roundId,
+             "interviewerId": interviewerId,
+             "interviewTime": round.interviewTime,
+             "interviewMode": round.selectedMode.code
+         }).$promise.then(function (round) {
+         		 hiringService.getRoundSchedulesForInterview($scope.scheduleRound_interviewId).$promise.then(function (assessmentRounds) {
+                      $scope.rounds = assessmentRounds; 
+                      checkRoundStatus();
+                      $scope.message = "Interview Schedule Successfully ";
+                      $scope.class = "success";
+                      $scope.isCompleted = true;
+                      $timeout(function(){
+                      	$scope.isCompleted = false;
+              		},3000);
+                  });            
+         });
     }
 
     function checkRoundStatus(){

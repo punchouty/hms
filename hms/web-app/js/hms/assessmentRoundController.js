@@ -75,13 +75,5 @@ hms.controller('assessmentRoundController', function($scope, $routeParams, hirin
 	        		},2000);
 			}
 		}
-		
-		$scope.isDisabled = function() {
-			if($scope.skill.candidateRating && $scope.skill.feedback){
-				alert();
-				return false;
-			}else{
-				return true;
-			}	
-		}	
+			
 });

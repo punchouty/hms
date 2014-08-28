@@ -42,12 +42,12 @@
 				<div class="form-group">
 					<label>Interview Time <span class="required"></span></label>
 					<div class="dropdown">
-					  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
-					    <div class="input-group"><span class="form-control" required>{{round.interviewTime | date:"dd-MM-yyyy HH:mm"}}</span><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+					  <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown" data-target="#" href="#">
+					    <div class="input-group"><span class="form-control" >{{round.interviewTime | date:"dd-MM-yyyy HH:mm"}}</span><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 					    </div>
 					  </a>
-					  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-					    <datetimepicker ng-model="round.interviewTime" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+					  <ul class="dropdown-menu" role="menu">
+					    <datetimepicker ng-model="round.interviewTime" data-datetimepicker-config="{ dropdownSelector: '#dropdown1' }"/>
 					  </ul>
 					</div>
 				</div>
@@ -58,7 +58,7 @@
 			<div class="col-md-5">
 				<label>Interview Mode<span class="required"></span></label> <select
 					class="form-control" ng-model="round.selectedMode"
-					ng-options="mode.name for mode in modes" required>
+					ng-options="mode.name for mode in modes" >
 					<option value="">-- Select Mode --</option>
 				</select>
 			</div>

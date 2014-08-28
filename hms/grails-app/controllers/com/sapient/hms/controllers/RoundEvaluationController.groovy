@@ -149,13 +149,9 @@ class RoundEvaluationController {
 		if(result.assessmentStatus){
 			roundEval.assessmentStatus = result.assessmentStatus
 		}
-		if(roundEval.assessmentStatus == null || roundEval.assessmentStatus=='3' || roundEval.assessmentStatus=='1')
+		if(roundEval.assessmentStatus == null || roundEval.assessmentStatus=='3')
 		{
 			roundEval.assessmentStatus = 1
-		}else{
-			def errorMessage = [error : "error occured,please try again"]
-			render errorMessage as JSON
-			return
 		}
 		roundEval.interviewer = user
 		if(result.interviewTime)

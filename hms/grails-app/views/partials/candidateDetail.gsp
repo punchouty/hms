@@ -11,7 +11,7 @@
 				<div class=" input-group">
 					<input type="text" ng-model="newName" class="form-control"/>
 					<div class="input-group-btn">
-					    <button type="search" class="btn btn-default" ng-click="searchCandidate()" ng-disabled="enableSearchBtn()"><i class="glyphicon glyphicon-search"></i></button>
+					    <button type="search" class="btn btn-success" ng-click="searchCandidate()" ng-disabled="enableSearchBtn()"><i class="glyphicon glyphicon-search"></i></button>
 				    </div>
 				</div>
 			</div>
@@ -20,7 +20,7 @@
 				<div class=" input-group">
 					<input type="text" class="form-control" ng-model="panNumber"/>
 					<div class="input-group-btn">
-					    <button type="search" class="btn btn-default" ng-click="searchCandidate()" ng-disabled="enableSearchBtn()"><i class="glyphicon glyphicon-search"></i></button>
+					    <button type="search" class="btn btn-success" ng-click="searchCandidate()" ng-disabled="enableSearchBtn()"><i class="glyphicon glyphicon-search"></i></button>
 				    </div>
 				</div>
 			</div>
